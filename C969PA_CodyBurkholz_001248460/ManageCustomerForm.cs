@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace C969PA_CodyBurkholz_001248460
 {
-    public partial class Form1 : Form
+    public partial class ManageCustomerForm : Form
     {
-        public Form1()
+        public ManageCustomerForm()
         {
             InitializeComponent();
         }

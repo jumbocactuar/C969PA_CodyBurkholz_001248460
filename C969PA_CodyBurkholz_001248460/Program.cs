@@ -19,4 +19,9 @@ namespace C969PA_CodyBurkholz_001248460
             Application.Run(new ManageCustomerForm());
         }
     }
+
+    public class Globals
+    {
+
+    }
 }

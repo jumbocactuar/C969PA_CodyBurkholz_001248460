@@ -25,6 +25,8 @@ namespace C969PA_CodyBurkholz_001248460
             //U06vbiDataSetTableAdapters.customerTableAdapter customerTableAdapter = U06vbiDataSetTableAdapters.customerTableAdapter();
 
             //customerTableAdapter.Insert("Jimbo Jones", 3, 1, DateTime.Now, "This Guy", DateTime.UtcNow, "That Guy");
+
+            //ManageCustomerForm.adapterToMySql
         }
 
         private void AddCustomerCancelButton_Click(object sender, EventArgs e)

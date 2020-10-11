@@ -22,16 +22,15 @@ namespace C969PA_CodyBurkholz_001248460
         {
             InitializeComponent();
 
-            string connectionString;
+            //string cxnString;
             DataTable dt = new DataTable();
-            //DataGridView dgv = new DataGridView();
 
-            connectionString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;
+            //cxnString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;
 
-            MySqlConnection cxnToMySQL = new MySqlConnection(connectionString);
+            MySqlConnection cxnToMySQL = new MySqlConnection(Globals.cxnString);
             cxnToMySQL.Open();
             string initString = "SELECT * FROM customer";
-            MySqlCommand cmdToMySQL = new MySqlCommand(initString, cxnToMySQL); // FIXME: Replace initString with the value from a textbox?
+            MySqlCommand cmdToMySQL = new MySqlCommand(initString, cxnToMySQL);
             MySqlDataAdapter adapterToMySQL = new MySqlDataAdapter(selectCommand: cmdToMySQL);
             adapterToMySQL.Fill(dt);
             ManageCustomerDataGridView.DataSource = dt;

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters;
 using MySql.Data.MySqlClient;
+using MySql.Data.Types;
 
 namespace C969PA_CodyBurkholz_001248460
 {
@@ -24,11 +25,7 @@ namespace C969PA_CodyBurkholz_001248460
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManageCustomerForm());
-
-            //Populate the Country table
-            Globals.InsertRecord("country", "United States");
-            Globals.InsertRecord("country", "United Kingdom");
+            Application.Run(new LoginForm());
         }
     }
 
@@ -43,6 +40,23 @@ namespace C969PA_CodyBurkholz_001248460
         public static int AddressIDCounter { get; set; }
         public static int CityIDCounter { get; set; }
         public static int CountryIDCounter { get; set; }
+
+        private static string GetMySqlNow()
+        {
+            DateTime utcTime = new DateTime();
+            utcTime = DateTime.UtcNow;
+            string mySqlNow = utcTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+            return mySqlNow;
+
+            /*DateTime utcTime = new DateTime();
+            utcTime = DateTime.UtcNow;
+            MySqlDateTime formattedTime = new MySqlDateTime(utcTime);
+            string mySqlNow = formattedTime.ToString();
+
+            return mySqlNow;*/
+        }
+
 
         public static int CreateID(string table)
         {
@@ -87,7 +101,7 @@ namespace C969PA_CodyBurkholz_001248460
             return counter;
         }
 
-        public static int InsertRecord(string table) // Seeing as each table has a unique set if fields, can I overload this method and make one for each table?
+        public static int InsertRecord(string table) // Seeing as each table has a unique set of fields, can I overload this method and make one for each table?
         {
             int id = CreateID(table);
             string insRecord;
@@ -107,11 +121,9 @@ namespace C969PA_CodyBurkholz_001248460
         {
             // Country table record insertion method
             int id = CreateID(table);
-            DateTime timestamp = DateTime.UtcNow;
-            
             string insRecord;
 
-            insRecord = $"INSERT INTO {table} VALUES ({id}, '{country}', '{timestamp}', '{Globals.CurrentUser}', '{timestamp}', '{Globals.CurrentUser}')"; // FIXME: "Incorrect datetime value"?
+            insRecord = $"INSERT INTO {table} VALUES ({id}, '{country}', '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
 
             MySqlConnection cxn = new MySqlConnection(cxnString);
             cxn.Open();

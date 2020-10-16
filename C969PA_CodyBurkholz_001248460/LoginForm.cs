@@ -22,8 +22,8 @@ namespace C969PA_CodyBurkholz_001248460
             //Populate the Country table if it is empty
             if (Globals.CountryIDCounter == 0) // FIXME: This won't work--the counter resets every time the app is closed; need to look into the DB
             {
-                Globals.InsertRecord("country", "United Kingdom");
-                Globals.InsertRecord("country", "United States");
+                Globals.InsertCountryRecord("United Kingdom");
+                Globals.InsertCountryRecord("United States");
             }
         }
 

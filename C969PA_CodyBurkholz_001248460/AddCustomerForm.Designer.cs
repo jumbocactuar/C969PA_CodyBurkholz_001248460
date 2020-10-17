@@ -141,11 +141,12 @@
             // 
             // AddCustomerCityComboBox
             // 
+            this.AddCustomerCityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddCustomerCityComboBox.FormattingEnabled = true;
             this.AddCustomerCityComboBox.Items.AddRange(new object[] {
-            "Phoenix",
+            "London",
             "New York",
-            "London"});
+            "Phoenix"});
             this.AddCustomerCityComboBox.Location = new System.Drawing.Point(347, 75);
             this.AddCustomerCityComboBox.Name = "AddCustomerCityComboBox";
             this.AddCustomerCityComboBox.Size = new System.Drawing.Size(121, 21);

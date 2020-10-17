@@ -37,12 +37,6 @@ namespace C969PA_CodyBurkholz_001248460
         public static string cxnString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;
 
         public static string CurrentUser { get; set; }
-        public static int UserIDCounter { get; set; }
-        public static int AppointmentIDCounter { get; set; }
-        public static int CustomerIDcounter { get; set; }
-        public static int AddressIDCounter { get; set; }
-        public static int CityIDCounter { get; set; }
-        public static int CountryIDCounter { get; set; }
 
         private static string GetMySqlNow()
         {
@@ -53,16 +47,20 @@ namespace C969PA_CodyBurkholz_001248460
             return mySqlNow;
         }
 
-        private static void ExecuteThisQuery(string query)
+        private static int ExecuteThisQueryReturnInt(string query)
         {
+            int result;
+
             MySqlConnection cxn = new MySqlConnection(cxnString);
             cxn.Open();
             MySqlCommand cmd = new MySqlCommand(query, cxn);
-            cmd.ExecuteNonQuery();
+            result = cmd.ExecuteNonQuery();
             cxn.Close();
+
+            return result;
         }
 
-        private static string ExecuteThisQueryAndReturn(string query)
+        private static string ExecuteThisQueryReturnString(string query)
         {
             string result;
             
@@ -76,47 +74,23 @@ namespace C969PA_CodyBurkholz_001248460
         }
 
 
-        public static int CreateID(string table)
+        private static int CreateID(string table)
         {
-            int counter = -1;
+            string existentialQuery = $"SELECT * FROM {table}";
 
-            switch(table)
+            int id = ExecuteThisQueryReturnInt(existentialQuery);
+
+            if (id == 0)
             {
-                case "user":
-                    UserIDCounter++;
-                    counter = UserIDCounter;
-                    break;
-
-                case "appointment":
-                    AppointmentIDCounter++;
-                    counter = AppointmentIDCounter;
-                    break;
-
-                case "customer":
-                    CustomerIDcounter++;
-                    counter = CustomerIDcounter;
-                    break;
-
-                case "address":
-                    AddressIDCounter++;
-                    counter = AddressIDCounter;
-                    break;
-
-                case "city":
-                    CityIDCounter++;
-                    counter = CityIDCounter;
-                    break;
-
-                case "country":
-                    CountryIDCounter++;
-                    counter = CountryIDCounter;
-                    break;
-
-                default:
-                    MessageBox.Show("Please provide a valid table name."); // FIXME: Is this good, or should I throw an exception?
-                    break;
+                id = 1;
             }
-            return counter;
+
+            else
+            {
+                id++;
+            }
+
+            return id;
         }
 
         private static int GetID(string table, string condition)
@@ -124,36 +98,18 @@ namespace C969PA_CodyBurkholz_001248460
             // Given a target table and a condition for the WHERE clause, return the result record's ID
             string query = $"SELECT {table}Id from {table} WHERE {table} = '{condition}'";
 
-            string result = ExecuteThisQueryAndReturn(query);
+            string result = ExecuteThisQueryReturnString(query);
 
             return int.Parse(result);
         }
 
-        /*public static int InsertRecord(string table) // Seeing as each table has a unique set of fields, can I overload this method and make one for each table?
-        {
-            int id = CreateID(table);
-            string insRecord;
-
-            insRecord = $"INSERT INTO {table} VALUES ({id})";
-
-            MySqlConnection cxn = new MySqlConnection(cxnString);
-            cxn.Open();
-            MySqlCommand cmd = new MySqlCommand(insRecord, cxn);
-            cmd.ExecuteNonQuery();
-            cxn.Close();
-
-            return id; // FIXME: Why am I returning anything?
-        }*/
-
-        public static int InsertCountryRecord(string country) // FIXME: These might have to be table-specific methods since country and city hasve the same sig
+        public static void InsertCountryRecord(string country)
         {
             int id = CreateID("country");
 
             string query = $"INSERT INTO country VALUES ({id}, '{country}', '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
 
-            ExecuteThisQuery(query);
-
-            return id; // FIXME: Do I need to be returning anything?
+            ExecuteThisQueryReturnInt(query);
         }
 
         public static void InsertCityRecord(string city)
@@ -176,7 +132,48 @@ namespace C969PA_CodyBurkholz_001248460
 
             string query = $"INSERT INTO city VALUES ({id}, '{city}', {countryID}, '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
 
-            ExecuteThisQuery(query);
+            ExecuteThisQueryReturnInt(query);
+        }
+
+        public static int InsertAddressRecord(string address, string address2, string city, string postalCode, string phone)
+        {
+            int id = CreateID("address");
+
+            int cityID = GetID("city", city);
+
+            string query = $"INSERT INTO address VALUES ({id}, '{address}', '{address2}', {cityID}, '{postalCode}', '{phone}', '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
+
+            ExecuteThisQueryReturnInt(query);
+            
+            return id;
+        }
+
+        public static int InsertCustomerRecord(string name, int addressID, bool active)
+        {
+            int id = CreateID("customer");
+
+            string query = $"INSERT INTO customer VALUES ({id}, '{name}', {addressID}, {active}, '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
+            
+            return id;
+        }
+
+        public static int InsertUserRecord(string userName, string password, bool active)
+        {
+            int id = CreateID("user");
+
+            string query = $"INSERT INTO user VALUES ({id}, '{userName}', '{password}', {active}, '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
+
+            return id;
+        }
+
+        public static int InsertAppointmentRecord(int customerID, int userID, string title, string description, string location, string contact, string type, string url, DateTime start, DateTime end)
+        {
+            // FIXME: Unsure whether string is right for location (what do I get from a dropdown selection), or if DateTime is right for start/end, may need to grab and convert?
+            int id = CreateID("appointment");
+
+            string query = $"INSERT INTO appointment VALUES ({id})";
+
+            return id;
         }
     }
 }

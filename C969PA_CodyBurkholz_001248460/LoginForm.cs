@@ -19,12 +19,14 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            //Populate the Country table if it is empty
-            if (Globals.CountryIDCounter == 0) // FIXME: This won't work--the counter resets every time the app is closed; need to look into the DB
-            {
-                Globals.InsertCountryRecord("United Kingdom");
-                Globals.InsertCountryRecord("United States");
-            }
+            // Populate the Country table
+            Globals.InsertCountryRecord("United Kingdom");
+            Globals.InsertCountryRecord("United States");
+
+            // Populate the City table
+            Globals.InsertCityRecord("London");
+            Globals.InsertCityRecord("New York");
+            Globals.InsertCityRecord("Phoenix");
         }
 
         private void BypassButton_Click(object sender, EventArgs e)

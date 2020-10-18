@@ -63,6 +63,7 @@
             this.ManagementPortalAppointmentsButton.TabIndex = 2;
             this.ManagementPortalAppointmentsButton.Text = "Manage Appointments";
             this.ManagementPortalAppointmentsButton.UseVisualStyleBackColor = true;
+            this.ManagementPortalAppointmentsButton.Click += new System.EventHandler(this.ManagementPortalAppointmentsButton_Click);
             // 
             // ManagementPortalForm
             // 

@@ -103,6 +103,15 @@ namespace C969PA_CodyBurkholz_001248460
             return int.Parse(result);
         }
 
+        public static string GetLoginInfo(string infoType, string info)
+        {
+            string query = $"SELECT {infoType} FROM user WHERE {infoType} = '{info}'";
+
+            string result = ExecuteThisQueryReturnString(query);
+
+            return result;
+        }
+
         public static void InsertCountryRecord(string country)
         {
             int id = CreateID("country");

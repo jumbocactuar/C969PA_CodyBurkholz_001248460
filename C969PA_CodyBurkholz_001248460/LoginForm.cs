@@ -19,19 +19,13 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Populate the Country table
-            Globals.InsertCountryRecord("United Kingdom");
-            Globals.InsertCountryRecord("United States");
-
-            // Populate the City table
-            Globals.InsertCityRecord("London");
-            Globals.InsertCityRecord("New York");
-            Globals.InsertCityRecord("Phoenix");
+           /* // Populate the User table
+            Globals.InsertUserRecord("test", "test", 1);*/
         }
 
         private void BypassButton_Click(object sender, EventArgs e)
         {
-            ManageCustomerForm f = new ManageCustomerForm();
+            ManagementPortalForm f = new ManagementPortalForm();
             f.Show();
         }
     }

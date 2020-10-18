@@ -148,20 +148,24 @@ namespace C969PA_CodyBurkholz_001248460
             return id;
         }
 
-        public static int InsertCustomerRecord(string name, int addressID, bool active)
+        public static int InsertCustomerRecord(string name, int addressID, byte active)
         {
             int id = CreateID("customer");
 
             string query = $"INSERT INTO customer VALUES ({id}, '{name}', {addressID}, {active}, '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
+
+            ExecuteThisQueryReturnInt(query);
             
             return id;
         }
 
-        public static int InsertUserRecord(string userName, string password, bool active)
+        public static int InsertUserRecord(string userName, string password, byte active)
         {
             int id = CreateID("user");
 
             string query = $"INSERT INTO user VALUES ({id}, '{userName}', '{password}', {active}, '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
+
+            ExecuteThisQueryReturnInt(query);
 
             return id;
         }
@@ -172,6 +176,8 @@ namespace C969PA_CodyBurkholz_001248460
             int id = CreateID("appointment");
 
             string query = $"INSERT INTO appointment VALUES ({id})";
+
+            ExecuteThisQueryReturnInt(query);
 
             return id;
         }

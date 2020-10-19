@@ -42,7 +42,7 @@ namespace C969PA_CodyBurkholz_001248460
             if (userName == Globals.CurrentUser && password == tempPass)
             {
                 ManagementPortalForm f = new ManagementPortalForm();
-                f.Show(); // FIXME: Figure out how to close the form upon successful login, figure out how to handle when GetLoginInfo encounters a null value
+                f.Show(); // FIXME: Figure out how to handle when GetLoginInfo encounters a null value
             }
 
             else

@@ -62,7 +62,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private static string ExecuteThisQueryReturnString(string query)
         {
-            string result;
+            /*string result;
             
             MySqlConnection cxn = new MySqlConnection(cxnString);
             cxn.Open();
@@ -70,7 +70,28 @@ namespace C969PA_CodyBurkholz_001248460
             result = cmd.ExecuteScalar().ToString();
             cxn.Close();
 
-            return result;
+            return result;*/
+
+            string resultString;
+
+            MySqlConnection cxn = new MySqlConnection(cxnString);
+            cxn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, cxn);
+            var result = cmd.ExecuteScalar();
+
+            if (result == null)
+            {
+                resultString = "null";
+            }
+
+            else
+            {
+                resultString = result.ToString();
+            }
+
+            cxn.Close();
+
+            return resultString;
         }
 
 

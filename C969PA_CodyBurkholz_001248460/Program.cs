@@ -148,7 +148,7 @@ namespace C969PA_CodyBurkholz_001248460
 
             string country;
 
-            if (city == "London") // FIXME: May need to revisit this after seeing how to deal with values in a dropdown list
+            if (city == "London")
             {
                 country = "United Kingdom";
             }

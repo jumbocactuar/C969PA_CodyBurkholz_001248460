@@ -43,10 +43,9 @@
             this.AddCustomerPostalCodeLabel = new System.Windows.Forms.Label();
             this.AddCustomerPhoneTextBox = new System.Windows.Forms.TextBox();
             this.AddCustomerPhoneLabel = new System.Windows.Forms.Label();
-            this.AddCustomerCountryTextBox = new System.Windows.Forms.TextBox();
-            this.AddCustomerCountryLabel = new System.Windows.Forms.Label();
             this.AddCustomerSaveButton = new System.Windows.Forms.Button();
             this.AddCustomerCancelButton = new System.Windows.Forms.Button();
+            this.AddCustomerActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // AddCustomerFormLabel
@@ -177,23 +176,6 @@
             this.AddCustomerPhoneLabel.TabIndex = 16;
             this.AddCustomerPhoneLabel.Text = "Phone";
             // 
-            // AddCustomerCountryTextBox
-            // 
-            this.AddCustomerCountryTextBox.Enabled = false;
-            this.AddCustomerCountryTextBox.Location = new System.Drawing.Point(347, 240);
-            this.AddCustomerCountryTextBox.Name = "AddCustomerCountryTextBox";
-            this.AddCustomerCountryTextBox.Size = new System.Drawing.Size(100, 20);
-            this.AddCustomerCountryTextBox.TabIndex = 17;
-            // 
-            // AddCustomerCountryLabel
-            // 
-            this.AddCustomerCountryLabel.AutoSize = true;
-            this.AddCustomerCountryLabel.Location = new System.Drawing.Point(298, 243);
-            this.AddCustomerCountryLabel.Name = "AddCustomerCountryLabel";
-            this.AddCustomerCountryLabel.Size = new System.Drawing.Size(43, 13);
-            this.AddCustomerCountryLabel.TabIndex = 18;
-            this.AddCustomerCountryLabel.Text = "Country";
-            // 
             // AddCustomerSaveButton
             // 
             this.AddCustomerSaveButton.Location = new System.Drawing.Point(312, 329);
@@ -214,15 +196,24 @@
             this.AddCustomerCancelButton.UseVisualStyleBackColor = true;
             this.AddCustomerCancelButton.Click += new System.EventHandler(this.AddCustomerCancelButton_Click);
             // 
+            // AddCustomerActiveCheckBox
+            // 
+            this.AddCustomerActiveCheckBox.AutoSize = true;
+            this.AddCustomerActiveCheckBox.Location = new System.Drawing.Point(367, 243);
+            this.AddCustomerActiveCheckBox.Name = "AddCustomerActiveCheckBox";
+            this.AddCustomerActiveCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.AddCustomerActiveCheckBox.TabIndex = 21;
+            this.AddCustomerActiveCheckBox.Text = "Active";
+            this.AddCustomerActiveCheckBox.UseVisualStyleBackColor = true;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 412);
+            this.Controls.Add(this.AddCustomerActiveCheckBox);
             this.Controls.Add(this.AddCustomerCancelButton);
             this.Controls.Add(this.AddCustomerSaveButton);
-            this.Controls.Add(this.AddCustomerCountryLabel);
-            this.Controls.Add(this.AddCustomerCountryTextBox);
             this.Controls.Add(this.AddCustomerPhoneLabel);
             this.Controls.Add(this.AddCustomerPhoneTextBox);
             this.Controls.Add(this.AddCustomerPostalCodeLabel);
@@ -262,9 +253,8 @@
         private System.Windows.Forms.Label AddCustomerPostalCodeLabel;
         private System.Windows.Forms.TextBox AddCustomerPhoneTextBox;
         private System.Windows.Forms.Label AddCustomerPhoneLabel;
-        private System.Windows.Forms.TextBox AddCustomerCountryTextBox;
-        private System.Windows.Forms.Label AddCustomerCountryLabel;
         private System.Windows.Forms.Button AddCustomerSaveButton;
         private System.Windows.Forms.Button AddCustomerCancelButton;
+        private System.Windows.Forms.CheckBox AddCustomerActiveCheckBox;
     }
 }

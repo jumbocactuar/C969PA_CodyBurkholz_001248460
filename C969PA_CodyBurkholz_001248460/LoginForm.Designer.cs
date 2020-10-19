@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BypassButton = new System.Windows.Forms.Button();
             this.LoginFormLabel = new System.Windows.Forms.Label();
             this.LoginUserNameTextBox = new System.Windows.Forms.TextBox();
             this.LoginPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -36,16 +35,6 @@
             this.LoginPasswordLabel = new System.Windows.Forms.Label();
             this.LoginLogInButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // BypassButton
-            // 
-            this.BypassButton.Location = new System.Drawing.Point(66, 243);
-            this.BypassButton.Name = "BypassButton";
-            this.BypassButton.Size = new System.Drawing.Size(194, 106);
-            this.BypassButton.TabIndex = 0;
-            this.BypassButton.Text = "Bypass";
-            this.BypassButton.UseVisualStyleBackColor = true;
-            this.BypassButton.Click += new System.EventHandler(this.BypassButton_Click);
             // 
             // LoginFormLabel
             // 
@@ -104,14 +93,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 404);
+            this.ClientSize = new System.Drawing.Size(333, 286);
             this.Controls.Add(this.LoginLogInButton);
             this.Controls.Add(this.LoginPasswordLabel);
             this.Controls.Add(this.LoginUserNameLabel);
             this.Controls.Add(this.LoginPasswordTextBox);
             this.Controls.Add(this.LoginUserNameTextBox);
             this.Controls.Add(this.LoginFormLabel);
-            this.Controls.Add(this.BypassButton);
             this.Name = "LoginForm";
             this.Text = "Log In";
             this.Load += new System.EventHandler(this.LoginForm_Load);
@@ -121,8 +109,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BypassButton;
         private System.Windows.Forms.Label LoginFormLabel;
         private System.Windows.Forms.TextBox LoginUserNameTextBox;
         private System.Windows.Forms.TextBox LoginPasswordTextBox;

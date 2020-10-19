@@ -20,7 +20,29 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddCustomerSaveButton_Click(object sender, EventArgs e)
         {
+            // Put the text field inputs into forms acceptable by the Insert methods
+            string name = $"{AddCustomerLastNameTextBox.Text}, {AddCustomerFirstNameTextBox.Text}";
+            string address1 = AddCustomerAddress1TextBox.Text;
+            string address2 = AddCustomerAddress2TextBox.Text;
+            string city = AddCustomerCityComboBox.SelectedItem.ToString();
+            string postalCode = AddCustomerPostalCodeTextBox.Text;
+            string phone = AddCustomerPhoneTextBox.Text;
+            byte active;
 
+            if (AddCustomerActiveCheckBox.Checked == true)
+            {
+                active = 1;
+            }
+            else
+            {
+                active = 0;
+            }
+
+            // Create a record in the Address table
+            int addressID = Globals.InsertAddressRecord(address1, address2, city, postalCode, phone);
+
+            // Create a record in the Customer table
+            Globals.InsertCustomerRecord(name, addressID, active); // FIXME: The record above isn't getting entered before this one does, need to delay, somehow wait and check that it's in the db?
 
             // Close the Add Customer Form
             Close();

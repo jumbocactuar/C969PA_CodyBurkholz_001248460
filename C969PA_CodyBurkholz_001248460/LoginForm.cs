@@ -23,12 +23,6 @@ namespace C969PA_CodyBurkholz_001248460
             Globals.InsertUserRecord("test", "test", 1);*/
         }
 
-        private void BypassButton_Click(object sender, EventArgs e)
-        {
-            ManagementPortalForm f = new ManagementPortalForm();
-            f.Show();
-        }
-
         private void LoginLogInButton_Click(object sender, EventArgs e)
         {
             Globals.CurrentUser = LoginUserNameTextBox.Text;
@@ -42,7 +36,7 @@ namespace C969PA_CodyBurkholz_001248460
             if (userName == Globals.CurrentUser && password == tempPass)
             {
                 ManagementPortalForm f = new ManagementPortalForm();
-                f.Show(); // FIXME: Figure out how to handle when GetLoginInfo encounters a null value
+                f.Show();
             }
 
             else

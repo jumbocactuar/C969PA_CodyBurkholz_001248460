@@ -38,6 +38,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static string CurrentUser { get; set; }
 
+        public static string CurrentDataGridSelection { get; set; }
+
         private static string GetMySqlNow()
         {
             DateTime utcTime = new DateTime();

@@ -15,9 +15,6 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ManageCustomerForm : Form
     {
-        //U06vbiDataSetTableAdapters.customerTableAdapter customerTableAdapter = new customerTableAdapter();
-        //customerTableAdapter.Fill(U06vbiDataSet.customer);
-
         public ManageCustomerForm()
         {
             InitializeComponent();
@@ -40,7 +37,12 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManageCustomerForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'u06vbiCustomerDataSet.customer' table. You can move, or remove it, as needed.
-            //this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
+            this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
+        }
+
+        private void ManageCustomerDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ManageCustomerDataGridView.ClearSelection();
         }
 
         private void ManageCustomerAddButton_Click(object sender, EventArgs e)

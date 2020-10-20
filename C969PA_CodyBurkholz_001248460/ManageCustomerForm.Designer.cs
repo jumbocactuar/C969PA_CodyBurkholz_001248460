@@ -34,19 +34,15 @@
             this.ManageCustomerAddButton = new System.Windows.Forms.Button();
             this.ManageCustomerModifyButton = new System.Windows.Forms.Button();
             this.ManageCustomerDeleteButton = new System.Windows.Forms.Button();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ManageCustomerDataGridView = new System.Windows.Forms.DataGridView();
+            this.customerTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.customerTableAdapter();
             this.customerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.createDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastUpdateByDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // u06vbiDataSet
@@ -66,7 +62,7 @@
             // 
             // ManageCustomerAddButton
             // 
-            this.ManageCustomerAddButton.Location = new System.Drawing.Point(756, 454);
+            this.ManageCustomerAddButton.Location = new System.Drawing.Point(83, 454);
             this.ManageCustomerAddButton.Name = "ManageCustomerAddButton";
             this.ManageCustomerAddButton.Size = new System.Drawing.Size(75, 23);
             this.ManageCustomerAddButton.TabIndex = 2;
@@ -76,7 +72,7 @@
             // 
             // ManageCustomerModifyButton
             // 
-            this.ManageCustomerModifyButton.Location = new System.Drawing.Point(837, 454);
+            this.ManageCustomerModifyButton.Location = new System.Drawing.Point(164, 454);
             this.ManageCustomerModifyButton.Name = "ManageCustomerModifyButton";
             this.ManageCustomerModifyButton.Size = new System.Drawing.Size(75, 23);
             this.ManageCustomerModifyButton.TabIndex = 3;
@@ -85,90 +81,69 @@
             // 
             // ManageCustomerDeleteButton
             // 
-            this.ManageCustomerDeleteButton.Location = new System.Drawing.Point(918, 454);
+            this.ManageCustomerDeleteButton.Location = new System.Drawing.Point(245, 454);
             this.ManageCustomerDeleteButton.Name = "ManageCustomerDeleteButton";
             this.ManageCustomerDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.ManageCustomerDeleteButton.TabIndex = 4;
             this.ManageCustomerDeleteButton.Text = "Delete";
             this.ManageCustomerDeleteButton.UseVisualStyleBackColor = true;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "customer";
+            this.customerBindingSource.DataSource = this.u06vbiDataSet;
+            // 
             // ManageCustomerDataGridView
             // 
+            this.ManageCustomerDataGridView.AllowUserToAddRows = false;
+            this.ManageCustomerDataGridView.AllowUserToDeleteRows = false;
             this.ManageCustomerDataGridView.AutoGenerateColumns = false;
             this.ManageCustomerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ManageCustomerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerIdDataGridViewTextBoxColumn,
             this.customerNameDataGridViewTextBoxColumn,
-            this.addressIdDataGridViewTextBoxColumn,
-            this.activeDataGridViewCheckBoxColumn,
-            this.createDateDataGridViewTextBoxColumn,
-            this.createdByDataGridViewTextBoxColumn,
-            this.lastUpdateDataGridViewTextBoxColumn,
-            this.lastUpdateByDataGridViewTextBoxColumn});
+            this.activeDataGridViewCheckBoxColumn});
             this.ManageCustomerDataGridView.DataSource = this.customerBindingSource;
-            this.ManageCustomerDataGridView.Location = new System.Drawing.Point(17, 62);
+            this.ManageCustomerDataGridView.Location = new System.Drawing.Point(17, 61);
             this.ManageCustomerDataGridView.Name = "ManageCustomerDataGridView";
-            this.ManageCustomerDataGridView.Size = new System.Drawing.Size(976, 386);
+            this.ManageCustomerDataGridView.ReadOnly = true;
+            this.ManageCustomerDataGridView.RowHeadersVisible = false;
+            this.ManageCustomerDataGridView.RowHeadersWidth = 50;
+            this.ManageCustomerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ManageCustomerDataGridView.ShowEditingIcon = false;
+            this.ManageCustomerDataGridView.Size = new System.Drawing.Size(303, 387);
             this.ManageCustomerDataGridView.TabIndex = 5;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
             // 
             // customerIdDataGridViewTextBoxColumn
             // 
             this.customerIdDataGridViewTextBoxColumn.DataPropertyName = "customerId";
             this.customerIdDataGridViewTextBoxColumn.HeaderText = "customerId";
             this.customerIdDataGridViewTextBoxColumn.Name = "customerIdDataGridViewTextBoxColumn";
+            this.customerIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // customerNameDataGridViewTextBoxColumn
             // 
             this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "customerName";
             this.customerNameDataGridViewTextBoxColumn.HeaderText = "customerName";
             this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
-            // 
-            // addressIdDataGridViewTextBoxColumn
-            // 
-            this.addressIdDataGridViewTextBoxColumn.DataPropertyName = "addressId";
-            this.addressIdDataGridViewTextBoxColumn.HeaderText = "addressId";
-            this.addressIdDataGridViewTextBoxColumn.Name = "addressIdDataGridViewTextBoxColumn";
+            this.customerNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // activeDataGridViewCheckBoxColumn
             // 
             this.activeDataGridViewCheckBoxColumn.DataPropertyName = "active";
             this.activeDataGridViewCheckBoxColumn.HeaderText = "active";
             this.activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
-            // 
-            // createDateDataGridViewTextBoxColumn
-            // 
-            this.createDateDataGridViewTextBoxColumn.DataPropertyName = "createDate";
-            this.createDateDataGridViewTextBoxColumn.HeaderText = "createDate";
-            this.createDateDataGridViewTextBoxColumn.Name = "createDateDataGridViewTextBoxColumn";
-            // 
-            // createdByDataGridViewTextBoxColumn
-            // 
-            this.createdByDataGridViewTextBoxColumn.DataPropertyName = "createdBy";
-            this.createdByDataGridViewTextBoxColumn.HeaderText = "createdBy";
-            this.createdByDataGridViewTextBoxColumn.Name = "createdByDataGridViewTextBoxColumn";
-            // 
-            // lastUpdateDataGridViewTextBoxColumn
-            // 
-            this.lastUpdateDataGridViewTextBoxColumn.DataPropertyName = "lastUpdate";
-            this.lastUpdateDataGridViewTextBoxColumn.HeaderText = "lastUpdate";
-            this.lastUpdateDataGridViewTextBoxColumn.Name = "lastUpdateDataGridViewTextBoxColumn";
-            // 
-            // lastUpdateByDataGridViewTextBoxColumn
-            // 
-            this.lastUpdateByDataGridViewTextBoxColumn.DataPropertyName = "lastUpdateBy";
-            this.lastUpdateByDataGridViewTextBoxColumn.HeaderText = "lastUpdateBy";
-            this.lastUpdateByDataGridViewTextBoxColumn.Name = "lastUpdateByDataGridViewTextBoxColumn";
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataMember = "customer";
-            this.customerBindingSource.DataSource = this.u06vbiDataSet;
+            this.activeDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // ManageCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.ClientSize = new System.Drawing.Size(340, 525);
             this.Controls.Add(this.ManageCustomerDataGridView);
             this.Controls.Add(this.ManageCustomerDeleteButton);
             this.Controls.Add(this.ManageCustomerModifyButton);
@@ -178,8 +153,8 @@
             this.Text = "Manage Customers";
             this.Load += new System.EventHandler(this.ManageCustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,16 +166,12 @@
         private System.Windows.Forms.Button ManageCustomerModifyButton;
         private System.Windows.Forms.Button ManageCustomerDeleteButton;
         private U06vbiDataSet u06vbiDataSet;
-        private System.Windows.Forms.DataGridView ManageCustomerDataGridView;
         private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.DataGridView ManageCustomerDataGridView;
+        private U06vbiDataSetTableAdapters.customerTableAdapter customerTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createdByDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastUpdateByDataGridViewTextBoxColumn;
     }
 }
 

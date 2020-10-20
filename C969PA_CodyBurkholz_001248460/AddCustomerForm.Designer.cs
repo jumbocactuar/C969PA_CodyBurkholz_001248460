@@ -46,6 +46,7 @@
             this.AddCustomerSaveButton = new System.Windows.Forms.Button();
             this.AddCustomerCancelButton = new System.Windows.Forms.Button();
             this.AddCustomerActiveCheckBox = new System.Windows.Forms.CheckBox();
+            this.AddCustomerSelectAddressButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddCustomerFormLabel
@@ -206,11 +207,22 @@
             this.AddCustomerActiveCheckBox.Text = "Active";
             this.AddCustomerActiveCheckBox.UseVisualStyleBackColor = true;
             // 
+            // AddCustomerSelectAddressButton
+            // 
+            this.AddCustomerSelectAddressButton.Location = new System.Drawing.Point(112, 329);
+            this.AddCustomerSelectAddressButton.Name = "AddCustomerSelectAddressButton";
+            this.AddCustomerSelectAddressButton.Size = new System.Drawing.Size(120, 23);
+            this.AddCustomerSelectAddressButton.TabIndex = 22;
+            this.AddCustomerSelectAddressButton.Text = "Add/Select Address";
+            this.AddCustomerSelectAddressButton.UseVisualStyleBackColor = true;
+            this.AddCustomerSelectAddressButton.Click += new System.EventHandler(this.AddCustomerSelectAddressButton_Click);
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 412);
+            this.Controls.Add(this.AddCustomerSelectAddressButton);
             this.Controls.Add(this.AddCustomerActiveCheckBox);
             this.Controls.Add(this.AddCustomerCancelButton);
             this.Controls.Add(this.AddCustomerSaveButton);
@@ -256,5 +268,6 @@
         private System.Windows.Forms.Button AddCustomerSaveButton;
         private System.Windows.Forms.Button AddCustomerCancelButton;
         private System.Windows.Forms.CheckBox AddCustomerActiveCheckBox;
+        private System.Windows.Forms.Button AddCustomerSelectAddressButton;
     }
 }

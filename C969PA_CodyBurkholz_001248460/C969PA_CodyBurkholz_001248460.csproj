@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAddressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAddressForm.Designer.cs">
+      <DependentUpon>AddAddressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,12 @@
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageAddressesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageAddressesForm.Designer.cs">
+      <DependentUpon>ManageAddressesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageAppointmentsForm.cs">
       <SubType>Form</SubType>
@@ -85,11 +97,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>U06vbiDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAddressForm.resx">
+      <DependentUpon>AddAddressForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageAddressesForm.resx">
+      <DependentUpon>ManageAddressesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageCustomerForm.resx">
       <DependentUpon>ManageCustomerForm.cs</DependentUpon>

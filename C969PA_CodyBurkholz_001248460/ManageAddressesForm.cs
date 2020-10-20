@@ -21,7 +21,11 @@ namespace C969PA_CodyBurkholz_001248460
         {
             // TODO: This line of code loads data into the 'u06vbiDataSet.address' table. You can move, or remove it, as needed.
             this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
+        }
 
+        private void ManageAddressesForm_Activated(object sender, EventArgs e)
+        {
+            this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
         }
 
         private void ManageAddressesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -45,21 +49,23 @@ namespace C969PA_CodyBurkholz_001248460
         {
             AddAddressForm f = new AddAddressForm();
             f.Show();
+
+            Close();
         }
 
         private void ManageAddressesModifyButton_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ManageAddressesDeleteButton_Click(object sender, EventArgs e)
         {
-
+            // FIXME: Delete the record and then this.addresstableadapter.fill?
         }
 
         private void ManageAddressesUseSelectedButton_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void ManageAddressesCancelButton_Click(object sender, EventArgs e)

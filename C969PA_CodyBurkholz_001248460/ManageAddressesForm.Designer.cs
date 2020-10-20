@@ -79,6 +79,7 @@
             this.ManageAddressesDataGridView.MultiSelect = false;
             this.ManageAddressesDataGridView.Name = "ManageAddressesDataGridView";
             this.ManageAddressesDataGridView.ReadOnly = true;
+            this.ManageAddressesDataGridView.RowHeadersVisible = false;
             this.ManageAddressesDataGridView.RowHeadersWidth = 50;
             this.ManageAddressesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ManageAddressesDataGridView.Size = new System.Drawing.Size(759, 253);
@@ -214,6 +215,7 @@
             this.Controls.Add(this.ManageAddressesFormLabel);
             this.Name = "ManageAddressesForm";
             this.Text = "Manage Addresses";
+            this.Activated += new System.EventHandler(this.ManageAddressesForm_Activated);
             this.Load += new System.EventHandler(this.ManageAddresses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ManageAddressesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).EndInit();

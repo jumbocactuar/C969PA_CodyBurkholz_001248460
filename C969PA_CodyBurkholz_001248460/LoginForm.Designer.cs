@@ -84,13 +84,14 @@
             this.LoginLogInButton.Location = new System.Drawing.Point(122, 199);
             this.LoginLogInButton.Name = "LoginLogInButton";
             this.LoginLogInButton.Size = new System.Drawing.Size(75, 23);
-            this.LoginLogInButton.TabIndex = 6;
+            this.LoginLogInButton.TabIndex = 4;
             this.LoginLogInButton.Text = "Log In";
             this.LoginLogInButton.UseVisualStyleBackColor = true;
             this.LoginLogInButton.Click += new System.EventHandler(this.LoginLogInButton_Click);
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.LoginLogInButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 286);

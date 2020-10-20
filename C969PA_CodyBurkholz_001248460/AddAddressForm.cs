@@ -29,12 +29,18 @@ namespace C969PA_CodyBurkholz_001248460
             // Create a record in the Address table
             Globals.InsertAddressRecord(address1, address2, city, postalCode, phone);
 
-            // Close the Add Address form
-            Close(); // FIXME: Figure out how to refresh dgv after adding an address
+            // Close the Add Address form and reopen the Manage Addresses form
+            ManageAddressesForm f = new ManageAddressesForm();
+            f.Show();
+
+            Close();
         }
 
         private void AddAddressCancelButton_Click(object sender, EventArgs e)
         {
+            ManageAddressesForm f = new ManageAddressesForm();
+            f.Show();
+            
             Close();
         }
     }

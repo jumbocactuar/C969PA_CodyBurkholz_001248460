@@ -39,7 +39,6 @@
             this.AddCustomerAddress1Label = new System.Windows.Forms.Label();
             this.AddCustomerAddress2Label = new System.Windows.Forms.Label();
             this.AddCustomerCityLabel = new System.Windows.Forms.Label();
-            this.AddCustomerCityComboBox = new System.Windows.Forms.ComboBox();
             this.AddCustomerPostalCodeLabel = new System.Windows.Forms.Label();
             this.AddCustomerPhoneTextBox = new System.Windows.Forms.TextBox();
             this.AddCustomerPhoneLabel = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.AddCustomerCancelButton = new System.Windows.Forms.Button();
             this.AddCustomerActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.AddCustomerSelectAddressButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // AddCustomerFormLabel
@@ -61,35 +61,38 @@
             // 
             // AddCustomerFirstNameTextBox
             // 
-            this.AddCustomerFirstNameTextBox.Location = new System.Drawing.Point(112, 78);
+            this.AddCustomerFirstNameTextBox.Location = new System.Drawing.Point(112, 63);
             this.AddCustomerFirstNameTextBox.Name = "AddCustomerFirstNameTextBox";
             this.AddCustomerFirstNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerFirstNameTextBox.TabIndex = 2;
             // 
             // AddCustomerLastNameTextBox
             // 
-            this.AddCustomerLastNameTextBox.Location = new System.Drawing.Point(112, 130);
+            this.AddCustomerLastNameTextBox.Location = new System.Drawing.Point(112, 115);
             this.AddCustomerLastNameTextBox.Name = "AddCustomerLastNameTextBox";
             this.AddCustomerLastNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerLastNameTextBox.TabIndex = 3;
             // 
             // AddCustomerAddress1TextBox
             // 
-            this.AddCustomerAddress1TextBox.Location = new System.Drawing.Point(112, 188);
+            this.AddCustomerAddress1TextBox.Enabled = false;
+            this.AddCustomerAddress1TextBox.Location = new System.Drawing.Point(347, 63);
             this.AddCustomerAddress1TextBox.Name = "AddCustomerAddress1TextBox";
             this.AddCustomerAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerAddress1TextBox.TabIndex = 4;
             // 
             // AddCustomerAddress2TextBox
             // 
-            this.AddCustomerAddress2TextBox.Location = new System.Drawing.Point(112, 236);
+            this.AddCustomerAddress2TextBox.Enabled = false;
+            this.AddCustomerAddress2TextBox.Location = new System.Drawing.Point(347, 111);
             this.AddCustomerAddress2TextBox.Name = "AddCustomerAddress2TextBox";
             this.AddCustomerAddress2TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerAddress2TextBox.TabIndex = 5;
             // 
             // AddCustomerPostalCodeTextBox
             // 
-            this.AddCustomerPostalCodeTextBox.Location = new System.Drawing.Point(347, 130);
+            this.AddCustomerPostalCodeTextBox.Enabled = false;
+            this.AddCustomerPostalCodeTextBox.Location = new System.Drawing.Point(347, 217);
             this.AddCustomerPostalCodeTextBox.Name = "AddCustomerPostalCodeTextBox";
             this.AddCustomerPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerPostalCodeTextBox.TabIndex = 6;
@@ -97,7 +100,7 @@
             // AddCustomerFirstNameLabel
             // 
             this.AddCustomerFirstNameLabel.AutoSize = true;
-            this.AddCustomerFirstNameLabel.Location = new System.Drawing.Point(49, 81);
+            this.AddCustomerFirstNameLabel.Location = new System.Drawing.Point(49, 66);
             this.AddCustomerFirstNameLabel.Name = "AddCustomerFirstNameLabel";
             this.AddCustomerFirstNameLabel.Size = new System.Drawing.Size(57, 13);
             this.AddCustomerFirstNameLabel.TabIndex = 8;
@@ -106,7 +109,7 @@
             // AddCustomerLastNameLabel
             // 
             this.AddCustomerLastNameLabel.AutoSize = true;
-            this.AddCustomerLastNameLabel.Location = new System.Drawing.Point(47, 133);
+            this.AddCustomerLastNameLabel.Location = new System.Drawing.Point(47, 118);
             this.AddCustomerLastNameLabel.Name = "AddCustomerLastNameLabel";
             this.AddCustomerLastNameLabel.Size = new System.Drawing.Size(58, 13);
             this.AddCustomerLastNameLabel.TabIndex = 9;
@@ -115,7 +118,7 @@
             // AddCustomerAddress1Label
             // 
             this.AddCustomerAddress1Label.AutoSize = true;
-            this.AddCustomerAddress1Label.Location = new System.Drawing.Point(52, 191);
+            this.AddCustomerAddress1Label.Location = new System.Drawing.Point(287, 66);
             this.AddCustomerAddress1Label.Name = "AddCustomerAddress1Label";
             this.AddCustomerAddress1Label.Size = new System.Drawing.Size(54, 13);
             this.AddCustomerAddress1Label.TabIndex = 10;
@@ -124,7 +127,7 @@
             // AddCustomerAddress2Label
             // 
             this.AddCustomerAddress2Label.AutoSize = true;
-            this.AddCustomerAddress2Label.Location = new System.Drawing.Point(52, 243);
+            this.AddCustomerAddress2Label.Location = new System.Drawing.Point(287, 118);
             this.AddCustomerAddress2Label.Name = "AddCustomerAddress2Label";
             this.AddCustomerAddress2Label.Size = new System.Drawing.Size(54, 13);
             this.AddCustomerAddress2Label.TabIndex = 11;
@@ -133,29 +136,16 @@
             // AddCustomerCityLabel
             // 
             this.AddCustomerCityLabel.AutoSize = true;
-            this.AddCustomerCityLabel.Location = new System.Drawing.Point(317, 78);
+            this.AddCustomerCityLabel.Location = new System.Drawing.Point(317, 169);
             this.AddCustomerCityLabel.Name = "AddCustomerCityLabel";
             this.AddCustomerCityLabel.Size = new System.Drawing.Size(24, 13);
             this.AddCustomerCityLabel.TabIndex = 12;
             this.AddCustomerCityLabel.Text = "City";
             // 
-            // AddCustomerCityComboBox
-            // 
-            this.AddCustomerCityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AddCustomerCityComboBox.FormattingEnabled = true;
-            this.AddCustomerCityComboBox.Items.AddRange(new object[] {
-            "London",
-            "New York",
-            "Phoenix"});
-            this.AddCustomerCityComboBox.Location = new System.Drawing.Point(347, 75);
-            this.AddCustomerCityComboBox.Name = "AddCustomerCityComboBox";
-            this.AddCustomerCityComboBox.Size = new System.Drawing.Size(121, 21);
-            this.AddCustomerCityComboBox.TabIndex = 13;
-            // 
             // AddCustomerPostalCodeLabel
             // 
             this.AddCustomerPostalCodeLabel.AutoSize = true;
-            this.AddCustomerPostalCodeLabel.Location = new System.Drawing.Point(277, 133);
+            this.AddCustomerPostalCodeLabel.Location = new System.Drawing.Point(277, 220);
             this.AddCustomerPostalCodeLabel.Name = "AddCustomerPostalCodeLabel";
             this.AddCustomerPostalCodeLabel.Size = new System.Drawing.Size(64, 13);
             this.AddCustomerPostalCodeLabel.TabIndex = 14;
@@ -163,7 +153,8 @@
             // 
             // AddCustomerPhoneTextBox
             // 
-            this.AddCustomerPhoneTextBox.Location = new System.Drawing.Point(347, 182);
+            this.AddCustomerPhoneTextBox.Enabled = false;
+            this.AddCustomerPhoneTextBox.Location = new System.Drawing.Point(347, 273);
             this.AddCustomerPhoneTextBox.Name = "AddCustomerPhoneTextBox";
             this.AddCustomerPhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerPhoneTextBox.TabIndex = 15;
@@ -171,7 +162,7 @@
             // AddCustomerPhoneLabel
             // 
             this.AddCustomerPhoneLabel.AutoSize = true;
-            this.AddCustomerPhoneLabel.Location = new System.Drawing.Point(303, 185);
+            this.AddCustomerPhoneLabel.Location = new System.Drawing.Point(303, 276);
             this.AddCustomerPhoneLabel.Name = "AddCustomerPhoneLabel";
             this.AddCustomerPhoneLabel.Size = new System.Drawing.Size(38, 13);
             this.AddCustomerPhoneLabel.TabIndex = 16;
@@ -179,7 +170,7 @@
             // 
             // AddCustomerSaveButton
             // 
-            this.AddCustomerSaveButton.Location = new System.Drawing.Point(312, 329);
+            this.AddCustomerSaveButton.Location = new System.Drawing.Point(291, 345);
             this.AddCustomerSaveButton.Name = "AddCustomerSaveButton";
             this.AddCustomerSaveButton.Size = new System.Drawing.Size(75, 23);
             this.AddCustomerSaveButton.TabIndex = 19;
@@ -189,7 +180,7 @@
             // 
             // AddCustomerCancelButton
             // 
-            this.AddCustomerCancelButton.Location = new System.Drawing.Point(393, 329);
+            this.AddCustomerCancelButton.Location = new System.Drawing.Point(372, 345);
             this.AddCustomerCancelButton.Name = "AddCustomerCancelButton";
             this.AddCustomerCancelButton.Size = new System.Drawing.Size(75, 23);
             this.AddCustomerCancelButton.TabIndex = 20;
@@ -200,7 +191,7 @@
             // AddCustomerActiveCheckBox
             // 
             this.AddCustomerActiveCheckBox.AutoSize = true;
-            this.AddCustomerActiveCheckBox.Location = new System.Drawing.Point(367, 243);
+            this.AddCustomerActiveCheckBox.Location = new System.Drawing.Point(134, 169);
             this.AddCustomerActiveCheckBox.Name = "AddCustomerActiveCheckBox";
             this.AddCustomerActiveCheckBox.Size = new System.Drawing.Size(56, 17);
             this.AddCustomerActiveCheckBox.TabIndex = 21;
@@ -209,7 +200,7 @@
             // 
             // AddCustomerSelectAddressButton
             // 
-            this.AddCustomerSelectAddressButton.Location = new System.Drawing.Point(112, 329);
+            this.AddCustomerSelectAddressButton.Location = new System.Drawing.Point(102, 215);
             this.AddCustomerSelectAddressButton.Name = "AddCustomerSelectAddressButton";
             this.AddCustomerSelectAddressButton.Size = new System.Drawing.Size(120, 23);
             this.AddCustomerSelectAddressButton.TabIndex = 22;
@@ -217,11 +208,20 @@
             this.AddCustomerSelectAddressButton.UseVisualStyleBackColor = true;
             this.AddCustomerSelectAddressButton.Click += new System.EventHandler(this.AddCustomerSelectAddressButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(347, 165);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 23;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 412);
+            this.ClientSize = new System.Drawing.Size(514, 412);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.AddCustomerSelectAddressButton);
             this.Controls.Add(this.AddCustomerActiveCheckBox);
             this.Controls.Add(this.AddCustomerCancelButton);
@@ -229,7 +229,6 @@
             this.Controls.Add(this.AddCustomerPhoneLabel);
             this.Controls.Add(this.AddCustomerPhoneTextBox);
             this.Controls.Add(this.AddCustomerPostalCodeLabel);
-            this.Controls.Add(this.AddCustomerCityComboBox);
             this.Controls.Add(this.AddCustomerCityLabel);
             this.Controls.Add(this.AddCustomerAddress2Label);
             this.Controls.Add(this.AddCustomerAddress1Label);
@@ -261,7 +260,6 @@
         private System.Windows.Forms.Label AddCustomerAddress1Label;
         private System.Windows.Forms.Label AddCustomerAddress2Label;
         private System.Windows.Forms.Label AddCustomerCityLabel;
-        private System.Windows.Forms.ComboBox AddCustomerCityComboBox;
         private System.Windows.Forms.Label AddCustomerPostalCodeLabel;
         private System.Windows.Forms.TextBox AddCustomerPhoneTextBox;
         private System.Windows.Forms.Label AddCustomerPhoneLabel;
@@ -269,5 +267,6 @@
         private System.Windows.Forms.Button AddCustomerCancelButton;
         private System.Windows.Forms.CheckBox AddCustomerActiveCheckBox;
         private System.Windows.Forms.Button AddCustomerSelectAddressButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -22,7 +22,7 @@ namespace C969PA_CodyBurkholz_001248460
             //string cxnString;
             DataTable dt = new DataTable();
 
-            //cxnString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;
+            // FIXME: Reevaluate whether some of the below is necessary (but if it ain't broke, don't fix it)
 
             MySqlConnection cxnToMySQL = new MySqlConnection(Globals.cxnString);
             cxnToMySQL.Open();
@@ -38,6 +38,8 @@ namespace C969PA_CodyBurkholz_001248460
         {
             // TODO: This line of code loads data into the 'u06vbiCustomerDataSet.customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
+
+            ManageCustomerDataGridView.ClearSelection();
         }
 
         private void ManageCustomerDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -45,10 +47,36 @@ namespace C969PA_CodyBurkholz_001248460
             ManageCustomerDataGridView.ClearSelection();
         }
 
+        private void ManageCustomerDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selection = ManageCustomerDataGridView.CurrentCell.RowIndex;
+
+            var customerID = ManageCustomerDataGridView.Rows[selection].Cells[0].Value.ToString();
+
+            Globals.CurrentDataGridSelection = customerID;
+        }
+
         private void ManageCustomerAddButton_Click(object sender, EventArgs e)
         {
             AddCustomerForm f = new AddCustomerForm();
             f.Show();
+
+            Close();
+        }
+
+        private void ManageCustomerModifyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManageCustomerDeleteButton_Click(object sender, EventArgs e)
+        {
+            // FIXME: copy confirmation dialog from C968 project, then use CurrentDataGridSelection to delete the record from the db
+        }
+
+        private void ManageCustomerCancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

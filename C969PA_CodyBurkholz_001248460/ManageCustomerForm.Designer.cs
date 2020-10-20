@@ -36,10 +36,11 @@
             this.ManageCustomerDeleteButton = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ManageCustomerDataGridView = new System.Windows.Forms.DataGridView();
-            this.customerTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.customerTableAdapter();
             this.customerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.customerTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.customerTableAdapter();
+            this.ManageCustomerCancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).BeginInit();
@@ -78,6 +79,7 @@
             this.ManageCustomerModifyButton.TabIndex = 3;
             this.ManageCustomerModifyButton.Text = "Modify";
             this.ManageCustomerModifyButton.UseVisualStyleBackColor = true;
+            this.ManageCustomerModifyButton.Click += new System.EventHandler(this.ManageCustomerModifyButton_Click);
             // 
             // ManageCustomerDeleteButton
             // 
@@ -87,6 +89,7 @@
             this.ManageCustomerDeleteButton.TabIndex = 4;
             this.ManageCustomerDeleteButton.Text = "Delete";
             this.ManageCustomerDeleteButton.UseVisualStyleBackColor = true;
+            this.ManageCustomerDeleteButton.Click += new System.EventHandler(this.ManageCustomerDeleteButton_Click);
             // 
             // customerBindingSource
             // 
@@ -103,6 +106,7 @@
             this.customerIdDataGridViewTextBoxColumn,
             this.customerNameDataGridViewTextBoxColumn,
             this.activeDataGridViewCheckBoxColumn});
+            this.ManageCustomerDataGridView.Cursor = System.Windows.Forms.Cursors.Default;
             this.ManageCustomerDataGridView.DataSource = this.customerBindingSource;
             this.ManageCustomerDataGridView.Location = new System.Drawing.Point(17, 61);
             this.ManageCustomerDataGridView.Name = "ManageCustomerDataGridView";
@@ -113,10 +117,8 @@
             this.ManageCustomerDataGridView.ShowEditingIcon = false;
             this.ManageCustomerDataGridView.Size = new System.Drawing.Size(303, 387);
             this.ManageCustomerDataGridView.TabIndex = 5;
-            // 
-            // customerTableAdapter
-            // 
-            this.customerTableAdapter.ClearBeforeFill = true;
+            this.ManageCustomerDataGridView.TabStop = false;
+            this.ManageCustomerDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageCustomerDataGridView_CellClick);
             // 
             // customerIdDataGridViewTextBoxColumn
             // 
@@ -139,11 +141,26 @@
             this.activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
             this.activeDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // ManageCustomerCancelButton
+            // 
+            this.ManageCustomerCancelButton.Location = new System.Drawing.Point(245, 505);
+            this.ManageCustomerCancelButton.Name = "ManageCustomerCancelButton";
+            this.ManageCustomerCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.ManageCustomerCancelButton.TabIndex = 6;
+            this.ManageCustomerCancelButton.Text = "Cancel";
+            this.ManageCustomerCancelButton.UseVisualStyleBackColor = true;
+            this.ManageCustomerCancelButton.Click += new System.EventHandler(this.ManageCustomerCancelButton_Click);
+            // 
             // ManageCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 525);
+            this.ClientSize = new System.Drawing.Size(340, 549);
+            this.Controls.Add(this.ManageCustomerCancelButton);
             this.Controls.Add(this.ManageCustomerDataGridView);
             this.Controls.Add(this.ManageCustomerDeleteButton);
             this.Controls.Add(this.ManageCustomerModifyButton);
@@ -172,6 +189,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn customerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button ManageCustomerCancelButton;
     }
 }
 

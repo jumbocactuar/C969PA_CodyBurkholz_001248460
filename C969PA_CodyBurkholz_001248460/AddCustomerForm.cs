@@ -43,12 +43,19 @@ namespace C969PA_CodyBurkholz_001248460
             // Create a record in the Customer table
             Globals.InsertCustomerRecord(name, addressID, active); // FIXME: The record above isn't getting entered before this one does, need to delay, somehow wait and check that it's in the db?
 
-            // Close the Add Customer Form
+            // Close the Add Customer Form and reopen the Manage Customer form
+            ManageCustomerForm f = new ManageCustomerForm();
+            f.Show();
+
             Close();
         }
 
         private void AddCustomerCancelButton_Click(object sender, EventArgs e)
         {
+            // Close the Add Customer Form and reopen the Manage Customer form
+            ManageCustomerForm f = new ManageCustomerForm();
+            f.Show();
+
             Close();
         }
     }

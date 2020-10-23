@@ -46,7 +46,7 @@
             this.AddCustomerCancelButton = new System.Windows.Forms.Button();
             this.AddCustomerActiveCheckBox = new System.Windows.Forms.CheckBox();
             this.AddCustomerSelectAddressButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AddCustomerCityTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // AddCustomerFormLabel
@@ -208,20 +208,20 @@
             this.AddCustomerSelectAddressButton.UseVisualStyleBackColor = true;
             this.AddCustomerSelectAddressButton.Click += new System.EventHandler(this.AddCustomerSelectAddressButton_Click);
             // 
-            // textBox1
+            // AddCustomerCityTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(347, 165);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 23;
+            this.AddCustomerCityTextBox.Enabled = false;
+            this.AddCustomerCityTextBox.Location = new System.Drawing.Point(347, 165);
+            this.AddCustomerCityTextBox.Name = "AddCustomerCityTextBox";
+            this.AddCustomerCityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AddCustomerCityTextBox.TabIndex = 23;
             // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 412);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.AddCustomerCityTextBox);
             this.Controls.Add(this.AddCustomerSelectAddressButton);
             this.Controls.Add(this.AddCustomerActiveCheckBox);
             this.Controls.Add(this.AddCustomerCancelButton);
@@ -242,6 +242,7 @@
             this.Controls.Add(this.AddCustomerFormLabel);
             this.Name = "AddCustomerForm";
             this.Text = "Add Customer";
+            this.Load += new System.EventHandler(this.AddCustomerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,6 +268,6 @@
         private System.Windows.Forms.Button AddCustomerCancelButton;
         private System.Windows.Forms.CheckBox AddCustomerActiveCheckBox;
         private System.Windows.Forms.Button AddCustomerSelectAddressButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox AddCustomerCityTextBox;
     }
 }

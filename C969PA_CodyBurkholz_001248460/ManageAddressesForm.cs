@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -38,11 +39,12 @@ namespace C969PA_CodyBurkholz_001248460
         {
             var selection = ManageAddressesDataGridView.CurrentCell.RowIndex;
 
-            var addressID = ManageAddressesDataGridView.Rows[selection].Cells[0].Value.ToString();
+            Globals.CurrentDataGridSelection = ManageAddressesDataGridView.Rows[selection].Cells[0].Value.ToString();
 
-            Globals.CurrentDataGridSelection = addressID;
+            Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
 
             textBox1.Text = Globals.CurrentDataGridSelection; // FIXME: Remove this before submission
+            textBox2.Text = selectionContents[1].ToString();
         }
 
         private void ManageAddressesAddButton_Click(object sender, EventArgs e)

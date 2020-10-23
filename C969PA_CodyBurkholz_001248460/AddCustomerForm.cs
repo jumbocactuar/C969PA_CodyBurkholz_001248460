@@ -18,6 +18,32 @@ namespace C969PA_CodyBurkholz_001248460
             InitializeComponent();
         }
 
+        private void AddCustomerForm_Load(object sender, EventArgs e)
+        {
+            if (Globals.CurrentDataGridSelection != null) // FIXME: I don't think this can happen at load because the Add Customer form doesn't reload - can I just ask for the name later and have the Manage Addresses form come up first?
+            {
+                Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
+
+                AddCustomerAddress1TextBox.Text = selectionContents[1].ToString();
+                AddCustomerAddress2TextBox.Text = selectionContents[2].ToString();
+
+                switch (selectionContents[3])
+                {
+                    case 1: AddCustomerCityTextBox.Text = "London";
+                        break;
+
+                    case 2: AddCustomerCityTextBox.Text = "New York";
+                        break;
+
+                    case 3: AddCustomerCityTextBox.Text = "Phoenix";
+                        break;
+                }
+
+                AddCustomerPostalCodeTextBox.Text = selectionContents[4].ToString();
+                AddCustomerPhoneTextBox.Text = selectionContents[5].ToString();
+            }
+        }
+
         private void AddCustomerSelectAddressButton_Click(object sender, EventArgs e)
         {
             ManageAddressesForm f = new ManageAddressesForm();

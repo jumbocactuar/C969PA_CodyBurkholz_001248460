@@ -64,16 +64,6 @@ namespace C969PA_CodyBurkholz_001248460
 
         private static string ExecuteThisQueryReturnString(string query)
         {
-            /*string result;
-            
-            MySqlConnection cxn = new MySqlConnection(cxnString);
-            cxn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, cxn);
-            result = cmd.ExecuteScalar().ToString();
-            cxn.Close();
-
-            return result;*/
-
             string resultString;
 
             MySqlConnection cxn = new MySqlConnection(cxnString);
@@ -94,6 +84,26 @@ namespace C969PA_CodyBurkholz_001248460
             cxn.Close();
 
             return resultString;
+        }
+
+        public static Object[] GetSelectedRowContents(string table, int id)
+        {
+            string query = $"SELECT * FROM {table} WHERE {table}Id = {id}";
+
+            MySqlConnection cxn = new MySqlConnection(cxnString);
+            cxn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, cxn);
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            reader.Read();
+
+            Object[] objList = new Object[reader.FieldCount];
+            int fieldCount = reader.GetValues(objList);
+
+            reader.Close();
+            cxn.Close();
+
+            return objList;
         }
 
 

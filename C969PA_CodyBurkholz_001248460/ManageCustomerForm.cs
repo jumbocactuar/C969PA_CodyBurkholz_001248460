@@ -51,9 +51,7 @@ namespace C969PA_CodyBurkholz_001248460
         {
             var selection = ManageCustomerDataGridView.CurrentCell.RowIndex;
 
-            var customerID = ManageCustomerDataGridView.Rows[selection].Cells[0].Value.ToString();
-
-            Globals.CurrentDataGridSelection = customerID;
+            Globals.CurrentDataGridSelection = ManageCustomerDataGridView.Rows[selection].Cells[0].Value.ToString();
         }
 
         private void ManageCustomerAddButton_Click(object sender, EventArgs e)
@@ -66,7 +64,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageCustomerModifyButton_Click(object sender, EventArgs e)
         {
-
+            // Globals.CurrentDataGridSelectionObject.ToString();
         }
 
         private void ManageCustomerDeleteButton_Click(object sender, EventArgs e)

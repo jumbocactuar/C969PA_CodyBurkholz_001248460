@@ -223,5 +223,36 @@ namespace C969PA_CodyBurkholz_001248460
 
             return id;
         }
+
+        public static int UpdateCountryRecord() // FIXME: Make this functional
+        {
+            int id = 0;
+
+            return id;
+        }
+
+        public static int UpdateCityRecord() // FIXME: Make this functional
+        {
+            int id = 0;
+
+            return id;
+        }
+
+        public static void UpdateAddressRecord(int addressID, string address, string address2, string city, string postalCode, string phone)
+        {
+            int cityID = GetID("city", city);
+
+            string query = $"UPDATE address SET " +
+                $"address = '{address}', " +
+                $"address2 = '{address2}', " +
+                $"cityId = '{cityID}', " +
+                $"postalCode = '{postalCode}', " +
+                $"phone = '{phone}', " +
+                $"lastUpdate = '{GetMySqlNow()}', " +
+                $"lastUpdateBy = '{CurrentUser}' " +
+                $"WHERE addressId = '{addressID}'";
+
+            ExecuteThisQueryReturnInt(query);
+        }
     }
 }

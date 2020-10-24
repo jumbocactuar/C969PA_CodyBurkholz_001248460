@@ -13,8 +13,17 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ManageAddressesForm : Form
     {
+        private AddCustomerForm sourceForm = null;
+
         public ManageAddressesForm()
         {
+            InitializeComponent();
+        }
+
+        public ManageAddressesForm(Form callingForm)
+        {
+            sourceForm = callingForm as AddCustomerForm;
+
             InitializeComponent();
         }
 
@@ -57,7 +66,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesModifyButton_Click(object sender, EventArgs e)
         {
-            
+            ModifyAddressForm f = new ModifyAddressForm();
+            f.Show();
         }
 
         private void ManageAddressesDeleteButton_Click(object sender, EventArgs e)
@@ -67,6 +77,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesUseSelectedButton_Click(object sender, EventArgs e)
         {
+            this.sourceForm.FillAddressInfo();
+            
             Close();
         }
 

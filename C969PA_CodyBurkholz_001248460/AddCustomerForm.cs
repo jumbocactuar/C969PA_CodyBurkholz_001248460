@@ -20,33 +20,12 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
-            if (Globals.CurrentDataGridSelection != null) // FIXME: I don't think this can happen at load because the Add Customer form doesn't reload - can I just ask for the name later and have the Manage Addresses form come up first?
-            {
-                Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
-
-                AddCustomerAddress1TextBox.Text = selectionContents[1].ToString();
-                AddCustomerAddress2TextBox.Text = selectionContents[2].ToString();
-
-                switch (selectionContents[3])
-                {
-                    case 1: AddCustomerCityTextBox.Text = "London";
-                        break;
-
-                    case 2: AddCustomerCityTextBox.Text = "New York";
-                        break;
-
-                    case 3: AddCustomerCityTextBox.Text = "Phoenix";
-                        break;
-                }
-
-                AddCustomerPostalCodeTextBox.Text = selectionContents[4].ToString();
-                AddCustomerPhoneTextBox.Text = selectionContents[5].ToString();
-            }
+            // FIXME: Delete this if it ends up not being used
         }
 
         private void AddCustomerSelectAddressButton_Click(object sender, EventArgs e)
         {
-            ManageAddressesForm f = new ManageAddressesForm();
+            ManageAddressesForm f = new ManageAddressesForm(this);
             f.Show();
         }
 
@@ -67,7 +46,10 @@ namespace C969PA_CodyBurkholz_001248460
             }
 
             // Create a record in the Customer table
-            Globals.InsertCustomerRecord(name, addressID, active); // FIXME: The record above isn't getting entered before this one does, need to delay, somehow wait and check that it's in the db?
+            Globals.InsertCustomerRecord(name, addressID, active);
+
+            // Clear the current datagridview selection
+            Globals.CurrentDataGridSelection = null;
 
             // Close the Add Customer Form and reopen the Manage Customer form
             ManageCustomerForm f = new ManageCustomerForm();
@@ -83,6 +65,37 @@ namespace C969PA_CodyBurkholz_001248460
             f.Show();
 
             Close();
+        }
+
+        public void FillAddressInfo()
+        {
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
+
+                AddCustomerAddress1TextBox.Text = selectionContents[1].ToString();
+                AddCustomerAddress2TextBox.Text = selectionContents[2].ToString();
+
+                switch (selectionContents[3])
+                {
+                    case 1:
+                        AddCustomerCityTextBox.Text = "London";
+                        break;
+
+                    case 2:
+                        AddCustomerCityTextBox.Text = "New York";
+                        break;
+
+                    case 3:
+                        AddCustomerCityTextBox.Text = "Phoenix";
+                        break;
+                    default:
+                        break;
+                }
+
+                AddCustomerPostalCodeTextBox.Text = selectionContents[4].ToString();
+                AddCustomerPhoneTextBox.Text = selectionContents[5].ToString();
+            }
         }
     }
 }

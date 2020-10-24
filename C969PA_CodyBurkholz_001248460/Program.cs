@@ -86,6 +86,13 @@ namespace C969PA_CodyBurkholz_001248460
             return resultString;
         }
 
+        public static void DeleteRecord(string table, int id)
+        {
+            string query = $"DELETE FROM {table} WHERE {table}Id = {id}";
+
+            ExecuteThisQueryReturnInt(query);
+        }
+
         public static Object[] GetSelectedRowContents(string table, int id)
         {
             string query = $"SELECT * FROM {table} WHERE {table}Id = {id}";
@@ -253,6 +260,27 @@ namespace C969PA_CodyBurkholz_001248460
                 $"WHERE addressId = '{addressID}'";
 
             ExecuteThisQueryReturnInt(query);
+        }
+
+        public static int UpdateCustomerRecord() // FIXME: Make this functional
+        {
+            int id = 0;
+
+            return id;
+        }
+
+        public static int UpdateUserRecord() // FIXME: Make this functional
+        {
+            int id = 0;
+
+            return id;
+        }
+
+        public static int UpdateAppointmentRecord() // FIXME: Make this functional
+        {
+            int id = 0;
+
+            return id;
         }
     }
 }

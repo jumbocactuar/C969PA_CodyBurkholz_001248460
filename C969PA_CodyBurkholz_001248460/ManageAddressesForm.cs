@@ -66,13 +66,43 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesModifyButton_Click(object sender, EventArgs e)
         {
-            ModifyAddressForm f = new ModifyAddressForm();
-            f.Show();
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                ModifyAddressForm f = new ModifyAddressForm();
+                f.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select an address to modify.");
+            }
         }
 
-        private void ManageAddressesDeleteButton_Click(object sender, EventArgs e)
+        private void ManageAddressesDeleteButton_Click(object sender, EventArgs e) // FIXME: dgv doesn't refresh after delete, dgv.refresh doesn't seem to do it
         {
-            // FIXME: Delete the record and then this.addresstableadapter.fill?
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                string message = "Delete the selected address?";
+                string caption = "Delete";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == DialogResult.OK)
+                {
+                    Globals.DeleteRecord("address", int.Parse(Globals.CurrentDataGridSelection));
+
+                    Globals.CurrentDataGridSelection = null;
+
+                    this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Please select an address to delete.");
+            }
         }
 
         private void ManageAddressesUseSelectedButton_Click(object sender, EventArgs e)
@@ -84,6 +114,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesCancelButton_Click(object sender, EventArgs e)
         {
+            Globals.CurrentDataGridSelection = null;
+
             Close();
         }
     }

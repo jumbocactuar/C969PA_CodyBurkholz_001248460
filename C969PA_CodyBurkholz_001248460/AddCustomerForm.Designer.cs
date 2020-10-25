@@ -65,6 +65,7 @@
             this.AddCustomerFirstNameTextBox.Name = "AddCustomerFirstNameTextBox";
             this.AddCustomerFirstNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerFirstNameTextBox.TabIndex = 2;
+            this.AddCustomerFirstNameTextBox.TextChanged += new System.EventHandler(this.AddCustomerFirstNameTextBox_TextChanged);
             // 
             // AddCustomerLastNameTextBox
             // 
@@ -72,6 +73,7 @@
             this.AddCustomerLastNameTextBox.Name = "AddCustomerLastNameTextBox";
             this.AddCustomerLastNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerLastNameTextBox.TabIndex = 3;
+            this.AddCustomerLastNameTextBox.TextChanged += new System.EventHandler(this.AddCustomerLastNameTextBox_TextChanged);
             // 
             // AddCustomerAddress1TextBox
             // 
@@ -80,6 +82,7 @@
             this.AddCustomerAddress1TextBox.Name = "AddCustomerAddress1TextBox";
             this.AddCustomerAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerAddress1TextBox.TabIndex = 4;
+            this.AddCustomerAddress1TextBox.TextChanged += new System.EventHandler(this.AddCustomerAddress1TextBox_TextChanged);
             // 
             // AddCustomerAddress2TextBox
             // 

@@ -12,6 +12,8 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ModifyAddressForm : Form
     {
+        public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false };
+
         public ModifyAddressForm()
         {
             InitializeComponent();
@@ -47,6 +49,66 @@ namespace C969PA_CodyBurkholz_001248460
             ModifyAddressPhoneTextBox.Text = selectedAddress[5].ToString();
         }
 
+        private void ModifyAddressAddress1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ModifyAddressAddress1TextBox.TextLength > 0)
+            {
+                FieldStateTracker[0] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[0] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
+        private void ModifyAddressCityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ModifyAddressCityComboBox.Text != null)
+            {
+                FieldStateTracker[1] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[1] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
+        private void ModifyAddressPostalCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ModifyAddressPostalCodeTextBox.TextLength > 0)
+            {
+                FieldStateTracker[2] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[2] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
+        private void ModifyAddressPhoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ModifyAddressPhoneTextBox.TextLength > 0)
+            {
+                FieldStateTracker[3] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[3] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
         private void ModifyAddressSaveButton_Click(object sender, EventArgs e)
         {
             // Put the text field inputs into forms acceptable by the Update method
@@ -67,6 +129,20 @@ namespace C969PA_CodyBurkholz_001248460
         private void ModifyAddressCancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void UpdateSaveButton()
+        {
+            // If any FieldStateTracker values are false (i.e., any text boxes are empty), disable the Save button
+            if (FieldStateTracker.Contains(false) == true)
+            {
+                ModifyAddressSaveButton.Enabled = false;
+            }
+
+            else
+            {
+                ModifyAddressSaveButton.Enabled = true;
+            }
         }
     }
 }

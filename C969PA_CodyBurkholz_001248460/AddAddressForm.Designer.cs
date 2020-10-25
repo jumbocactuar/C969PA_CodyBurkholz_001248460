@@ -71,7 +71,7 @@
             this.AddAddressSaveButton.TabIndex = 37;
             this.AddAddressSaveButton.Text = "Save";
             this.AddAddressSaveButton.UseVisualStyleBackColor = true;
-            this.AddAddressSaveButton.Click += new System.EventHandler(this.AddCustomerSaveButton_Click);
+            this.AddAddressSaveButton.Click += new System.EventHandler(this.AddAddressSaveButton_Click);
             // 
             // AddAddressPhoneLabel
             // 
@@ -88,6 +88,7 @@
             this.AddAddressPhoneTextBox.Name = "AddAddressPhoneTextBox";
             this.AddAddressPhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddAddressPhoneTextBox.TabIndex = 35;
+            this.AddAddressPhoneTextBox.TextChanged += new System.EventHandler(this.AddAddressPhoneTextBox_TextChanged);
             // 
             // AddAddressPostalCodeLabel
             // 
@@ -110,6 +111,7 @@
             this.AddAddressCityComboBox.Name = "AddAddressCityComboBox";
             this.AddAddressCityComboBox.Size = new System.Drawing.Size(121, 21);
             this.AddAddressCityComboBox.TabIndex = 33;
+            this.AddAddressCityComboBox.SelectedIndexChanged += new System.EventHandler(this.AddAddressCityComboBox_SelectedIndexChanged);
             // 
             // AddAddressCityLabel
             // 
@@ -144,6 +146,7 @@
             this.AddAddressPostalCodeTextBox.Name = "AddAddressPostalCodeTextBox";
             this.AddAddressPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddAddressPostalCodeTextBox.TabIndex = 27;
+            this.AddAddressPostalCodeTextBox.TextChanged += new System.EventHandler(this.AddAddressPostalCodeTextBox_TextChanged);
             // 
             // AddAddressAddress2TextBox
             // 
@@ -158,6 +161,7 @@
             this.AddAddressAddress1TextBox.Name = "AddAddressAddress1TextBox";
             this.AddAddressAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddAddressAddress1TextBox.TabIndex = 25;
+            this.AddAddressAddress1TextBox.TextChanged += new System.EventHandler(this.AddAddressAddress1TextBox_TextChanged);
             // 
             // AddAddressForm
             // 
@@ -179,6 +183,7 @@
             this.Controls.Add(this.AddAddressFormLabel);
             this.Name = "AddAddressForm";
             this.Text = "Add Address";
+            this.Load += new System.EventHandler(this.AddAddressForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

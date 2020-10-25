@@ -13,6 +13,8 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class AddCustomerForm : Form
     {
+        public static List<bool> FieldStateTracker = new List<bool> { false, false, false };
+
         public AddCustomerForm()
         {
             InitializeComponent();
@@ -20,7 +22,52 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
-            // FIXME: Delete this if it ends up not being used
+            AddCustomerSaveButton.Enabled = false;
+        }
+
+        private void AddCustomerFirstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (AddCustomerFirstNameTextBox.TextLength > 0)
+            {
+                FieldStateTracker[0] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[0] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
+        private void AddCustomerLastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (AddCustomerLastNameTextBox.TextLength > 0)
+            {
+                FieldStateTracker[1] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[1] = false;
+            }
+
+            UpdateSaveButton();
+        }
+
+        private void AddCustomerAddress1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (AddCustomerAddress1TextBox.TextLength > 0)
+            {
+                FieldStateTracker[2] = true;
+            }
+
+            else
+            {
+                FieldStateTracker[2] = false;
+            }
+
+            UpdateSaveButton();
         }
 
         private void AddCustomerSelectAddressButton_Click(object sender, EventArgs e)
@@ -74,7 +121,11 @@ namespace C969PA_CodyBurkholz_001248460
                 Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
 
                 AddCustomerAddress1TextBox.Text = selectionContents[1].ToString();
-                AddCustomerAddress2TextBox.Text = selectionContents[2].ToString();
+
+                if (selectionContents[2] != null)
+                {
+                    AddCustomerAddress2TextBox.Text = selectionContents[2].ToString();
+                }
 
                 switch (selectionContents[3])
                 {
@@ -95,6 +146,20 @@ namespace C969PA_CodyBurkholz_001248460
 
                 AddCustomerPostalCodeTextBox.Text = selectionContents[4].ToString();
                 AddCustomerPhoneTextBox.Text = selectionContents[5].ToString();
+            }
+        }
+
+        private void UpdateSaveButton()
+        {
+            // If any FieldStateTracker values are false (i.e., any text boxes are empty), disable the Save button
+            if (FieldStateTracker.Contains(false) == true)
+            {
+                AddCustomerSaveButton.Enabled = false;
+            }
+
+            else
+            {
+                AddCustomerSaveButton.Enabled = true;
             }
         }
     }

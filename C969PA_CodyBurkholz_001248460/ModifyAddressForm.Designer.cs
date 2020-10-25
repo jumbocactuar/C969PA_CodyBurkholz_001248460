@@ -88,6 +88,7 @@
             this.ModifyAddressPhoneTextBox.Name = "ModifyAddressPhoneTextBox";
             this.ModifyAddressPhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyAddressPhoneTextBox.TabIndex = 47;
+            this.ModifyAddressPhoneTextBox.TextChanged += new System.EventHandler(this.ModifyAddressPhoneTextBox_TextChanged);
             // 
             // ModifyAddressPostalCodeLabel
             // 
@@ -110,6 +111,7 @@
             this.ModifyAddressCityComboBox.Name = "ModifyAddressCityComboBox";
             this.ModifyAddressCityComboBox.Size = new System.Drawing.Size(121, 21);
             this.ModifyAddressCityComboBox.TabIndex = 45;
+            this.ModifyAddressCityComboBox.SelectedIndexChanged += new System.EventHandler(this.ModifyAddressCityComboBox_SelectedIndexChanged);
             // 
             // ModifyAddressCityLabel
             // 
@@ -144,6 +146,7 @@
             this.ModifyAddressPostalCodeTextBox.Name = "ModifyAddressPostalCodeTextBox";
             this.ModifyAddressPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyAddressPostalCodeTextBox.TabIndex = 41;
+            this.ModifyAddressPostalCodeTextBox.TextChanged += new System.EventHandler(this.ModifyAddressPostalCodeTextBox_TextChanged);
             // 
             // ModifyAddressAddress2TextBox
             // 
@@ -158,6 +161,7 @@
             this.ModifyAddressAddress1TextBox.Name = "ModifyAddressAddress1TextBox";
             this.ModifyAddressAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyAddressAddress1TextBox.TabIndex = 39;
+            this.ModifyAddressAddress1TextBox.TextChanged += new System.EventHandler(this.ModifyAddressAddress1TextBox_TextChanged);
             // 
             // ModifyAddressForm
             // 

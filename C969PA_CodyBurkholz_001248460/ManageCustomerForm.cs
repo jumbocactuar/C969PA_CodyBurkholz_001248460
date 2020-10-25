@@ -36,7 +36,6 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageCustomerForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'u06vbiCustomerDataSet.customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
 
             ManageCustomerDataGridView.ClearSelection();
@@ -64,7 +63,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageCustomerModifyButton_Click(object sender, EventArgs e)
         {
-            // Globals.CurrentDataGridSelectionObject.ToString();
+            ModifyCustomerForm f = new ModifyCustomerForm();
+            f.Show();
         }
 
         private void ManageCustomerDeleteButton_Click(object sender, EventArgs e)

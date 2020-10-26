@@ -19,7 +19,7 @@ namespace C969PA_CodyBurkholz_001248460
         {
             InitializeComponent();
 
-            //string cxnString;
+            /*//string cxnString;
             DataTable dt = new DataTable();
 
             // FIXME: Reevaluate whether some of the below is necessary (but if it ain't broke, don't fix it)
@@ -31,7 +31,7 @@ namespace C969PA_CodyBurkholz_001248460
             MySqlDataAdapter adapterToMySQL = new MySqlDataAdapter(selectCommand: cmdToMySQL);
             adapterToMySQL.Fill(dt);
             ManageCustomerDataGridView.DataSource = dt;
-            cxnToMySQL.Close();
+            cxnToMySQL.Close();*/
         }
 
         private void ManageCustomerForm_Load(object sender, EventArgs e)
@@ -63,17 +63,53 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageCustomerModifyButton_Click(object sender, EventArgs e)
         {
-            ModifyCustomerForm f = new ModifyCustomerForm();
-            f.Show();
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                ModifyCustomerForm f = new ModifyCustomerForm();
+                f.Show();
+
+                Close();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a customer to modify.");
+            }
         }
 
         private void ManageCustomerDeleteButton_Click(object sender, EventArgs e)
         {
-            // FIXME: copy confirmation dialog from C968 project, then use CurrentDataGridSelection to delete the record from the db
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                string message = "Delete the selected customer?";
+                string caption = "Delete";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result;
+
+                result = MessageBox.Show(message, caption, buttons);
+
+                if (result == DialogResult.OK)
+                {
+                    Globals.DeleteRecord("customer", int.Parse(Globals.CurrentDataGridSelection));
+
+                    Globals.CurrentDataGridSelection = null;
+
+                    this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
+
+                    ManageCustomerDataGridView.ClearSelection();
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a customer to delete.");
+            }
         }
 
         private void ManageCustomerCancelButton_Click(object sender, EventArgs e)
         {
+            Globals.CurrentDataGridSelection = null;
+
             Close();
         }
     }

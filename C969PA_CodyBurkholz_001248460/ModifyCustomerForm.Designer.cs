@@ -201,6 +201,7 @@
             this.ModifyCustomerAddress1TextBox.Name = "ModifyCustomerAddress1TextBox";
             this.ModifyCustomerAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerAddress1TextBox.TabIndex = 26;
+            this.ModifyCustomerAddress1TextBox.TextChanged += new System.EventHandler(this.ModifyCustomerAddress1TextBox_TextChanged);
             // 
             // ModifyCustomerLastNameTextBox
             // 
@@ -208,6 +209,7 @@
             this.ModifyCustomerLastNameTextBox.Name = "ModifyCustomerLastNameTextBox";
             this.ModifyCustomerLastNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerLastNameTextBox.TabIndex = 25;
+            this.ModifyCustomerLastNameTextBox.TextChanged += new System.EventHandler(this.ModifyCustomerLastNameTextBox_TextChanged);
             // 
             // ModifyCustomerFirstNameTextBox
             // 
@@ -215,6 +217,7 @@
             this.ModifyCustomerFirstNameTextBox.Name = "ModifyCustomerFirstNameTextBox";
             this.ModifyCustomerFirstNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerFirstNameTextBox.TabIndex = 24;
+            this.ModifyCustomerFirstNameTextBox.TextChanged += new System.EventHandler(this.ModifyCustomerFirstNameTextBox_TextChanged);
             // 
             // ModifyCustomerForm
             // 

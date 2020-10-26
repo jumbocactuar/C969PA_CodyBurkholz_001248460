@@ -15,6 +15,8 @@ namespace C969PA_CodyBurkholz_001248460
     {
         private AddCustomerForm sourceForm = null;
 
+        private ModifyCustomerForm sourceForm2 = null;
+
         public ManageAddressesForm()
         {
             InitializeComponent();
@@ -24,16 +26,17 @@ namespace C969PA_CodyBurkholz_001248460
         {
             sourceForm = callingForm as AddCustomerForm;
 
+            sourceForm2 = callingForm as ModifyCustomerForm;
+
             InitializeComponent();
         }
 
         private void ManageAddresses_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'u06vbiDataSet.address' table. You can move, or remove it, as needed.
             this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
         }
 
-        private void ManageAddressesForm_Activated(object sender, EventArgs e)
+        private void ManageAddressesForm_Activated(object sender, EventArgs e) // FIXME: Unclear whether this is needed
         {
             this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
         }
@@ -51,9 +54,6 @@ namespace C969PA_CodyBurkholz_001248460
             Globals.CurrentDataGridSelection = ManageAddressesDataGridView.Rows[selection].Cells[0].Value.ToString();
 
             Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
-
-            textBox1.Text = Globals.CurrentDataGridSelection; // FIXME: Remove this before submission
-            textBox2.Text = selectionContents[1].ToString();
         }
 
         private void ManageAddressesAddButton_Click(object sender, EventArgs e)
@@ -107,7 +107,15 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesUseSelectedButton_Click(object sender, EventArgs e)
         {
-            this.sourceForm.FillAddressInfo();
+            if (this.sourceForm != null)
+            {
+                this.sourceForm.FillAddressInfo();
+            }
+
+            else
+            {
+                this.sourceForm2.FillAddressInfo();
+            }
             
             Close();
         }

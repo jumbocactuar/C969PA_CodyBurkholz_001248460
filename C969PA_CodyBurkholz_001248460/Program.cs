@@ -262,11 +262,17 @@ namespace C969PA_CodyBurkholz_001248460
             ExecuteThisQueryReturnInt(query);
         }
 
-        public static int UpdateCustomerRecord() // FIXME: Make this functional
+        public static void UpdateCustomerRecord(int customerID, string name, byte active, int addressID)
         {
-            int id = 0;
+            string query = $"UPDATE customer SET " +
+                $"customerName = '{name}', " +
+                $"addressId = '{addressID}', " +
+                $"active = '{active}', " +
+                $"lastUpdate = '{GetMySqlNow()}', " +
+                $"lastUpdateBy = '{CurrentUser}' " +
+                $"WHERE customerId = '{customerID}'";
 
-            return id;
+            ExecuteThisQueryReturnInt(query);
         }
 
         public static int UpdateUserRecord() // FIXME: Make this functional

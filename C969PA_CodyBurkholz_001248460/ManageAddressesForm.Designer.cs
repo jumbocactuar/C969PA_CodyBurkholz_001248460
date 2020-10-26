@@ -45,8 +45,6 @@
             this.ManageAddressesDeleteButton = new System.Windows.Forms.Button();
             this.ManageAddressesUseSelectedButton = new System.Windows.Forms.Button();
             this.ManageAddressesCancelButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ManageAddressesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
@@ -194,27 +192,11 @@
             this.ManageAddressesCancelButton.UseVisualStyleBackColor = true;
             this.ManageAddressesCancelButton.Click += new System.EventHandler(this.ManageAddressesCancelButton_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(127, 355);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(26, 403);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(517, 20);
-            this.textBox2.TabIndex = 8;
-            // 
             // ManageAddressesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ManageAddressesCancelButton);
             this.Controls.Add(this.ManageAddressesUseSelectedButton);
             this.Controls.Add(this.ManageAddressesDeleteButton);
@@ -252,7 +234,5 @@
         private System.Windows.Forms.Button ManageAddressesDeleteButton;
         private System.Windows.Forms.Button ManageAddressesUseSelectedButton;
         private System.Windows.Forms.Button ManageAddressesCancelButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
     }
 }

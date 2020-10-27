@@ -54,6 +54,12 @@
     <Compile Include="AddAddressForm.Designer.cs">
       <DependentUpon>AddAddressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAppointmentForm.Designer.cs">
+      <DependentUpon>AddAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     <Compile Include="ModifyAddressForm.Designer.cs">
       <DependentUpon>ModifyAddressForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifyAppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyAppointmentForm.Designer.cs">
+      <DependentUpon>ModifyAppointmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModifyCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +124,9 @@
     <EmbeddedResource Include="AddAddressForm.resx">
       <DependentUpon>AddAddressForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddAppointmentForm.resx">
+      <DependentUpon>AddAppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +136,9 @@
     <EmbeddedResource Include="ManageAddressesForm.resx">
       <DependentUpon>ManageAddressesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageAppointmentsForm.resx">
+      <DependentUpon>ManageAppointmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManageCustomerForm.resx">
       <DependentUpon>ManageCustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyAddressForm.resx">
       <DependentUpon>ModifyAddressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyAppointmentForm.resx">
+      <DependentUpon>ModifyAppointmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyCustomerForm.resx">
       <DependentUpon>ModifyCustomerForm.cs</DependentUpon>

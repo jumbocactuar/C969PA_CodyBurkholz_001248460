@@ -31,12 +31,13 @@
             this.ManagementPortalCustomersButton = new System.Windows.Forms.Button();
             this.ManagementPortalLabel = new System.Windows.Forms.Label();
             this.ManagementPortalAppointmentsButton = new System.Windows.Forms.Button();
+            this.ManagementPortalFormReportsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ManagementPortalCustomersButton
             // 
             this.ManagementPortalCustomersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManagementPortalCustomersButton.Location = new System.Drawing.Point(109, 86);
+            this.ManagementPortalCustomersButton.Location = new System.Drawing.Point(115, 86);
             this.ManagementPortalCustomersButton.Name = "ManagementPortalCustomersButton";
             this.ManagementPortalCustomersButton.Size = new System.Drawing.Size(160, 60);
             this.ManagementPortalCustomersButton.TabIndex = 0;
@@ -57,7 +58,7 @@
             // ManagementPortalAppointmentsButton
             // 
             this.ManagementPortalAppointmentsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManagementPortalAppointmentsButton.Location = new System.Drawing.Point(109, 189);
+            this.ManagementPortalAppointmentsButton.Location = new System.Drawing.Point(115, 189);
             this.ManagementPortalAppointmentsButton.Name = "ManagementPortalAppointmentsButton";
             this.ManagementPortalAppointmentsButton.Size = new System.Drawing.Size(160, 60);
             this.ManagementPortalAppointmentsButton.TabIndex = 2;
@@ -65,11 +66,22 @@
             this.ManagementPortalAppointmentsButton.UseVisualStyleBackColor = true;
             this.ManagementPortalAppointmentsButton.Click += new System.EventHandler(this.ManagementPortalAppointmentsButton_Click);
             // 
+            // ManagementPortalFormReportsButton
+            // 
+            this.ManagementPortalFormReportsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManagementPortalFormReportsButton.Location = new System.Drawing.Point(115, 295);
+            this.ManagementPortalFormReportsButton.Name = "ManagementPortalFormReportsButton";
+            this.ManagementPortalFormReportsButton.Size = new System.Drawing.Size(160, 60);
+            this.ManagementPortalFormReportsButton.TabIndex = 3;
+            this.ManagementPortalFormReportsButton.Text = "Reports";
+            this.ManagementPortalFormReportsButton.UseVisualStyleBackColor = true;
+            // 
             // ManagementPortalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(392, 450);
+            this.Controls.Add(this.ManagementPortalFormReportsButton);
             this.Controls.Add(this.ManagementPortalAppointmentsButton);
             this.Controls.Add(this.ManagementPortalLabel);
             this.Controls.Add(this.ManagementPortalCustomersButton);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.Button ManagementPortalCustomersButton;
         private System.Windows.Forms.Label ManagementPortalLabel;
         private System.Windows.Forms.Button ManagementPortalAppointmentsButton;
+        private System.Windows.Forms.Button ManagementPortalFormReportsButton;
     }
 }

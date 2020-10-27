@@ -29,9 +29,6 @@ namespace C969PA_CodyBurkholz_001248460
         }
     }
 
-    /* FIXME: This is their fancy way of saying you have to have to have the ability to add a customer when making an appointment and also 
-     * be able to change customer in an update. For display customer id is ok, customer name might be helpful. ( humans don't usually remember all ids)*/
-
     public class Globals
     {
         public static string cxnString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;

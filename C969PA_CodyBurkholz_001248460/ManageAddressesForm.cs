@@ -78,7 +78,7 @@ namespace C969PA_CodyBurkholz_001248460
             }
         }
 
-        private void ManageAddressesDeleteButton_Click(object sender, EventArgs e) // FIXME: dgv doesn't refresh after delete, dgv.refresh doesn't seem to do it
+        private void ManageAddressesDeleteButton_Click(object sender, EventArgs e)
         {
             if (Globals.CurrentDataGridSelection != null)
             {

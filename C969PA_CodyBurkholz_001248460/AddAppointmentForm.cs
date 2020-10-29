@@ -62,7 +62,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddAppointmentSelectConsultantButton_Click(object sender, EventArgs e)
         {
-
+            ManageUsersForm f = new ManageUsersForm(this);
+            f.Show();
         }
 
         private void AddAppointmentSelectCustomerButton_Click(object sender, EventArgs e)
@@ -90,7 +91,7 @@ namespace C969PA_CodyBurkholz_001248460
             {
                 Object[] selectionContents = Globals.GetSelectedRowContents("user", int.Parse(Globals.CurrentDataGridSelection));
 
-                AddAppointmentCustomerTextBox.Text = selectionContents[1].ToString();
+                AddAppointmentConsultantTextBox.Text = selectionContents[1].ToString();
             }
 
             Globals.CurrentDataGridSelection = null; // FIXME: Make sure this doens't interfere with anything

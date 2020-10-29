@@ -41,6 +41,7 @@
             this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.customerTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.customerTableAdapter();
             this.ManageCustomerCancelButton = new System.Windows.Forms.Button();
+            this.ManageCustomerUseSelectedButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ManageCustomerDataGridView)).BeginInit();
@@ -155,11 +156,22 @@
             this.ManageCustomerCancelButton.UseVisualStyleBackColor = true;
             this.ManageCustomerCancelButton.Click += new System.EventHandler(this.ManageCustomerCancelButton_Click);
             // 
+            // ManageCustomerUseSelectedButton
+            // 
+            this.ManageCustomerUseSelectedButton.Location = new System.Drawing.Point(83, 505);
+            this.ManageCustomerUseSelectedButton.Name = "ManageCustomerUseSelectedButton";
+            this.ManageCustomerUseSelectedButton.Size = new System.Drawing.Size(156, 23);
+            this.ManageCustomerUseSelectedButton.TabIndex = 7;
+            this.ManageCustomerUseSelectedButton.Text = "Use Selected Customer";
+            this.ManageCustomerUseSelectedButton.UseVisualStyleBackColor = true;
+            this.ManageCustomerUseSelectedButton.Click += new System.EventHandler(this.ManageCustomerUseSelectedButton_Click);
+            // 
             // ManageCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 549);
+            this.Controls.Add(this.ManageCustomerUseSelectedButton);
             this.Controls.Add(this.ManageCustomerCancelButton);
             this.Controls.Add(this.ManageCustomerDataGridView);
             this.Controls.Add(this.ManageCustomerDeleteButton);
@@ -190,6 +202,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn activeDataGridViewCheckBoxColumn;
         private System.Windows.Forms.Button ManageCustomerCancelButton;
+        private System.Windows.Forms.Button ManageCustomerUseSelectedButton;
     }
 }
 

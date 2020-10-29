@@ -46,5 +46,17 @@ namespace C969PA_CodyBurkholz_001248460
             ManageAppointmentsForm f = new ManageAppointmentsForm();
             f.Show();
         }
+
+        private void ManagementPortalManageUsersButton_Click(object sender, EventArgs e)
+        {
+            ManageUsersForm f = new ManageUsersForm();
+            f.Show();
+        }
+
+        private void ManagementPortalReportsButton_Click(object sender, EventArgs e)
+        {
+            ReportsForm f = new ReportsForm();
+            f.Show();
+        }
     }
 }

@@ -71,6 +71,7 @@
             this.AddAppointmentTitleTextBox.Name = "AddAppointmentTitleTextBox";
             this.AddAppointmentTitleTextBox.Size = new System.Drawing.Size(200, 20);
             this.AddAppointmentTitleTextBox.TabIndex = 1;
+            this.AddAppointmentTitleTextBox.TextChanged += new System.EventHandler(this.AddAppointmentTitleTextBox_TextChanged);
             // 
             // AddAppointmentTitleLabel
             // 
@@ -88,6 +89,7 @@
             this.AddAppointmentDescriptionTextBox.Name = "AddAppointmentDescriptionTextBox";
             this.AddAppointmentDescriptionTextBox.Size = new System.Drawing.Size(200, 100);
             this.AddAppointmentDescriptionTextBox.TabIndex = 3;
+            this.AddAppointmentDescriptionTextBox.TextChanged += new System.EventHandler(this.AddAppointmentDescriptionTextBox_TextChanged);
             // 
             // Description
             // 
@@ -110,6 +112,7 @@
             this.AddAppointmentLocationComboBox.Name = "AddAppointmentLocationComboBox";
             this.AddAppointmentLocationComboBox.Size = new System.Drawing.Size(200, 21);
             this.AddAppointmentLocationComboBox.TabIndex = 5;
+            this.AddAppointmentLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.AddAppointmentLocationComboBox_SelectedIndexChanged);
             // 
             // AddAppointmentLocationLabel
             // 
@@ -126,6 +129,7 @@
             this.AddAppointmentContactTextBox.Name = "AddAppointmentContactTextBox";
             this.AddAppointmentContactTextBox.Size = new System.Drawing.Size(200, 20);
             this.AddAppointmentContactTextBox.TabIndex = 7;
+            this.AddAppointmentContactTextBox.TextChanged += new System.EventHandler(this.AddAppointmentContactTextBox_TextChanged);
             // 
             // AddAppointmentContactLabel
             // 
@@ -148,6 +152,7 @@
             this.AddAppointmentTypeComboBox.Name = "AddAppointmentTypeComboBox";
             this.AddAppointmentTypeComboBox.Size = new System.Drawing.Size(200, 21);
             this.AddAppointmentTypeComboBox.TabIndex = 9;
+            this.AddAppointmentTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AddAppointmentTypeComboBox_SelectedIndexChanged);
             // 
             // AddAppointmentTypeLabel
             // 
@@ -176,6 +181,7 @@
             // 
             // AddAppointmentStartDateTimePicker
             // 
+            this.AddAppointmentStartDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.AddAppointmentStartDateTimePicker.Location = new System.Drawing.Point(433, 128);
             this.AddAppointmentStartDateTimePicker.Name = "AddAppointmentStartDateTimePicker";
             this.AddAppointmentStartDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -192,6 +198,7 @@
             // 
             // AddAppointmentEndDateTimePicker
             // 
+            this.AddAppointmentEndDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.AddAppointmentEndDateTimePicker.Location = new System.Drawing.Point(433, 208);
             this.AddAppointmentEndDateTimePicker.Name = "AddAppointmentEndDateTimePicker";
             this.AddAppointmentEndDateTimePicker.Size = new System.Drawing.Size(200, 20);
@@ -213,6 +220,7 @@
             this.AddAppointmentConsultantTextBox.ReadOnly = true;
             this.AddAppointmentConsultantTextBox.Size = new System.Drawing.Size(200, 20);
             this.AddAppointmentConsultantTextBox.TabIndex = 17;
+            this.AddAppointmentConsultantTextBox.TextChanged += new System.EventHandler(this.AddAppointmentConsultantTextBox_TextChanged);
             // 
             // AddAppointmentConsultantLabel
             // 
@@ -230,6 +238,7 @@
             this.AddAppointmentCustomerTextBox.ReadOnly = true;
             this.AddAppointmentCustomerTextBox.Size = new System.Drawing.Size(200, 20);
             this.AddAppointmentCustomerTextBox.TabIndex = 19;
+            this.AddAppointmentCustomerTextBox.TextChanged += new System.EventHandler(this.AddAppointmentCustomerTextBox_TextChanged);
             // 
             // AddAppointmentCustomerLabel
             // 
@@ -248,6 +257,7 @@
             this.AddAppointmentSelectConsultantButton.TabIndex = 21;
             this.AddAppointmentSelectConsultantButton.Text = "Select Consultant";
             this.AddAppointmentSelectConsultantButton.UseVisualStyleBackColor = true;
+            this.AddAppointmentSelectConsultantButton.Click += new System.EventHandler(this.AddAppointmentSelectConsultantButton_Click);
             // 
             // AddAppointmentSelectCustomerButton
             // 
@@ -257,6 +267,7 @@
             this.AddAppointmentSelectCustomerButton.TabIndex = 22;
             this.AddAppointmentSelectCustomerButton.Text = "Select Customer";
             this.AddAppointmentSelectCustomerButton.UseVisualStyleBackColor = true;
+            this.AddAppointmentSelectCustomerButton.Click += new System.EventHandler(this.AddAppointmentSelectCustomerButton_Click);
             // 
             // AddAppointmentSaveButton
             // 
@@ -266,6 +277,7 @@
             this.AddAppointmentSaveButton.TabIndex = 23;
             this.AddAppointmentSaveButton.Text = "Save";
             this.AddAppointmentSaveButton.UseVisualStyleBackColor = true;
+            this.AddAppointmentSaveButton.Click += new System.EventHandler(this.AddAppointmentSaveButton_Click);
             // 
             // AddAppointmentCancelButton
             // 
@@ -275,6 +287,7 @@
             this.AddAppointmentCancelButton.TabIndex = 24;
             this.AddAppointmentCancelButton.Text = "Cancel";
             this.AddAppointmentCancelButton.UseVisualStyleBackColor = true;
+            this.AddAppointmentCancelButton.Click += new System.EventHandler(this.AddAppointmentCancelButton_Click);
             // 
             // AddAppointmentForm
             // 

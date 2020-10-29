@@ -15,6 +15,8 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ManageCustomerForm : Form
     {
+        private AddAppointmentForm sourceForm = null;
+
         public ManageCustomerForm()
         {
             InitializeComponent();
@@ -32,6 +34,15 @@ namespace C969PA_CodyBurkholz_001248460
             adapterToMySQL.Fill(dt);
             ManageCustomerDataGridView.DataSource = dt;
             cxnToMySQL.Close();*/
+
+            ManageCustomerUseSelectedButton.Hide();
+        }
+
+        public ManageCustomerForm(Form callingForm)
+        {
+            sourceForm = callingForm as AddAppointmentForm;
+
+            InitializeComponent();
         }
 
         private void ManageCustomerForm_Load(object sender, EventArgs e)
@@ -103,6 +114,21 @@ namespace C969PA_CodyBurkholz_001248460
             else
             {
                 MessageBox.Show("Please select a customer to delete.");
+            }
+        }
+
+        private void ManageCustomerUseSelectedButton_Click(object sender, EventArgs e)
+        {
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                this.sourceForm.FillCustomerName();
+
+                Close();
+            }
+            
+            else
+            {
+                MessageBox.Show("Please select a customer.");
             }
         }
 

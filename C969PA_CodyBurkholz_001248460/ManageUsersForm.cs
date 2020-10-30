@@ -47,18 +47,14 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageUsersAddButton_Click(object sender, EventArgs e)
         {
-            AddUserForm f = new AddUserForm();
+            AddUserForm f = new AddUserForm(this);
             f.Show();
-
-            Close();
         }
 
         private void ManageUsersModifyButton_Click(object sender, EventArgs e)
         {
-            ModifyUserForm f = new ModifyUserForm();
+            ModifyUserForm f = new ModifyUserForm(this);
             f.Show();
-
-            Close();
         }
 
         private void ManageUsersDeleteButton_Click(object sender, EventArgs e)
@@ -110,6 +106,13 @@ namespace C969PA_CodyBurkholz_001248460
             Globals.CurrentDataGridSelection = null;
 
             Close();
+        }
+
+        public void DataGridViewRefresh()
+        {
+            this.userTableAdapter.Fill(this.u06vbiDataSet.user);
+
+            ManageUsersDataGridView.ClearSelection();
         }
     }
 }

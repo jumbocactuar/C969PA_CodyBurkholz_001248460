@@ -10,14 +10,23 @@ using System.Windows.Forms;
 
 namespace C969PA_CodyBurkholz_001248460
 {
-    public partial class ModifyCustomerForm : Form
+    public partial class ModifyCustomerForm : Form // FIXME: Modify fails if you don't change the address (the addressId used is the same as the selected customerId)
     {
+        private ManageCustomerForm sourceForm = null;
+
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false };
 
         public static string CustomerID = Globals.CurrentDataGridSelection.ToString();
 
         public ModifyCustomerForm()
         {
+            InitializeComponent();
+        }
+
+        public ModifyCustomerForm(Form callingForm)
+        {
+            sourceForm = callingForm as ManageCustomerForm;
+
             InitializeComponent();
         }
 
@@ -147,19 +156,14 @@ namespace C969PA_CodyBurkholz_001248460
             // Clear the current datagridview selection
             Globals.CurrentDataGridSelection = null;
 
-            // Close the Add Customer Form and reopen the Manage Customer form
-            ManageCustomerForm f = new ManageCustomerForm();
-            f.Show();
+            // Close the Add Customer Form and refresh the Manage Customers datagridview
+            this.sourceForm.DataGridViewRefresh();
 
             Close();
         }
 
         private void ModifyCustomerCancelButton_Click(object sender, EventArgs e)
         {
-            // Close the Modify Customer Form and reopen the Manage Customer form
-            ManageCustomerForm f = new ManageCustomerForm();
-            f.Show();
-
             Close();
         }
 

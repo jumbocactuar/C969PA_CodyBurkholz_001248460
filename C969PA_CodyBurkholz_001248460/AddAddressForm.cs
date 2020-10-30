@@ -86,7 +86,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddAddressSaveButton_Click(object sender, EventArgs e)
         {
-            // Put the text field inputs into forms acceptable by the Insert methods
+            // Put the text field inputs into forms acceptable by the Insert method
             string address1 = AddAddressAddress1TextBox.Text;
             string address2 = AddAddressAddress2TextBox.Text;
             string city = AddAddressCityComboBox.SelectedItem.ToString();

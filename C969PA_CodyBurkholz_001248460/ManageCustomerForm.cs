@@ -66,20 +66,16 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageCustomerAddButton_Click(object sender, EventArgs e)
         {
-            AddCustomerForm f = new AddCustomerForm();
+            AddCustomerForm f = new AddCustomerForm(this);
             f.Show();
-
-            Close();
         }
 
         private void ManageCustomerModifyButton_Click(object sender, EventArgs e)
         {
             if (Globals.CurrentDataGridSelection != null)
             {
-                ModifyCustomerForm f = new ModifyCustomerForm();
+                ModifyCustomerForm f = new ModifyCustomerForm(this);
                 f.Show();
-
-                Close();
             }
 
             else
@@ -137,6 +133,13 @@ namespace C969PA_CodyBurkholz_001248460
             Globals.CurrentDataGridSelection = null;
 
             Close();
+        }
+
+        public void DataGridViewRefresh()
+        {
+            this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
+
+            ManageCustomerDataGridView.ClearSelection();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false, false, false, false };
 
+        public static int AppointmentID;
+        
         public static int CustomerID;
 
         public static int UserID;
@@ -41,9 +43,44 @@ namespace C969PA_CodyBurkholz_001248460
         private void ModifyAppointmentForm_Load(object sender, EventArgs e)
         {
             ModifyAppointmentSaveButton.Enabled = false;
+
+            Object[] selectedAppointment = Globals.GetSelectedRowContents("appointment", int.Parse(Globals.CurrentDataGridSelection));
+
+            AppointmentID = Convert.ToInt32(selectedAppointment[0]);
+
+            CustomerID = Convert.ToInt32(selectedAppointment[1]);
+
+            UserID = Convert.ToInt32(selectedAppointment[2]);
+
+            Object[] associatedUser = Globals.GetSelectedRowContents("user", UserID);
+
+            Object[] associatedCustomer = Globals.GetSelectedRowContents("customer", CustomerID);
+
+            ModifyAppointmentTitleTextBox.Text = selectedAppointment[3].ToString();
+
+            ModifyAppointmentDescriptionTextBox.Text = selectedAppointment[4].ToString();
+
+            ModifyAppointmentLocationComboBox.SelectedItem = selectedAppointment[5].ToString();
+
+            ModifyAppointmentContactTextBox.Text = selectedAppointment[6].ToString();
+
+            ModifyAppointmentTypeComboBox.SelectedItem = selectedAppointment[7].ToString();
+
+            if (selectedAppointment[8] != null)
+            {
+                ModifyAppointmentUrlTextBox.Text = selectedAppointment[8].ToString();
+            }
+
+            ModifyAppointmentStartDateTimePicker.Value = Convert.ToDateTime(selectedAppointment[9]); // FIMXE: Need to recall these datetimes in local time
+
+            ModifyAppointmentEndDateTimePicker.Value = Convert.ToDateTime(selectedAppointment[10]);
+
+            ModifyAppointmentConsultantTextBox.Text = associatedUser[1].ToString();
+
+            ModifyAppointmentCustomerTextBox.Text = associatedCustomer[1].ToString();
         }
 
-        private void AddAppointmentTitleTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyAppointmentTitleTextBox_TextChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentTitleTextBox.TextLength > 0)
             {
@@ -58,7 +95,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentDescriptionTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyAppointmentDescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentDescriptionTextBox.TextLength > 0)
             {
@@ -73,7 +110,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentLocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ModifyAppointmentLocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentLocationComboBox.Text != null)
             {
@@ -88,7 +125,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentContactTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyAppointmentContactTextBox_TextChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentContactTextBox.TextLength > 0)
             {
@@ -103,7 +140,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void ModifyAppointmentTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentTypeComboBox.Text != null)
             {
@@ -118,7 +155,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentConsultantTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyAppointmentConsultantTextBox_TextChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentConsultantTextBox.TextLength > 0)
             {
@@ -133,7 +170,7 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentCustomerTextBox_TextChanged(object sender, EventArgs e)
+        private void ModifyAppointmentCustomerTextBox_TextChanged(object sender, EventArgs e)
         {
             if (ModifyAppointmentCustomerTextBox.TextLength > 0)
             {
@@ -148,45 +185,53 @@ namespace C969PA_CodyBurkholz_001248460
             UpdateSaveButton();
         }
 
-        private void AddAppointmentSelectConsultantButton_Click(object sender, EventArgs e)
+        private void ModifyAppointmentSelectConsultantButton_Click(object sender, EventArgs e)
         {
             ManageUsersForm f = new ManageUsersForm(this);
             f.Show();
         }
 
-        private void AddAppointmentSelectCustomerButton_Click(object sender, EventArgs e)
+        private void ModifyAppointmentSelectCustomerButton_Click(object sender, EventArgs e)
         {
             ManageCustomerForm f = new ManageCustomerForm(this);
             f.Show();
         }
 
-        private void AddAppointmentSaveButton_Click(object sender, EventArgs e)
+        private void ModifyAppointmentSaveButton_Click(object sender, EventArgs e)
         {
-            // Put the text field inputs into types acceptable by the Update method
-            string title = ModifyAppointmentTitleTextBox.Text;
-            string description = ModifyAppointmentDescriptionTextBox.Text;
-            string location = ModifyAppointmentLocationComboBox.SelectedItem.ToString();
-            string contact = ModifyAppointmentContactTextBox.Text;
-            string type = ModifyAppointmentTypeComboBox.SelectedItem.ToString();
-            string url = ModifyAppointmentUrlTextBox.Text;
-            DateTime startDate = ModifyAppointmentStartDateTimePicker.Value.ToUniversalTime();
-            string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
-            DateTime endDate = ModifyAppointmentEndDateTimePicker.Value.ToUniversalTime();
-            string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+            if (ModifyAppointmentStartDateTimePicker.Value < ModifyAppointmentEndDateTimePicker.Value)
+            {
+                // Put the text field inputs into types acceptable by the Update method
+                string title = ModifyAppointmentTitleTextBox.Text;
+                string description = ModifyAppointmentDescriptionTextBox.Text;
+                string location = ModifyAppointmentLocationComboBox.SelectedItem.ToString();
+                string contact = ModifyAppointmentContactTextBox.Text;
+                string type = ModifyAppointmentTypeComboBox.SelectedItem.ToString();
+                string url = ModifyAppointmentUrlTextBox.Text;
+                DateTime startDate = ModifyAppointmentStartDateTimePicker.Value.ToUniversalTime();
+                string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+                DateTime endDate = ModifyAppointmentEndDateTimePicker.Value.ToUniversalTime();
+                string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-            // Create a record in the Appointment table
-            Globals.UpdateAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
+                // Update the record in the Appointment table
+                Globals.UpdateAppointmentRecord(AppointmentID, CustomerID, UserID, title, description, location, contact, type, url, start, end);
 
-            // Clear the current datagridview selection
-            Globals.CurrentDataGridSelection = null;
+                // Clear the current datagridview selection
+                Globals.CurrentDataGridSelection = null;
 
-            // Close the Add Customer Form and refresh the Manage Customers datagridview
-            this.sourceForm.DataGridViewRefresh();
+                // Close the Add Customer Form and refresh the Manage Customers datagridview
+                this.sourceForm.DataGridViewRefresh();
 
-            Close();
+                Close();
+            }
+            
+            else
+            {
+                MessageBox.Show("Please select an end date/time that is after the start date/time.");
+            }
         }
 
-        private void AddAppointmentCancelButton_Click(object sender, EventArgs e)
+        private void ModifyAppointmentCancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }

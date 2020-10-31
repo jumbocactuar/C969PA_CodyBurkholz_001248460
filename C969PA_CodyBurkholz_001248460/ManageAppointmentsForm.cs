@@ -32,13 +32,11 @@ namespace C969PA_CodyBurkholz_001248460
             ManageAppointmentsDataGridView.ReadOnly = true;
         }
 
-        private void ManageAppointmentsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ManageAppointmentsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var selection = ManageAppointmentsDataGridView.CurrentCell.RowIndex;
 
             Globals.CurrentDataGridSelection = ManageAppointmentsDataGridView.Rows[selection].Cells[0].Value.ToString();
-
-            Object[] selectionContents = Globals.GetSelectedRowContents("appointment", int.Parse(Globals.CurrentDataGridSelection));
         }
 
         private void ManageAppointmentsAddButton_Click(object sender, EventArgs e)

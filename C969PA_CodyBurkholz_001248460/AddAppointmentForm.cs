@@ -159,28 +159,36 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddAppointmentSaveButton_Click(object sender, EventArgs e)
         {
-            // Put the text field inputs into types acceptable by the Insert method
-            string title = AddAppointmentTitleTextBox.Text;
-            string description = AddAppointmentDescriptionTextBox.Text;
-            string location = AddAppointmentLocationComboBox.SelectedItem.ToString();
-            string contact = AddAppointmentContactTextBox.Text;
-            string type = AddAppointmentTypeComboBox.SelectedItem.ToString();
-            string url = AddAppointmentUrlTextBox.Text;
-            DateTime startDate = AddAppointmentStartDateTimePicker.Value.ToUniversalTime();
-            string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
-            DateTime endDate = AddAppointmentEndDateTimePicker.Value.ToUniversalTime();
-            string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+            if (AddAppointmentStartDateTimePicker.Value < AddAppointmentEndDateTimePicker.Value)
+            {
+                // Put the text field inputs into types acceptable by the Insert method
+                string title = AddAppointmentTitleTextBox.Text;
+                string description = AddAppointmentDescriptionTextBox.Text;
+                string location = AddAppointmentLocationComboBox.SelectedItem.ToString();
+                string contact = AddAppointmentContactTextBox.Text;
+                string type = AddAppointmentTypeComboBox.SelectedItem.ToString();
+                string url = AddAppointmentUrlTextBox.Text;
+                DateTime startDate = AddAppointmentStartDateTimePicker.Value.ToUniversalTime();
+                string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+                DateTime endDate = AddAppointmentEndDateTimePicker.Value.ToUniversalTime();
+                string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-            // Create a record in the Appointment table
-            Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
+                // Create a record in the Appointment table
+                Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
 
-            // Clear the current datagridview selection
-            Globals.CurrentDataGridSelection = null;
+                // Clear the current datagridview selection
+                Globals.CurrentDataGridSelection = null;
 
-            // Close the Add Customer Form and refresh the Manage Customers datagridview
-            this.sourceForm.DataGridViewRefresh();
+                // Close the Add Customer Form and refresh the Manage Customers datagridview
+                this.sourceForm.DataGridViewRefresh();
 
-            Close();
+                Close();
+            }
+            
+            else
+            {
+                MessageBox.Show("Please select an end date/time that is after the start date/time.");
+            }
         }
 
         private void AddAppointmentCancelButton_Click(object sender, EventArgs e)

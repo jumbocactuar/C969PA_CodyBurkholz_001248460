@@ -26,6 +26,7 @@ namespace C969PA_CodyBurkholz_001248460
 
             // Fill the textboxes with the selected address info
             ModifyAddressAddress1TextBox.Text = selectedAddress[1].ToString();
+
             ModifyAddressAddress2TextBox.Text = selectedAddress[2].ToString();
 
             switch (selectedAddress[3])
@@ -46,6 +47,7 @@ namespace C969PA_CodyBurkholz_001248460
             }
 
             ModifyAddressPostalCodeTextBox.Text = selectedAddress[4].ToString();
+
             ModifyAddressPhoneTextBox.Text = selectedAddress[5].ToString();
         }
 

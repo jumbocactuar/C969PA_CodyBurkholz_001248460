@@ -73,6 +73,7 @@
             this.ModifyAppointmentCancelButton.TabIndex = 48;
             this.ModifyAppointmentCancelButton.Text = "Cancel";
             this.ModifyAppointmentCancelButton.UseVisualStyleBackColor = true;
+            this.ModifyAppointmentCancelButton.Click += new System.EventHandler(this.ModifyAppointmentCancelButton_Click);
             // 
             // ModifyAppointmentSaveButton
             // 
@@ -82,6 +83,7 @@
             this.ModifyAppointmentSaveButton.TabIndex = 47;
             this.ModifyAppointmentSaveButton.Text = "Save";
             this.ModifyAppointmentSaveButton.UseVisualStyleBackColor = true;
+            this.ModifyAppointmentSaveButton.Click += new System.EventHandler(this.ModifyAppointmentSaveButton_Click);
             // 
             // ModifyAppointmentSelectCustomerButton
             // 
@@ -91,6 +93,7 @@
             this.ModifyAppointmentSelectCustomerButton.TabIndex = 46;
             this.ModifyAppointmentSelectCustomerButton.Text = "Select Customer";
             this.ModifyAppointmentSelectCustomerButton.UseVisualStyleBackColor = true;
+            this.ModifyAppointmentSelectCustomerButton.Click += new System.EventHandler(this.ModifyAppointmentSelectCustomerButton_Click);
             // 
             // ModifyAppointmentSelectConsultantButton
             // 
@@ -100,6 +103,7 @@
             this.ModifyAppointmentSelectConsultantButton.TabIndex = 45;
             this.ModifyAppointmentSelectConsultantButton.Text = "Select Consultant";
             this.ModifyAppointmentSelectConsultantButton.UseVisualStyleBackColor = true;
+            this.ModifyAppointmentSelectConsultantButton.Click += new System.EventHandler(this.ModifyAppointmentSelectConsultantButton_Click);
             // 
             // ModifyAppointmentCustomerLabel
             // 
@@ -117,6 +121,7 @@
             this.ModifyAppointmentCustomerTextBox.ReadOnly = true;
             this.ModifyAppointmentCustomerTextBox.Size = new System.Drawing.Size(200, 20);
             this.ModifyAppointmentCustomerTextBox.TabIndex = 43;
+            this.ModifyAppointmentCustomerTextBox.TextChanged += new System.EventHandler(this.ModifyAppointmentCustomerTextBox_TextChanged);
             // 
             // ModifyAppointmentConsultantLabel
             // 
@@ -134,6 +139,7 @@
             this.ModifyAppointmentConsultantTextBox.ReadOnly = true;
             this.ModifyAppointmentConsultantTextBox.Size = new System.Drawing.Size(200, 20);
             this.ModifyAppointmentConsultantTextBox.TabIndex = 41;
+            this.ModifyAppointmentConsultantTextBox.TextChanged += new System.EventHandler(this.ModifyAppointmentConsultantTextBox_TextChanged);
             // 
             // ModifyAppointmentEndLabel
             // 
@@ -206,6 +212,7 @@
             this.ModifyAppointmentTypeComboBox.Name = "ModifyAppointmentTypeComboBox";
             this.ModifyAppointmentTypeComboBox.Size = new System.Drawing.Size(200, 21);
             this.ModifyAppointmentTypeComboBox.TabIndex = 33;
+            this.ModifyAppointmentTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.ModifyAppointmentTypeComboBox_SelectedIndexChanged);
             // 
             // ModifyAppointmentContactLabel
             // 
@@ -222,6 +229,7 @@
             this.ModifyAppointmentContactTextBox.Name = "ModifyAppointmentContactTextBox";
             this.ModifyAppointmentContactTextBox.Size = new System.Drawing.Size(200, 20);
             this.ModifyAppointmentContactTextBox.TabIndex = 31;
+            this.ModifyAppointmentContactTextBox.TextChanged += new System.EventHandler(this.ModifyAppointmentContactTextBox_TextChanged);
             // 
             // ModifyAppointmentLocationLabel
             // 
@@ -244,6 +252,7 @@
             this.ModifyAppointmentLocationComboBox.Name = "ModifyAppointmentLocationComboBox";
             this.ModifyAppointmentLocationComboBox.Size = new System.Drawing.Size(200, 21);
             this.ModifyAppointmentLocationComboBox.TabIndex = 29;
+            this.ModifyAppointmentLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.ModifyAppointmentLocationComboBox_SelectedIndexChanged);
             // 
             // ModifyAppointmentDescriptionLabel
             // 
@@ -261,6 +270,7 @@
             this.ModifyAppointmentDescriptionTextBox.Name = "ModifyAppointmentDescriptionTextBox";
             this.ModifyAppointmentDescriptionTextBox.Size = new System.Drawing.Size(200, 100);
             this.ModifyAppointmentDescriptionTextBox.TabIndex = 27;
+            this.ModifyAppointmentDescriptionTextBox.TextChanged += new System.EventHandler(this.ModifyAppointmentDescriptionTextBox_TextChanged);
             // 
             // ModifyAppointmentTitleLabel
             // 
@@ -277,6 +287,7 @@
             this.ModifyAppointmentTitleTextBox.Name = "ModifyAppointmentTitleTextBox";
             this.ModifyAppointmentTitleTextBox.Size = new System.Drawing.Size(200, 20);
             this.ModifyAppointmentTitleTextBox.TabIndex = 25;
+            this.ModifyAppointmentTitleTextBox.TextChanged += new System.EventHandler(this.ModifyAppointmentTitleTextBox_TextChanged);
             // 
             // ModifyAppointmentForm
             // 

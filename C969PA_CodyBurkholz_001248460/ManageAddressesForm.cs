@@ -53,7 +53,7 @@ namespace C969PA_CodyBurkholz_001248460
 
             Globals.CurrentDataGridSelection = ManageAddressesDataGridView.Rows[selection].Cells[0].Value.ToString();
 
-            Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));
+            //Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection)); FIXME: This can probably be removed
         }
 
         private void ManageAddressesAddButton_Click(object sender, EventArgs e)

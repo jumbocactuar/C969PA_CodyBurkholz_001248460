@@ -17,6 +17,8 @@ namespace C969PA_CodyBurkholz_001248460
     {
         private AddAppointmentForm sourceForm = null;
 
+        private ModifyAppointmentForm sourceForm2 = null;
+
         public ManageCustomerForm()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace C969PA_CodyBurkholz_001248460
         public ManageCustomerForm(Form callingForm)
         {
             sourceForm = callingForm as AddAppointmentForm;
+
+            sourceForm2 = callingForm as ModifyAppointmentForm;
 
             InitializeComponent();
         }
@@ -117,9 +121,19 @@ namespace C969PA_CodyBurkholz_001248460
         {
             if (Globals.CurrentDataGridSelection != null)
             {
-                this.sourceForm.FillCustomerName();
+                if (this.sourceForm != null)
+                {
+                    this.sourceForm.FillCustomerName();
 
-                Close();
+                    Close();
+                }
+                
+                else
+                {
+                    this.sourceForm2.FillCustomerName();
+
+                    Close();
+                }
             }
             
             else

@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.ManageAppointmentsFormLabel = new System.Windows.Forms.Label();
             this.ManageAppointmentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.u06vbiDataSet = new C969PA_CodyBurkholz_001248460.U06vbiDataSet();
-            this.appointmentTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.appointmentTableAdapter();
-            this.ManageAppointmentsDeleteButton = new System.Windows.Forms.Button();
-            this.ManageAppointmentsModifyButton = new System.Windows.Forms.Button();
-            this.ManageAppointmentsAddButton = new System.Windows.Forms.Button();
-            this.ManageAppointmentsCancelButton = new System.Windows.Forms.Button();
             this.appointmentIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +40,13 @@
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.u06vbiDataSet = new C969PA_CodyBurkholz_001248460.U06vbiDataSet();
+            this.appointmentTableAdapter = new C969PA_CodyBurkholz_001248460.U06vbiDataSetTableAdapters.appointmentTableAdapter();
+            this.ManageAppointmentsDeleteButton = new System.Windows.Forms.Button();
+            this.ManageAppointmentsModifyButton = new System.Windows.Forms.Button();
+            this.ManageAppointmentsAddButton = new System.Windows.Forms.Button();
+            this.ManageAppointmentsCancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ManageAppointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
@@ -87,62 +87,8 @@
             this.ManageAppointmentsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ManageAppointmentsDataGridView.Size = new System.Drawing.Size(904, 284);
             this.ManageAppointmentsDataGridView.TabIndex = 1;
-            this.ManageAppointmentsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageAppointmentsDataGridView_CellContentClick);
+            this.ManageAppointmentsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageAppointmentsDataGridView_CellClick);
             this.ManageAppointmentsDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ManageAppointmentsDataGridView_DataBindingComplete);
-            // 
-            // appointmentBindingSource
-            // 
-            this.appointmentBindingSource.DataMember = "appointment";
-            this.appointmentBindingSource.DataSource = this.u06vbiDataSet;
-            // 
-            // u06vbiDataSet
-            // 
-            this.u06vbiDataSet.DataSetName = "U06vbiDataSet";
-            this.u06vbiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // appointmentTableAdapter
-            // 
-            this.appointmentTableAdapter.ClearBeforeFill = true;
-            // 
-            // ManageAppointmentsDeleteButton
-            // 
-            this.ManageAppointmentsDeleteButton.Location = new System.Drawing.Point(846, 341);
-            this.ManageAppointmentsDeleteButton.Name = "ManageAppointmentsDeleteButton";
-            this.ManageAppointmentsDeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.ManageAppointmentsDeleteButton.TabIndex = 2;
-            this.ManageAppointmentsDeleteButton.Text = "Delete";
-            this.ManageAppointmentsDeleteButton.UseVisualStyleBackColor = true;
-            this.ManageAppointmentsDeleteButton.Click += new System.EventHandler(this.ManageAppointmentsDeleteButton_Click);
-            // 
-            // ManageAppointmentsModifyButton
-            // 
-            this.ManageAppointmentsModifyButton.Location = new System.Drawing.Point(765, 341);
-            this.ManageAppointmentsModifyButton.Name = "ManageAppointmentsModifyButton";
-            this.ManageAppointmentsModifyButton.Size = new System.Drawing.Size(75, 23);
-            this.ManageAppointmentsModifyButton.TabIndex = 3;
-            this.ManageAppointmentsModifyButton.Text = "Modify";
-            this.ManageAppointmentsModifyButton.UseVisualStyleBackColor = true;
-            this.ManageAppointmentsModifyButton.Click += new System.EventHandler(this.ManageAppointmentsModifyButton_Click);
-            // 
-            // ManageAppointmentsAddButton
-            // 
-            this.ManageAppointmentsAddButton.Location = new System.Drawing.Point(684, 341);
-            this.ManageAppointmentsAddButton.Name = "ManageAppointmentsAddButton";
-            this.ManageAppointmentsAddButton.Size = new System.Drawing.Size(75, 23);
-            this.ManageAppointmentsAddButton.TabIndex = 4;
-            this.ManageAppointmentsAddButton.Text = "Add";
-            this.ManageAppointmentsAddButton.UseVisualStyleBackColor = true;
-            this.ManageAppointmentsAddButton.Click += new System.EventHandler(this.ManageAppointmentsAddButton_Click);
-            // 
-            // ManageAppointmentsCancelButton
-            // 
-            this.ManageAppointmentsCancelButton.Location = new System.Drawing.Point(846, 415);
-            this.ManageAppointmentsCancelButton.Name = "ManageAppointmentsCancelButton";
-            this.ManageAppointmentsCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.ManageAppointmentsCancelButton.TabIndex = 5;
-            this.ManageAppointmentsCancelButton.Text = "Cancel";
-            this.ManageAppointmentsCancelButton.UseVisualStyleBackColor = true;
-            this.ManageAppointmentsCancelButton.Click += new System.EventHandler(this.ManageAppointmentsCancelButton_Click);
             // 
             // appointmentIdDataGridViewTextBoxColumn
             // 
@@ -206,6 +152,60 @@
             this.endDataGridViewTextBoxColumn.HeaderText = "end";
             this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
             this.endDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataMember = "appointment";
+            this.appointmentBindingSource.DataSource = this.u06vbiDataSet;
+            // 
+            // u06vbiDataSet
+            // 
+            this.u06vbiDataSet.DataSetName = "U06vbiDataSet";
+            this.u06vbiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // appointmentTableAdapter
+            // 
+            this.appointmentTableAdapter.ClearBeforeFill = true;
+            // 
+            // ManageAppointmentsDeleteButton
+            // 
+            this.ManageAppointmentsDeleteButton.Location = new System.Drawing.Point(846, 341);
+            this.ManageAppointmentsDeleteButton.Name = "ManageAppointmentsDeleteButton";
+            this.ManageAppointmentsDeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.ManageAppointmentsDeleteButton.TabIndex = 2;
+            this.ManageAppointmentsDeleteButton.Text = "Delete";
+            this.ManageAppointmentsDeleteButton.UseVisualStyleBackColor = true;
+            this.ManageAppointmentsDeleteButton.Click += new System.EventHandler(this.ManageAppointmentsDeleteButton_Click);
+            // 
+            // ManageAppointmentsModifyButton
+            // 
+            this.ManageAppointmentsModifyButton.Location = new System.Drawing.Point(765, 341);
+            this.ManageAppointmentsModifyButton.Name = "ManageAppointmentsModifyButton";
+            this.ManageAppointmentsModifyButton.Size = new System.Drawing.Size(75, 23);
+            this.ManageAppointmentsModifyButton.TabIndex = 3;
+            this.ManageAppointmentsModifyButton.Text = "Modify";
+            this.ManageAppointmentsModifyButton.UseVisualStyleBackColor = true;
+            this.ManageAppointmentsModifyButton.Click += new System.EventHandler(this.ManageAppointmentsModifyButton_Click);
+            // 
+            // ManageAppointmentsAddButton
+            // 
+            this.ManageAppointmentsAddButton.Location = new System.Drawing.Point(684, 341);
+            this.ManageAppointmentsAddButton.Name = "ManageAppointmentsAddButton";
+            this.ManageAppointmentsAddButton.Size = new System.Drawing.Size(75, 23);
+            this.ManageAppointmentsAddButton.TabIndex = 4;
+            this.ManageAppointmentsAddButton.Text = "Add";
+            this.ManageAppointmentsAddButton.UseVisualStyleBackColor = true;
+            this.ManageAppointmentsAddButton.Click += new System.EventHandler(this.ManageAppointmentsAddButton_Click);
+            // 
+            // ManageAppointmentsCancelButton
+            // 
+            this.ManageAppointmentsCancelButton.Location = new System.Drawing.Point(846, 415);
+            this.ManageAppointmentsCancelButton.Name = "ManageAppointmentsCancelButton";
+            this.ManageAppointmentsCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.ManageAppointmentsCancelButton.TabIndex = 5;
+            this.ManageAppointmentsCancelButton.Text = "Cancel";
+            this.ManageAppointmentsCancelButton.UseVisualStyleBackColor = true;
+            this.ManageAppointmentsCancelButton.Click += new System.EventHandler(this.ManageAppointmentsCancelButton_Click);
             // 
             // ManageAppointmentsForm
             // 

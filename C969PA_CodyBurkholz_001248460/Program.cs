@@ -216,12 +216,11 @@ namespace C969PA_CodyBurkholz_001248460
             return id;
         }
 
-        public static int InsertAppointmentRecord(int customerID, int userID, string title, string description, string location, string contact, string type, string url, DateTime start, DateTime end)
+        public static int InsertAppointmentRecord(int customerID, int userID, string title, string description, string location, string contact, string type, string url, string start, string end)
         {
-            // FIXME: Unsure whether string is right for location (what do I get from a dropdown selection), or if DateTime is right for start/end, may need to grab and convert?
             int id = CreateID("appointment");
 
-            string query = $"INSERT INTO appointment VALUES ({id})";
+            string query = $"INSERT INTO appointment VALUES ({id}, {customerID}, {userID}, '{title}', '{description}', '{location}', '{contact}', '{type}', '{url}', '{start}', '{end}', '{GetMySqlNow()}', '{CurrentUser}', '{GetMySqlNow()}', '{CurrentUser}')";
 
             ExecuteThisQueryReturnInt(query);
 

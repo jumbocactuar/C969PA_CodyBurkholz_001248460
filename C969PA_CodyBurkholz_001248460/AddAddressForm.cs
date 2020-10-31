@@ -12,10 +12,19 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class AddAddressForm : Form
     {
+        private ManageAddressesForm sourceForm = null;
+
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false };
 
         public AddAddressForm()
         {
+            InitializeComponent();
+        }
+
+        public AddAddressForm(Form callingForm)
+        {
+            sourceForm = callingForm as ManageAddressesForm;
+            
             InitializeComponent();
         }
 
@@ -86,7 +95,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddAddressSaveButton_Click(object sender, EventArgs e)
         {
-            // Put the text field inputs into forms acceptable by the Insert method
+            // Put the text field inputs into types acceptable by the Insert method
             string address1 = AddAddressAddress1TextBox.Text;
             string address2 = AddAddressAddress2TextBox.Text;
             string city = AddAddressCityComboBox.SelectedItem.ToString();
@@ -96,9 +105,8 @@ namespace C969PA_CodyBurkholz_001248460
             // Create a record in the Address table
             Globals.InsertAddressRecord(address1, address2, city, postalCode, phone);
 
-            // Close the Add Address form and reopen the Manage Addresses form
-            ManageAddressesForm f = new ManageAddressesForm();
-            f.Show();
+            // Close the Add Address form and refresh the Manage Addresses datagridview
+            this.sourceForm.DataGridViewRefresh();
 
             Close();
         }

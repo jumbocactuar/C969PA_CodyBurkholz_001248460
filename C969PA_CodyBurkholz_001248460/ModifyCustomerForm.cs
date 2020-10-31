@@ -16,7 +16,9 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false };
 
-        public static string CustomerID = Globals.CurrentDataGridSelection.ToString();
+        public static string CustomerID;
+
+        public static string AddressID;
 
         public ModifyCustomerForm()
         {
@@ -34,6 +36,8 @@ namespace C969PA_CodyBurkholz_001248460
         {
             Object[] selectedCustomer = Globals.GetSelectedRowContents("customer", int.Parse(Globals.CurrentDataGridSelection));
 
+            CustomerID = selectedCustomer[0].ToString();
+
             string name = selectedCustomer[1].ToString();
 
             int spacePos = name.IndexOf(" ");
@@ -49,9 +53,9 @@ namespace C969PA_CodyBurkholz_001248460
                 ModifyCustomerActiveCheckBox.Checked = true;
             }
 
-            string addressID = selectedCustomer[2].ToString();
+            AddressID = selectedCustomer[2].ToString();
 
-            Object[] selectedAddress = Globals.GetSelectedRowContents("address", int.Parse(addressID));
+            Object[] selectedAddress = Globals.GetSelectedRowContents("address", int.Parse(AddressID));
 
             ModifyCustomerAddress1TextBox.Text = selectedAddress[1].ToString();
             
@@ -138,7 +142,7 @@ namespace C969PA_CodyBurkholz_001248460
             // Put the text field inputs into forms acceptable by the Update method
             int customerID = int.Parse(CustomerID);
             string name = $"{ModifyCustomerLastNameTextBox.Text}, {ModifyCustomerFirstNameTextBox.Text}";
-            int addressID = int.Parse(Globals.CurrentDataGridSelection);
+            int addressID = int.Parse(AddressID);
             byte active;
 
             if (ModifyCustomerActiveCheckBox.Checked == true)

@@ -16,9 +16,6 @@ namespace C969PA_CodyBurkholz_001248460
         D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
         E. Provide the ability to automatically adjust appointment times based on user time zones and daylight saving time.*/
 
-        /* FIXME: This is their fancy way of saying you have to have to have the ability to add a customer when making an appointment and also 
-        be able to change customer in an update. For display customer id is ok, customer name might be helpful. ( humans don't usually remember all ids)*/
-
         public ManageAppointmentsForm()
         {
             InitializeComponent();
@@ -46,17 +43,15 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAppointmentsAddButton_Click(object sender, EventArgs e)
         {
-            AddAppointmentForm f = new AddAppointmentForm();
+            AddAppointmentForm f = new AddAppointmentForm(this);
             f.Show();
-
-            Close();
         }
 
         private void ManageAppointmentsModifyButton_Click(object sender, EventArgs e)
         {
             if (Globals.CurrentDataGridSelection != null)
             {
-                ModifyAppointmentForm f = new ModifyAppointmentForm();
+                ModifyAppointmentForm f = new ModifyAppointmentForm(this);
                 f.Show();
             }
 
@@ -96,6 +91,13 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManageAppointmentsCancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void DataGridViewRefresh()
+        {
+            this.appointmentTableAdapter.Fill(this.u06vbiDataSet.appointment);
+
+            ManageAppointmentsDataGridView.ClearSelection();
         }
     }
 }

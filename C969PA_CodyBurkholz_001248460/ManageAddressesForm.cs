@@ -58,10 +58,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAddressesAddButton_Click(object sender, EventArgs e)
         {
-            AddAddressForm f = new AddAddressForm();
+            AddAddressForm f = new AddAddressForm(this);
             f.Show();
-
-            Close();
         }
 
         private void ManageAddressesModifyButton_Click(object sender, EventArgs e)
@@ -125,6 +123,13 @@ namespace C969PA_CodyBurkholz_001248460
             Globals.CurrentDataGridSelection = null;
 
             Close();
+        }
+
+        public void DataGridViewRefresh()
+        {
+            this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
+
+            ManageAddressesDataGridView.ClearSelection();
         }
     }
 }

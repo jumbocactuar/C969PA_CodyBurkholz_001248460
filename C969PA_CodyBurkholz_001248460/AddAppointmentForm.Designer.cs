@@ -32,7 +32,7 @@
             this.AddAppointmentTitleTextBox = new System.Windows.Forms.TextBox();
             this.AddAppointmentTitleLabel = new System.Windows.Forms.Label();
             this.AddAppointmentDescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.Description = new System.Windows.Forms.Label();
+            this.AddAppointmentDescriptionLabel = new System.Windows.Forms.Label();
             this.AddAppointmentLocationComboBox = new System.Windows.Forms.ComboBox();
             this.AddAppointmentLocationLabel = new System.Windows.Forms.Label();
             this.AddAppointmentContactTextBox = new System.Windows.Forms.TextBox();
@@ -91,14 +91,14 @@
             this.AddAppointmentDescriptionTextBox.TabIndex = 3;
             this.AddAppointmentDescriptionTextBox.TextChanged += new System.EventHandler(this.AddAppointmentDescriptionTextBox_TextChanged);
             // 
-            // Description
+            // AddAppointmentDescriptionLabel
             // 
-            this.Description.AutoSize = true;
-            this.Description.Location = new System.Drawing.Point(28, 131);
-            this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(60, 13);
-            this.Description.TabIndex = 4;
-            this.Description.Text = "Description";
+            this.AddAppointmentDescriptionLabel.AutoSize = true;
+            this.AddAppointmentDescriptionLabel.Location = new System.Drawing.Point(28, 131);
+            this.AddAppointmentDescriptionLabel.Name = "AddAppointmentDescriptionLabel";
+            this.AddAppointmentDescriptionLabel.Size = new System.Drawing.Size(60, 13);
+            this.AddAppointmentDescriptionLabel.TabIndex = 4;
+            this.AddAppointmentDescriptionLabel.Text = "Description";
             // 
             // AddAppointmentLocationComboBox
             // 
@@ -314,7 +314,7 @@
             this.Controls.Add(this.AddAppointmentContactTextBox);
             this.Controls.Add(this.AddAppointmentLocationLabel);
             this.Controls.Add(this.AddAppointmentLocationComboBox);
-            this.Controls.Add(this.Description);
+            this.Controls.Add(this.AddAppointmentDescriptionLabel);
             this.Controls.Add(this.AddAppointmentDescriptionTextBox);
             this.Controls.Add(this.AddAppointmentTitleLabel);
             this.Controls.Add(this.AddAppointmentTitleTextBox);
@@ -333,7 +333,7 @@
         private System.Windows.Forms.TextBox AddAppointmentTitleTextBox;
         private System.Windows.Forms.Label AddAppointmentTitleLabel;
         private System.Windows.Forms.TextBox AddAppointmentDescriptionTextBox;
-        private System.Windows.Forms.Label Description;
+        private System.Windows.Forms.Label AddAppointmentDescriptionLabel;
         private System.Windows.Forms.ComboBox AddAppointmentLocationComboBox;
         private System.Windows.Forms.Label AddAppointmentLocationLabel;
         private System.Windows.Forms.TextBox AddAppointmentContactTextBox;

@@ -61,9 +61,9 @@
             // 
             // ModifyCustomerCityTextBox
             // 
-            this.ModifyCustomerCityTextBox.Enabled = false;
             this.ModifyCustomerCityTextBox.Location = new System.Drawing.Point(345, 168);
             this.ModifyCustomerCityTextBox.Name = "ModifyCustomerCityTextBox";
+            this.ModifyCustomerCityTextBox.ReadOnly = true;
             this.ModifyCustomerCityTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerCityTextBox.TabIndex = 41;
             // 
@@ -118,9 +118,9 @@
             // 
             // ModifyCustomerPhoneTextBox
             // 
-            this.ModifyCustomerPhoneTextBox.Enabled = false;
             this.ModifyCustomerPhoneTextBox.Location = new System.Drawing.Point(345, 276);
             this.ModifyCustomerPhoneTextBox.Name = "ModifyCustomerPhoneTextBox";
+            this.ModifyCustomerPhoneTextBox.ReadOnly = true;
             this.ModifyCustomerPhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerPhoneTextBox.TabIndex = 35;
             // 
@@ -180,25 +180,25 @@
             // 
             // ModifyCustomerPostalCodeTextBox
             // 
-            this.ModifyCustomerPostalCodeTextBox.Enabled = false;
             this.ModifyCustomerPostalCodeTextBox.Location = new System.Drawing.Point(345, 220);
             this.ModifyCustomerPostalCodeTextBox.Name = "ModifyCustomerPostalCodeTextBox";
+            this.ModifyCustomerPostalCodeTextBox.ReadOnly = true;
             this.ModifyCustomerPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerPostalCodeTextBox.TabIndex = 28;
             // 
             // ModifyCustomerAddress2TextBox
             // 
-            this.ModifyCustomerAddress2TextBox.Enabled = false;
             this.ModifyCustomerAddress2TextBox.Location = new System.Drawing.Point(345, 114);
             this.ModifyCustomerAddress2TextBox.Name = "ModifyCustomerAddress2TextBox";
+            this.ModifyCustomerAddress2TextBox.ReadOnly = true;
             this.ModifyCustomerAddress2TextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerAddress2TextBox.TabIndex = 27;
             // 
             // ModifyCustomerAddress1TextBox
             // 
-            this.ModifyCustomerAddress1TextBox.Enabled = false;
             this.ModifyCustomerAddress1TextBox.Location = new System.Drawing.Point(345, 66);
             this.ModifyCustomerAddress1TextBox.Name = "ModifyCustomerAddress1TextBox";
+            this.ModifyCustomerAddress1TextBox.ReadOnly = true;
             this.ModifyCustomerAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.ModifyCustomerAddress1TextBox.TabIndex = 26;
             this.ModifyCustomerAddress1TextBox.TextChanged += new System.EventHandler(this.ModifyCustomerAddress1TextBox_TextChanged);

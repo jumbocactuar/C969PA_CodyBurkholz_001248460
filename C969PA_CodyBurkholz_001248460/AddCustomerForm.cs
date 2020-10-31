@@ -87,7 +87,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddCustomerSaveButton_Click(object sender, EventArgs e)
         {
-            // Put the text field inputs into forms acceptable by the Insert method
+            // Put the text field inputs into types acceptable by the Insert method
             string name = $"{AddCustomerLastNameTextBox.Text}, {AddCustomerFirstNameTextBox.Text}";
             int addressID = int.Parse(Globals.CurrentDataGridSelection);
             byte active;

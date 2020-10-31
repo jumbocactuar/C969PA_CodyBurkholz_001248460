@@ -77,26 +77,26 @@
             // 
             // AddCustomerAddress1TextBox
             // 
-            this.AddCustomerAddress1TextBox.Enabled = false;
             this.AddCustomerAddress1TextBox.Location = new System.Drawing.Point(347, 63);
             this.AddCustomerAddress1TextBox.Name = "AddCustomerAddress1TextBox";
+            this.AddCustomerAddress1TextBox.ReadOnly = true;
             this.AddCustomerAddress1TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerAddress1TextBox.TabIndex = 4;
             this.AddCustomerAddress1TextBox.TextChanged += new System.EventHandler(this.AddCustomerAddress1TextBox_TextChanged);
             // 
             // AddCustomerAddress2TextBox
             // 
-            this.AddCustomerAddress2TextBox.Enabled = false;
             this.AddCustomerAddress2TextBox.Location = new System.Drawing.Point(347, 111);
             this.AddCustomerAddress2TextBox.Name = "AddCustomerAddress2TextBox";
+            this.AddCustomerAddress2TextBox.ReadOnly = true;
             this.AddCustomerAddress2TextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerAddress2TextBox.TabIndex = 5;
             // 
             // AddCustomerPostalCodeTextBox
             // 
-            this.AddCustomerPostalCodeTextBox.Enabled = false;
             this.AddCustomerPostalCodeTextBox.Location = new System.Drawing.Point(347, 217);
             this.AddCustomerPostalCodeTextBox.Name = "AddCustomerPostalCodeTextBox";
+            this.AddCustomerPostalCodeTextBox.ReadOnly = true;
             this.AddCustomerPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerPostalCodeTextBox.TabIndex = 6;
             // 
@@ -156,9 +156,9 @@
             // 
             // AddCustomerPhoneTextBox
             // 
-            this.AddCustomerPhoneTextBox.Enabled = false;
             this.AddCustomerPhoneTextBox.Location = new System.Drawing.Point(347, 273);
             this.AddCustomerPhoneTextBox.Name = "AddCustomerPhoneTextBox";
+            this.AddCustomerPhoneTextBox.ReadOnly = true;
             this.AddCustomerPhoneTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerPhoneTextBox.TabIndex = 15;
             // 
@@ -213,9 +213,9 @@
             // 
             // AddCustomerCityTextBox
             // 
-            this.AddCustomerCityTextBox.Enabled = false;
             this.AddCustomerCityTextBox.Location = new System.Drawing.Point(347, 165);
             this.AddCustomerCityTextBox.Name = "AddCustomerCityTextBox";
+            this.AddCustomerCityTextBox.ReadOnly = true;
             this.AddCustomerCityTextBox.Size = new System.Drawing.Size(100, 20);
             this.AddCustomerCityTextBox.TabIndex = 23;
             // 

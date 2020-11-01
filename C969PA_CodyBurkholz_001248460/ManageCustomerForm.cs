@@ -23,20 +23,6 @@ namespace C969PA_CodyBurkholz_001248460
         {
             InitializeComponent();
 
-            /*//string cxnString;
-            DataTable dt = new DataTable();
-
-            // FIXME: Reevaluate whether some of the below is necessary (but if it ain't broke, don't fix it)
-
-            MySqlConnection cxnToMySQL = new MySqlConnection(Globals.cxnString);
-            cxnToMySQL.Open();
-            string initString = "SELECT * FROM customer";
-            MySqlCommand cmdToMySQL = new MySqlCommand(initString, cxnToMySQL);
-            MySqlDataAdapter adapterToMySQL = new MySqlDataAdapter(selectCommand: cmdToMySQL);
-            adapterToMySQL.Fill(dt);
-            ManageCustomerDataGridView.DataSource = dt;
-            cxnToMySQL.Close();*/
-
             ManageCustomerUseSelectedButton.Hide();
         }
 

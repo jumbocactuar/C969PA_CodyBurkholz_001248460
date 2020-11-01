@@ -12,10 +12,6 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ManageAppointmentsForm : Form
     {
-        /*C. Provide the ability to add, update, and delete appointments, capturing the type of appointment and a link to the specific customer record in the database.
-        D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
-        E. Provide the ability to automatically adjust appointment times based on user time zones and daylight saving time.*/
-
         public ManageAppointmentsForm()
         {
             InitializeComponent();

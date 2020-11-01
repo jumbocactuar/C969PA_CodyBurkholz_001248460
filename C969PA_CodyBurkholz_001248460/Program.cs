@@ -15,6 +15,14 @@ using MySql.Data.Types;
 
 namespace C969PA_CodyBurkholz_001248460
 {
+    /* FIXME NOTES
+     * A. Create a log-in form that can determine the user’s location and translate log-in and error control messages 
+     * (e.g., “The username and password did not match.”) into the user’s language and in one additional language.
+     * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
+     * E. Provide the ability to automatically adjust appointment times based on user time zones and daylight saving time.
+     * Exception preventing appointment outside business hours is based on the local time where the app was started (the local time of the user who logged in).
+     */
+
     static class Program
     {
         /// <summary>
@@ -303,5 +311,73 @@ namespace C969PA_CodyBurkholz_001248460
 
             ExecuteThisQueryReturnInt(query);
         }
+    }
+
+    public class ForeignKeyViolationException : Exception
+    {
+        public ForeignKeyViolationException()
+            : base("This record cannot be deleted, as other records depend on it.")
+        {
+
+        }
+
+        public ForeignKeyViolationException(string messageValue)
+            : base(messageValue)
+        {
+
+        }
+
+        public ForeignKeyViolationException(string messageValue, Exception inner)
+            : base(messageValue, inner)
+        {
+
+        }
+    }
+
+    public class InvalidAppointmentTimeException : Exception
+    {
+        public InvalidAppointmentTimeException()
+            : base("The specified appointment times overlap or are outside business hours.")
+        {
+
+        }
+
+        public InvalidAppointmentTimeException(string messageValue)
+            : base(messageValue)
+        {
+
+        }
+
+        public InvalidAppointmentTimeException(string messageValue, Exception inner)
+            : base(messageValue, inner)
+        {
+
+        }
+    }
+
+    public class InvalidCredentialsException : Exception
+    {
+        public InvalidCredentialsException()
+            : base("Invalid user name or password.")
+        {
+
+        }
+
+        public InvalidCredentialsException(string messageValue)
+            : base(messageValue)
+        {
+
+        }
+
+        public InvalidCredentialsException(string messageValue, Exception inner)
+            : base(messageValue, inner)
+        {
+
+        }
+    }
+
+    public class InvalidCustomerDataException : Exception
+    {
+
     }
 }

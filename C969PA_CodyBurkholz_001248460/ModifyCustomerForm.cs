@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace C969PA_CodyBurkholz_001248460
 {
-    public partial class ModifyCustomerForm : Form // FIXME: Modify fails if you don't change the address (the addressId used is the same as the selected customerId)
+    public partial class ModifyCustomerForm : Form
     {
         private ManageCustomerForm sourceForm = null;
 
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false };
 
-        public static string CustomerID;
+        public static int CustomerID;
 
-        public static string AddressID;
+        public static int AddressID;
 
         public ModifyCustomerForm()
         {
@@ -36,7 +36,7 @@ namespace C969PA_CodyBurkholz_001248460
         {
             Object[] selectedCustomer = Globals.GetSelectedRowContents("customer", int.Parse(Globals.CurrentDataGridSelection));
 
-            CustomerID = selectedCustomer[0].ToString();
+            CustomerID = Convert.ToInt32(selectedCustomer[0]);
 
             string name = selectedCustomer[1].ToString();
 
@@ -53,37 +53,41 @@ namespace C969PA_CodyBurkholz_001248460
                 ModifyCustomerActiveCheckBox.Checked = true;
             }
 
-            AddressID = selectedCustomer[2].ToString();
+            if (selectedCustomer[2] != null)
+            {
+                AddressID = Convert.ToInt32(selectedCustomer[2]);
 
-            Object[] selectedAddress = Globals.GetSelectedRowContents("address", int.Parse(AddressID));
+                Object[] selectedAddress = Globals.GetSelectedRowContents("address", AddressID);
 
-            ModifyCustomerAddress1TextBox.Text = selectedAddress[1].ToString();
+                ModifyCustomerAddress1TextBox.Text = selectedAddress[1].ToString();
+
+                if (selectedAddress[2] != null)
+                {
+                    ModifyCustomerAddress2TextBox.Text = selectedAddress[2].ToString();
+                }
+
+                switch (selectedAddress[3])
+                {
+                    case 1:
+                        ModifyCustomerCityTextBox.Text = "London";
+                        break;
+
+                    case 2:
+                        ModifyCustomerCityTextBox.Text = "New York";
+                        break;
+
+                    case 3:
+                        ModifyCustomerCityTextBox.Text = "Phoenix";
+                        break;
+                    default:
+                        break;
+                }
+
+                ModifyCustomerPostalCodeTextBox.Text = selectedAddress[4].ToString();
+
+                ModifyCustomerPhoneTextBox.Text = selectedAddress[5].ToString();
+            }
             
-            if (selectedAddress[2] != null)
-            {
-                ModifyCustomerAddress2TextBox.Text = selectedAddress[2].ToString();
-            }
-
-            switch (selectedAddress[3])
-            {
-                case 1:
-                    ModifyCustomerCityTextBox.Text = "London";
-                    break;
-
-                case 2:
-                    ModifyCustomerCityTextBox.Text = "New York";
-                    break;
-
-                case 3:
-                    ModifyCustomerCityTextBox.Text = "Phoenix";
-                    break;
-                default:
-                    break;
-            }
-
-            ModifyCustomerPostalCodeTextBox.Text = selectedAddress[4].ToString();
-
-            ModifyCustomerPhoneTextBox.Text = selectedAddress[5].ToString();
         }
 
         private void ModifyCustomerFirstNameTextBox_TextChanged(object sender, EventArgs e)
@@ -140,9 +144,7 @@ namespace C969PA_CodyBurkholz_001248460
         private void ModifyCustomerSaveButton_Click(object sender, EventArgs e)
         {
             // Put the text field inputs into forms acceptable by the Update method
-            int customerID = int.Parse(CustomerID);
             string name = $"{ModifyCustomerLastNameTextBox.Text}, {ModifyCustomerFirstNameTextBox.Text}";
-            int addressID = int.Parse(AddressID);
             byte active;
 
             if (ModifyCustomerActiveCheckBox.Checked == true)
@@ -154,8 +156,10 @@ namespace C969PA_CodyBurkholz_001248460
                 active = 0;
             }
 
+            int addressID = Convert.ToInt32(Globals.CurrentDataGridSelection);
+
             // Update the record in the Customer table
-            Globals.UpdateCustomerRecord(customerID, name, active, addressID);
+            Globals.UpdateCustomerRecord(CustomerID, name, active, addressID);
 
             // Clear the current datagridview selection
             Globals.CurrentDataGridSelection = null;

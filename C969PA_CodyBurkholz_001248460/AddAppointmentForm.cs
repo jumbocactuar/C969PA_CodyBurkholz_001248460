@@ -221,7 +221,7 @@ namespace C969PA_CodyBurkholz_001248460
                 AddAppointmentConsultantTextBox.Text = selectionContents[1].ToString();
             }
 
-            Globals.CurrentDataGridSelection = null; // FIXME: Make sure this doens't interfere with anything
+            Globals.CurrentDataGridSelection = null;
         }
 
         public void FillCustomerName()
@@ -235,7 +235,7 @@ namespace C969PA_CodyBurkholz_001248460
                 AddAppointmentCustomerTextBox.Text = selectionContents[1].ToString();
             }
 
-            Globals.CurrentDataGridSelection = null; // FIXME: Make sure this doesn't interfere with anything
+            Globals.CurrentDataGridSelection = null;
         }
     }
 }

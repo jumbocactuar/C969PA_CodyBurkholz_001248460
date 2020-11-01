@@ -48,14 +48,6 @@ namespace C969PA_CodyBurkholz_001248460
 
             AppointmentID = Convert.ToInt32(selectedAppointment[0]);
 
-            CustomerID = Convert.ToInt32(selectedAppointment[1]);
-
-            UserID = Convert.ToInt32(selectedAppointment[2]);
-
-            Object[] associatedUser = Globals.GetSelectedRowContents("user", UserID);
-
-            Object[] associatedCustomer = Globals.GetSelectedRowContents("customer", CustomerID);
-
             ModifyAppointmentTitleTextBox.Text = selectedAppointment[3].ToString();
 
             ModifyAppointmentDescriptionTextBox.Text = selectedAppointment[4].ToString();
@@ -71,13 +63,31 @@ namespace C969PA_CodyBurkholz_001248460
                 ModifyAppointmentUrlTextBox.Text = selectedAppointment[8].ToString();
             }
 
-            ModifyAppointmentStartDateTimePicker.Value = Convert.ToDateTime(selectedAppointment[9]); // FIMXE: Need to recall these datetimes in local time
+            DateTime tempStart = Convert.ToDateTime(selectedAppointment[9]);
 
-            ModifyAppointmentEndDateTimePicker.Value = Convert.ToDateTime(selectedAppointment[10]);
+            ModifyAppointmentStartDateTimePicker.Value = tempStart.ToLocalTime();
 
-            ModifyAppointmentConsultantTextBox.Text = associatedUser[1].ToString();
+            DateTime tempEnd = Convert.ToDateTime(selectedAppointment[10]);
 
-            ModifyAppointmentCustomerTextBox.Text = associatedCustomer[1].ToString();
+            ModifyAppointmentEndDateTimePicker.Value = tempEnd.ToLocalTime();
+
+            if (selectedAppointment[2] != null)
+            {
+                UserID = Convert.ToInt32(selectedAppointment[2]);
+
+                Object[] associatedUser = Globals.GetSelectedRowContents("user", UserID);
+
+                ModifyAppointmentConsultantTextBox.Text = associatedUser[1].ToString();
+            }
+
+            if (selectedAppointment[1] != null)
+            {
+                CustomerID = Convert.ToInt32(selectedAppointment[1]);
+
+                Object[] associatedCustomer = Globals.GetSelectedRowContents("customer", CustomerID);
+
+                ModifyAppointmentCustomerTextBox.Text = associatedCustomer[1].ToString();
+            }
         }
 
         private void ModifyAppointmentTitleTextBox_TextChanged(object sender, EventArgs e)

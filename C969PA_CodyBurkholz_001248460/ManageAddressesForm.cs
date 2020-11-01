@@ -36,11 +36,6 @@ namespace C969PA_CodyBurkholz_001248460
             this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
         }
 
-        private void ManageAddressesForm_Activated(object sender, EventArgs e) // FIXME: Unclear whether this is needed
-        {
-            this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
-        }
-
         private void ManageAddressesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ManageAddressesDataGridView.ClearSelection();
@@ -52,8 +47,6 @@ namespace C969PA_CodyBurkholz_001248460
             var selection = ManageAddressesDataGridView.CurrentCell.RowIndex;
 
             Globals.CurrentDataGridSelection = ManageAddressesDataGridView.Rows[selection].Cells[0].Value.ToString();
-
-            //Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection)); FIXME: This can probably be removed
         }
 
         private void ManageAddressesAddButton_Click(object sender, EventArgs e)

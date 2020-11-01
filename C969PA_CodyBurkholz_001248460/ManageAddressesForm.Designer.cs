@@ -81,7 +81,7 @@
             this.ManageAddressesDataGridView.RowHeadersVisible = false;
             this.ManageAddressesDataGridView.RowHeadersWidth = 50;
             this.ManageAddressesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ManageAddressesDataGridView.Size = new System.Drawing.Size(759, 253);
+            this.ManageAddressesDataGridView.Size = new System.Drawing.Size(605, 253);
             this.ManageAddressesDataGridView.TabIndex = 1;
             this.ManageAddressesDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ManageAddressesDataGridView_CellClick);
             this.ManageAddressesDataGridView.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.ManageAddressesDataGridView_DataBindingComplete);
@@ -144,7 +144,7 @@
             // 
             // ManageAddressesAddButton
             // 
-            this.ManageAddressesAddButton.Location = new System.Drawing.Point(539, 312);
+            this.ManageAddressesAddButton.Location = new System.Drawing.Point(385, 312);
             this.ManageAddressesAddButton.Name = "ManageAddressesAddButton";
             this.ManageAddressesAddButton.Size = new System.Drawing.Size(75, 23);
             this.ManageAddressesAddButton.TabIndex = 2;
@@ -154,7 +154,7 @@
             // 
             // ManageAddressesModifyButton
             // 
-            this.ManageAddressesModifyButton.Location = new System.Drawing.Point(620, 312);
+            this.ManageAddressesModifyButton.Location = new System.Drawing.Point(466, 312);
             this.ManageAddressesModifyButton.Name = "ManageAddressesModifyButton";
             this.ManageAddressesModifyButton.Size = new System.Drawing.Size(75, 23);
             this.ManageAddressesModifyButton.TabIndex = 3;
@@ -164,7 +164,7 @@
             // 
             // ManageAddressesDeleteButton
             // 
-            this.ManageAddressesDeleteButton.Location = new System.Drawing.Point(701, 312);
+            this.ManageAddressesDeleteButton.Location = new System.Drawing.Point(547, 312);
             this.ManageAddressesDeleteButton.Name = "ManageAddressesDeleteButton";
             this.ManageAddressesDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.ManageAddressesDeleteButton.TabIndex = 4;
@@ -174,9 +174,9 @@
             // 
             // ManageAddressesUseSelectedButton
             // 
-            this.ManageAddressesUseSelectedButton.Location = new System.Drawing.Point(560, 387);
+            this.ManageAddressesUseSelectedButton.Location = new System.Drawing.Point(385, 387);
             this.ManageAddressesUseSelectedButton.Name = "ManageAddressesUseSelectedButton";
-            this.ManageAddressesUseSelectedButton.Size = new System.Drawing.Size(135, 23);
+            this.ManageAddressesUseSelectedButton.Size = new System.Drawing.Size(156, 23);
             this.ManageAddressesUseSelectedButton.TabIndex = 5;
             this.ManageAddressesUseSelectedButton.Text = "Use Selected Address";
             this.ManageAddressesUseSelectedButton.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             // 
             // ManageAddressesCancelButton
             // 
-            this.ManageAddressesCancelButton.Location = new System.Drawing.Point(701, 387);
+            this.ManageAddressesCancelButton.Location = new System.Drawing.Point(547, 387);
             this.ManageAddressesCancelButton.Name = "ManageAddressesCancelButton";
             this.ManageAddressesCancelButton.Size = new System.Drawing.Size(75, 23);
             this.ManageAddressesCancelButton.TabIndex = 6;
@@ -196,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(643, 450);
             this.Controls.Add(this.ManageAddressesCancelButton);
             this.Controls.Add(this.ManageAddressesUseSelectedButton);
             this.Controls.Add(this.ManageAddressesDeleteButton);
@@ -206,7 +206,6 @@
             this.Controls.Add(this.ManageAddressesFormLabel);
             this.Name = "ManageAddressesForm";
             this.Text = "Manage Addresses";
-            this.Activated += new System.EventHandler(this.ManageAddressesForm_Activated);
             this.Load += new System.EventHandler(this.ManageAddresses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ManageAddressesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressBindingSource)).EndInit();

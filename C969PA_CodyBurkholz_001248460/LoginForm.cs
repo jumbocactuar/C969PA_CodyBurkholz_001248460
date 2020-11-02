@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,21 @@ namespace C969PA_CodyBurkholz_001248460
         public LoginForm()
         {
             InitializeComponent();
+
+            //CultureInfo.CurrentUICulture = new CultureInfo("es-MX", false);
+
+            if (CultureInfo.CurrentUICulture.Name == "es-MX")
+            {
+                LoginFormLabel.Text = "Iniciar Sesión";
+                LoginUserNameLabel.Text = "Nombre de usuario";
+                LoginPasswordLabel.Text = "Contraseña";
+                LoginLogInButton.Text = "Iniciar Sesión";
+            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-           /* // Populate the User table
-            Globals.InsertUserRecord("test", "test", 1);*/
+            // FIXME: Remove if not used
         }
 
         private void LoginLogInButton_Click(object sender, EventArgs e)
@@ -33,15 +43,31 @@ namespace C969PA_CodyBurkholz_001248460
 
             string password = Globals.GetLoginInfo("password", tempPass);
 
-            if (userName == Globals.CurrentUser && password == tempPass)
+            try
             {
-                ManagementPortalForm f = new ManagementPortalForm();
-                f.Show();
+                if (userName != Globals.CurrentUser | password != tempPass)
+                {
+                    throw new InvalidCredentialsException();
+                }
+
+                else
+                {
+                    ManagementPortalForm f = new ManagementPortalForm();
+                    f.Show();
+                }
             }
 
-            else
+            catch (InvalidCredentialsException ex)
             {
-                MessageBox.Show("Incorrect User Name or Password");
+                if (CultureInfo.CurrentUICulture.Name == "es-MX")
+                {
+                    MessageBox.Show("El nombre de usuario o la contraseña es inválido/a.");
+                }
+
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

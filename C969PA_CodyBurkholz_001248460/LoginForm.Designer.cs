@@ -48,14 +48,14 @@
             // 
             // LoginUserNameTextBox
             // 
-            this.LoginUserNameTextBox.Location = new System.Drawing.Point(122, 84);
+            this.LoginUserNameTextBox.Location = new System.Drawing.Point(99, 82);
             this.LoginUserNameTextBox.Name = "LoginUserNameTextBox";
             this.LoginUserNameTextBox.Size = new System.Drawing.Size(130, 20);
             this.LoginUserNameTextBox.TabIndex = 2;
             // 
             // LoginPasswordTextBox
             // 
-            this.LoginPasswordTextBox.Location = new System.Drawing.Point(122, 138);
+            this.LoginPasswordTextBox.Location = new System.Drawing.Point(99, 137);
             this.LoginPasswordTextBox.Name = "LoginPasswordTextBox";
             this.LoginPasswordTextBox.Size = new System.Drawing.Size(130, 20);
             this.LoginPasswordTextBox.TabIndex = 3;
@@ -64,7 +64,7 @@
             // LoginUserNameLabel
             // 
             this.LoginUserNameLabel.AutoSize = true;
-            this.LoginUserNameLabel.Location = new System.Drawing.Point(56, 87);
+            this.LoginUserNameLabel.Location = new System.Drawing.Point(96, 66);
             this.LoginUserNameLabel.Name = "LoginUserNameLabel";
             this.LoginUserNameLabel.Size = new System.Drawing.Size(60, 13);
             this.LoginUserNameLabel.TabIndex = 4;
@@ -73,7 +73,7 @@
             // LoginPasswordLabel
             // 
             this.LoginPasswordLabel.AutoSize = true;
-            this.LoginPasswordLabel.Location = new System.Drawing.Point(63, 141);
+            this.LoginPasswordLabel.Location = new System.Drawing.Point(96, 121);
             this.LoginPasswordLabel.Name = "LoginPasswordLabel";
             this.LoginPasswordLabel.Size = new System.Drawing.Size(53, 13);
             this.LoginPasswordLabel.TabIndex = 5;
@@ -81,9 +81,9 @@
             // 
             // LoginLogInButton
             // 
-            this.LoginLogInButton.Location = new System.Drawing.Point(122, 199);
+            this.LoginLogInButton.Location = new System.Drawing.Point(99, 199);
             this.LoginLogInButton.Name = "LoginLogInButton";
-            this.LoginLogInButton.Size = new System.Drawing.Size(75, 23);
+            this.LoginLogInButton.Size = new System.Drawing.Size(130, 23);
             this.LoginLogInButton.TabIndex = 4;
             this.LoginLogInButton.Text = "Log In";
             this.LoginLogInButton.UseVisualStyleBackColor = true;

@@ -56,12 +56,22 @@ namespace C969PA_CodyBurkholz_001248460
 
         private static int ExecuteThisQueryReturnInt(string query)
         {
-            int result;
+            int result = 0;
 
             MySqlConnection cxn = new MySqlConnection(cxnString);
             cxn.Open();
             MySqlCommand cmd = new MySqlCommand(query, cxn);
-            result = cmd.ExecuteNonQuery();
+
+            try
+            {
+                result = cmd.ExecuteNonQuery();
+            }
+
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("This record cannot be deleted, as one or more records depend on it.");
+            }
+
             cxn.Close();
 
             return result;
@@ -313,27 +323,6 @@ namespace C969PA_CodyBurkholz_001248460
         }
     }
 
-    public class ForeignKeyViolationException : Exception
-    {
-        public ForeignKeyViolationException()
-            : base("This record cannot be deleted, as other records depend on it.")
-        {
-
-        }
-
-        public ForeignKeyViolationException(string messageValue)
-            : base(messageValue)
-        {
-
-        }
-
-        public ForeignKeyViolationException(string messageValue, Exception inner)
-            : base(messageValue, inner)
-        {
-
-        }
-    }
-
     public class InvalidAppointmentTimeException : Exception
     {
         public InvalidAppointmentTimeException()
@@ -358,7 +347,7 @@ namespace C969PA_CodyBurkholz_001248460
     public class InvalidCredentialsException : Exception
     {
         public InvalidCredentialsException()
-            : base("Invalid user name or password.")
+            : base("Invalid user name or password")
         {
 
         }
@@ -378,6 +367,22 @@ namespace C969PA_CodyBurkholz_001248460
 
     public class InvalidCustomerDataException : Exception
     {
+        public InvalidCustomerDataException()
+            : base("The data entered is invalid.")
+        {
 
+        }
+
+        public InvalidCustomerDataException(string messageValue)
+            : base(messageValue)
+        {
+
+        }
+
+        public InvalidCustomerDataException(string messageValue, Exception inner)
+            : base(messageValue, inner)
+        {
+
+        }
     }
 }

@@ -159,35 +159,101 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddAppointmentSaveButton_Click(object sender, EventArgs e)
         {
-            if (AddAppointmentStartDateTimePicker.Value < AddAppointmentEndDateTimePicker.Value)
+            /* if (AddAppointmentStartDateTimePicker.Value < AddAppointmentEndDateTimePicker.Value)
+             {
+                 // Put the text field inputs into types acceptable by the Insert method
+                 string title = AddAppointmentTitleTextBox.Text;
+                 string description = AddAppointmentDescriptionTextBox.Text;
+                 string location = AddAppointmentLocationComboBox.SelectedItem.ToString();
+                 string contact = AddAppointmentContactTextBox.Text;
+                 string type = AddAppointmentTypeComboBox.SelectedItem.ToString();
+                 string url = AddAppointmentUrlTextBox.Text;
+                 DateTime startDate = AddAppointmentStartDateTimePicker.Value.ToUniversalTime();
+                 string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+                 DateTime endDate = AddAppointmentEndDateTimePicker.Value.ToUniversalTime();
+                 string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+                 // Create a record in the Appointment table
+                 Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
+
+                 // Clear the current datagridview selection
+                 Globals.CurrentDataGridSelection = null;
+
+                 // Close the Add Customer Form and refresh the Manage Customers datagridview
+                 this.sourceForm.DataGridViewRefresh();
+
+                 Close();
+             }
+
+             else
+             {
+                 MessageBox.Show("Please select an end date/time that is after the start date/time.");
+             }*/
+
+            // Put the text field inputs into types acceptable by the Insert method
+            string title = AddAppointmentTitleTextBox.Text;
+            string description = AddAppointmentDescriptionTextBox.Text;
+            string location = AddAppointmentLocationComboBox.SelectedItem.ToString();
+            string contact = AddAppointmentContactTextBox.Text;
+            string type = AddAppointmentTypeComboBox.SelectedItem.ToString();
+            string url = AddAppointmentUrlTextBox.Text;
+            DateTime startDate = AddAppointmentStartDateTimePicker.Value.ToUniversalTime();
+            string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime endDate = AddAppointmentEndDateTimePicker.Value.ToUniversalTime();
+            string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+            try
             {
-                // Put the text field inputs into types acceptable by the Insert method
-                string title = AddAppointmentTitleTextBox.Text;
-                string description = AddAppointmentDescriptionTextBox.Text;
-                string location = AddAppointmentLocationComboBox.SelectedItem.ToString();
-                string contact = AddAppointmentContactTextBox.Text;
-                string type = AddAppointmentTypeComboBox.SelectedItem.ToString();
-                string url = AddAppointmentUrlTextBox.Text;
-                DateTime startDate = AddAppointmentStartDateTimePicker.Value.ToUniversalTime();
-                string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
-                DateTime endDate = AddAppointmentEndDateTimePicker.Value.ToUniversalTime();
-                string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+                string startHour = AddAppointmentStartDateTimePicker.Text.Substring(0, 2);
+                string endHour = AddAppointmentEndDateTimePicker.Text.Substring(0, 2);
+                bool invalid = false;
 
-                // Create a record in the Appointment table
-                Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
+                foreach (string hour in Globals.BusinessHours)
+                {
+                    if (hour != startHour || hour != endHour)
+                    {
+                        invalid = true;
+                    }
 
-                // Clear the current datagridview selection
-                Globals.CurrentDataGridSelection = null;
+                    break;
+                }
 
-                // Close the Add Customer Form and refresh the Manage Customers datagridview
-                this.sourceForm.DataGridViewRefresh();
+                if (invalid == true)
+                {
+                    throw new InvalidAppointmentTimeException("Please select an appointment time during business hours (9:00 AM to 5:00 PM local time).");
+                }
 
-                Close();
+                /*for (int i = 0; i <= 7; ++i)
+                {
+                    if (Globals.BusinessHours[i] != startHour)
+                    {
+                        throw new InvalidAppointmentTimeException("Please select an appointment time during business hours (9:00 AM to 5:00 PM local time).");
+                    }
+                }*/
+
+                /*if (AddAppointmentStartDateTimePicker.Value < AddAppointmentEndDateTimePicker.Value)  THIS NEEDS TO COME BACK
+                {
+                    throw new InvalidAppointmentTimeException("Please select an end date/time that is after the start date/time.");
+                }*/
+
+                else
+                {
+                    // Create a record in the Appointment table
+                    Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);
+
+                    // Clear the current datagridview selection
+                    Globals.CurrentDataGridSelection = null;
+
+                    // Close the Add Customer Form and refresh the Manage Customers datagridview
+                    this.sourceForm.DataGridViewRefresh();
+
+                    Close();
+                }
             }
-            
-            else
+
+            catch (InvalidAppointmentTimeException ex)
             {
-                MessageBox.Show("Please select an end date/time that is after the start date/time.");
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -41,6 +41,8 @@ namespace C969PA_CodyBurkholz_001248460
     {
         public static string cxnString = ConfigurationManager.ConnectionStrings["MySqlClientKey"].ConnectionString;
 
+        public static string[] BusinessHours = { "09", "10", "11", "12", "13", "14", "15", "16" };
+
         public static string CurrentUser { get; set; }
 
         public static string CurrentDataGridSelection { get; set; }

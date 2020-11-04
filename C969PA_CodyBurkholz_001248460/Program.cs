@@ -130,6 +130,33 @@ namespace C969PA_CodyBurkholz_001248460
             return objList;
         }
 
+        public static bool CheckAppointmentTime(string apptHour)
+        {
+            bool invalidHour = true;
+            int i = 0;
+
+            // Check whether the appointment time submitted is within business hours
+            do
+            {
+                foreach (string hour in Globals.BusinessHours)
+                {
+                    if (hour == apptHour)
+                    {
+                        invalidHour = false;
+
+                        return invalidHour;
+                    }
+
+                    else
+                    {
+                        ++i;
+                    }
+                }
+            } while (i < 8);
+
+            return invalidHour;
+        }
+
 
         private static int CreateID(string table)
         {

@@ -69,7 +69,7 @@ namespace C969PA_CodyBurkholz_001248460
                 result = cmd.ExecuteNonQuery();
             }
 
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
                 MessageBox.Show("This record cannot be deleted, as one or more records depend on it.");
             }
@@ -128,6 +128,45 @@ namespace C969PA_CodyBurkholz_001248460
             cxn.Close();
 
             return objList;
+        }
+
+        public static Object[][] GenerateTableArray(string table)
+        {
+            string query = $"SELECT * FROM {table} ORDER BY {table}Id DESC";
+            int rowCount = Convert.ToInt32(ExecuteThisQueryReturnString(query));
+
+            // FIXME: Running into "Invalid attempt to access a field before calling Read() in GetSelectedRowContents
+
+
+            Object[][] rowList = new Object[rowCount][];
+            int i = 0;
+            int j = 0;
+
+            for (i = 0; i < rowCount; ++i)
+            {
+                Object[] temp = GetSelectedRowContents(table, i);
+
+                foreach (Object field in temp)
+                {
+                    rowList[i][j] = temp[j];
+                }
+            }
+
+            return rowList;
+        }
+
+        public static bool ConflictCheck(int userID, int customerID, string start, string end)
+        {
+            bool conflict = true;
+            Object[] appointmentRows = Globals.GenerateTableArray("appointment");
+
+            foreach (Object[] appointment in appointmentRows)
+            {
+
+            }
+
+
+            return conflict;
         }
 
         public static bool CheckAppointmentTime(string apptHour)

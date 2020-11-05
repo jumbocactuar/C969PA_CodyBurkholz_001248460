@@ -38,6 +38,10 @@ namespace C969PA_CodyBurkholz_001248460
         private void AddAppointmentForm_Load(object sender, EventArgs e)
         {
             AddAppointmentSaveButton.Enabled = false;
+
+            Object[][] apptList = Globals.GenerateDerpArray("appointment");
+
+            AddAppointmentUrlTextBox.Text = apptList[2][4].ToString();
         }
 
         private void AddAppointmentTitleTextBox_TextChanged(object sender, EventArgs e)
@@ -173,25 +177,36 @@ namespace C969PA_CodyBurkholz_001248460
 
             try
             {
+                // If End comes before Start, throw an exception
                 if (AddAppointmentStartDateTimePicker.Value > AddAppointmentEndDateTimePicker.Value)
                 {
                     throw new InvalidAppointmentTimeException("Please select an end date/time that is after the start date/time.");
                 }
-
-                // make an (2D?) array of each row of the appointments table, if proposed appt time overlaps and consultant and/or customer is associated with that record,
-                // freak out.
 
                 string startHour = AddAppointmentStartDateTimePicker.Text.Substring(0, 2);
                 string endHour = AddAppointmentEndDateTimePicker.Text.Substring(0, 2);
                 bool invalidStart = Globals.CheckAppointmentTime(startHour);
                 bool invalidEnd = Globals.CheckAppointmentTime(endHour);
 
+                // If either Start or End is outside business hours, throw an exception
                 if (invalidStart == true || invalidEnd == true)
                 {
                     throw new InvalidAppointmentTimeException("Please select an appointment time during business hours (9:00 AM to 5:00 PM local time).");
                 }
 
-                if (invalidStart == false && invalidEnd == false)
+                // make an (2D?) array of each row of the appointments table, if proposed appt time overlaps and consultant and/or customer is associated with that record,
+                // freak out.
+                //Object[] appointmentRows = Globals.GenerateTableArray("appointment");
+                bool conflict = Globals.ConflictCheck(UserID, CustomerID, start, end);
+
+                //If the proposed appointment conflicts with a consultant's or customer's existing appointment, throw an exception
+                if (conflict == true)
+                {
+                    throw new InvalidAppointmentTimeException("The proposed appointment conflicts with the consultant's or customer's schedule.");
+                }
+
+                // If none of the above conditions fail, create a new appointment
+                if (invalidStart == false && invalidEnd == false && conflict == false)
                 {
                     // Create a record in the Appointment table
                     Globals.InsertAppointmentRecord(CustomerID, UserID, title, description, location, contact, type, url, start, end);

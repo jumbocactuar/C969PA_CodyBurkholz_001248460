@@ -17,7 +17,7 @@ namespace C969PA_CodyBurkholz_001248460
 {
     /* FIXME NOTES
      * A. Create a log-in form that can determine the user’s location and translate log-in and error control messages 
-     * (e.g., “The username and password did not match.”) into the user’s language and in one additional language.
+     * (e.g., “The username and password did not match.”) into the user’s language and in one additional language. FIXME: Is the way I've tested sufficient?
      * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
      * E. Provide the ability to automatically adjust appointment times based on user time zones and daylight saving time.
      * Exception preventing appointment outside business hours is based on the local time where the app was started (the local time of the user who logged in).
@@ -132,24 +132,48 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static Object[][] GenerateTableArray(string table)
         {
+            Object[] GetTableRow(int id)
+            {
+                string subQuery = $"SELECT * FROM {table} WHERE {table}Id = {id}";
+
+                MySqlConnection cxn = new MySqlConnection(cxnString);
+                cxn.Open();
+                MySqlCommand cmd = new MySqlCommand(subQuery, cxn);
+                MySqlDataReader reader;
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                Object[] objList = new Object[reader.FieldCount];
+
+                if (reader.HasRows == false)
+                {
+                    objList[0] = id;
+
+                    reader.Close();
+                    cxn.Close();
+
+                    return objList;
+                }
+
+                else
+                {
+                    int fieldCount = reader.GetValues(objList);
+                }
+
+                reader.Close();
+                cxn.Close();
+
+                return objList;
+            }
+
             string query = $"SELECT * FROM {table} ORDER BY {table}Id DESC";
             int rowCount = Convert.ToInt32(ExecuteThisQueryReturnString(query));
-
-            // FIXME: Running into "Invalid attempt to access a field before calling Read() in GetSelectedRowContents
-
-
             Object[][] rowList = new Object[rowCount][];
-            int i = 0;
-            int j = 0;
+            int i;
 
             for (i = 0; i < rowCount; ++i)
             {
-                Object[] temp = GetSelectedRowContents(table, i);
-
-                foreach (Object field in temp)
-                {
-                    rowList[i][j] = temp[j];
-                }
+                rowList[i] = GetTableRow((i + 1));
             }
 
             return rowList;
@@ -158,7 +182,7 @@ namespace C969PA_CodyBurkholz_001248460
         public static bool ConflictCheck(int userID, int customerID, string start, string end)
         {
             bool conflict = true;
-            Object[] appointmentRows = Globals.GenerateTableArray("appointment");
+            Object[][] appointmentRows = Globals.GenerateTableArray("appointment");
 
             foreach (Object[] appointment in appointmentRows)
             {

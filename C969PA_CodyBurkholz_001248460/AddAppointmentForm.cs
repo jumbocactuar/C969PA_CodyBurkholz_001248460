@@ -20,6 +20,9 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static int UserID;
 
+        readonly Object[][] apptList = Globals.GenerateTableArray("appointment");
+        
+
         public AddAppointmentForm()
         {
             InitializeComponent();
@@ -38,10 +41,6 @@ namespace C969PA_CodyBurkholz_001248460
         private void AddAppointmentForm_Load(object sender, EventArgs e)
         {
             AddAppointmentSaveButton.Enabled = false;
-
-            Object[][] apptList = Globals.GenerateDerpArray("appointment");
-
-            AddAppointmentUrlTextBox.Text = apptList[2][4].ToString();
         }
 
         private void AddAppointmentTitleTextBox_TextChanged(object sender, EventArgs e)
@@ -57,6 +56,8 @@ namespace C969PA_CodyBurkholz_001248460
             }
 
             UpdateSaveButton();
+
+            AddAppointmentUrlTextBox.Text = apptList[2][0].ToString();
         }
 
         private void AddAppointmentDescriptionTextBox_TextChanged(object sender, EventArgs e)

@@ -56,8 +56,6 @@ namespace C969PA_CodyBurkholz_001248460
             }
 
             UpdateSaveButton();
-
-            AddAppointmentUrlTextBox.Text = apptList[2][0].ToString();
         }
 
         private void AddAppointmentDescriptionTextBox_TextChanged(object sender, EventArgs e)
@@ -195,9 +193,6 @@ namespace C969PA_CodyBurkholz_001248460
                     throw new InvalidAppointmentTimeException("Please select an appointment time during business hours (9:00 AM to 5:00 PM local time).");
                 }
 
-                // make an (2D?) array of each row of the appointments table, if proposed appt time overlaps and consultant and/or customer is associated with that record,
-                // freak out.
-                //Object[] appointmentRows = Globals.GenerateTableArray("appointment");
                 bool conflict = Globals.ConflictCheck(UserID, CustomerID, start, end);
 
                 //If the proposed appointment conflicts with a consultant's or customer's existing appointment, throw an exception

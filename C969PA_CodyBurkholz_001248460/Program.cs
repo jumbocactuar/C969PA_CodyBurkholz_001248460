@@ -181,14 +181,40 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static bool ConflictCheck(int userID, int customerID, string start, string end)
         {
-            bool conflict = true;
+            bool conflict = false;
             Object[][] appointmentRows = Globals.GenerateTableArray("appointment");
+            DateTime proposedStart = DateTime.Parse(start);
+            DateTime proposedEnd = DateTime.Parse(end);
 
             foreach (Object[] appointment in appointmentRows)
             {
+                int existingUser = Convert.ToInt32(appointment[2]);
+                int existingCustomer = Convert.ToInt32(appointment[1]);
 
+                // Find existing appointments associated with the consultant selected in the proposed appointment
+                if (existingUser == userID)
+                {
+                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    {
+                        return conflict = true;
+                    }
+                }
+
+                // Find existing appointment associated with the customer selected in the proposed appointment
+                if (existingCustomer == customerID)
+                {
+                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    {
+                        return conflict = true;
+                    }
+                }
             }
-
 
             return conflict;
         }

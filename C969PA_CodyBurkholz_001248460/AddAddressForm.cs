@@ -102,20 +102,35 @@ namespace C969PA_CodyBurkholz_001248460
             string postalCode = AddAddressPostalCodeTextBox.Text;
             string phone = AddAddressPhoneTextBox.Text;
 
-            // Create a record in the Address table
-            Globals.InsertAddressRecord(address1, address2, city, postalCode, phone);
+            try
+            {
+                bool invalid = Globals.InvalidDataCheck(phone);
 
-            // Close the Add Address form and refresh the Manage Addresses datagridview
-            this.sourceForm.DataGridViewRefresh();
+                if (invalid == true)
+                {
+                    throw new InvalidCustomerDataException("The phone number entered contains invalid characters.");
+                }
 
-            Close();
+                else
+                {
+                    // Create a record in the Address table
+                    Globals.InsertAddressRecord(address1, address2, city, postalCode, phone);
+
+                    // Close the Add Address form and refresh the Manage Addresses datagridview
+                    this.sourceForm.DataGridViewRefresh();
+
+                    Close();
+                }
+            }
+
+            catch (InvalidCustomerDataException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void AddAddressCancelButton_Click(object sender, EventArgs e)
-        {
-            ManageAddressesForm f = new ManageAddressesForm();
-            f.Show();
-            
+        {   
             Close();
         }
 

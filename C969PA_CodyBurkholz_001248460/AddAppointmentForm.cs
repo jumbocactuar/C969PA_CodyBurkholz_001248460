@@ -19,10 +19,7 @@ namespace C969PA_CodyBurkholz_001248460
         public static int CustomerID;
 
         public static int UserID;
-
-        readonly Object[][] apptList = Globals.GenerateTableArray("appointment");
         
-
         public AddAppointmentForm()
         {
             InitializeComponent();
@@ -210,7 +207,7 @@ namespace C969PA_CodyBurkholz_001248460
                     // Clear the current datagridview selection
                     Globals.CurrentDataGridSelection = null;
 
-                    // Close the Add Customer Form and refresh the Manage Customers datagridview
+                    // Close the Add Appointment form and refresh the Manage Apppointments datagridview
                     this.sourceForm.DataGridViewRefresh();
 
                     Close();

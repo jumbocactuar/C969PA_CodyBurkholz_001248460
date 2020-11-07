@@ -115,6 +115,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AddCustomerCancelButton_Click(object sender, EventArgs e)
         {
+            Globals.CurrentDataGridSelection = null;
+
             Close();
         }
 

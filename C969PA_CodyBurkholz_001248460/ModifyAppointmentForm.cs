@@ -209,35 +209,64 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ModifyAppointmentSaveButton_Click(object sender, EventArgs e)
         {
-            if (ModifyAppointmentStartDateTimePicker.Value < ModifyAppointmentEndDateTimePicker.Value)
+            // Put the text field inputs into types acceptable by the Update method
+            string title = ModifyAppointmentTitleTextBox.Text;
+            string description = ModifyAppointmentDescriptionTextBox.Text;
+            string location = ModifyAppointmentLocationComboBox.SelectedItem.ToString();
+            string contact = ModifyAppointmentContactTextBox.Text;
+            string type = ModifyAppointmentTypeComboBox.SelectedItem.ToString();
+            string url = ModifyAppointmentUrlTextBox.Text;
+            DateTime startDate = ModifyAppointmentStartDateTimePicker.Value.ToUniversalTime();
+            string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
+            DateTime endDate = ModifyAppointmentEndDateTimePicker.Value.ToUniversalTime();
+            string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+            try
             {
-                // Put the text field inputs into types acceptable by the Update method
-                string title = ModifyAppointmentTitleTextBox.Text;
-                string description = ModifyAppointmentDescriptionTextBox.Text;
-                string location = ModifyAppointmentLocationComboBox.SelectedItem.ToString();
-                string contact = ModifyAppointmentContactTextBox.Text;
-                string type = ModifyAppointmentTypeComboBox.SelectedItem.ToString();
-                string url = ModifyAppointmentUrlTextBox.Text;
-                DateTime startDate = ModifyAppointmentStartDateTimePicker.Value.ToUniversalTime();
-                string start = startDate.ToString("yyyy-MM-dd HH:mm:ss");
-                DateTime endDate = ModifyAppointmentEndDateTimePicker.Value.ToUniversalTime();
-                string end = endDate.ToString("yyyy-MM-dd HH:mm:ss");
+                // If End comes before Start, throw an exception
+                if (ModifyAppointmentStartDateTimePicker.Value > ModifyAppointmentEndDateTimePicker.Value)
+                {
+                    throw new InvalidAppointmentTimeException("Please select an end date/time that is after the start date/time.");
+                }
 
-                // Update the record in the Appointment table
-                Globals.UpdateAppointmentRecord(AppointmentID, CustomerID, UserID, title, description, location, contact, type, url, start, end);
+                string startHour = ModifyAppointmentStartDateTimePicker.Text.Substring(0, 2);
+                string endHour = ModifyAppointmentEndDateTimePicker.Text.Substring(0, 2);
+                bool invalidStart = Globals.CheckAppointmentTime(startHour);
+                bool invalidEnd = Globals.CheckAppointmentTime(endHour);
 
-                // Clear the current datagridview selection
-                Globals.CurrentDataGridSelection = null;
+                // If either Start or End is outside business hours, throw an exception
+                if (invalidStart == true || invalidEnd == true)
+                {
+                    throw new InvalidAppointmentTimeException("Please select an appointment time during business hours (9:00 AM to 5:00 PM local time).");
+                }
 
-                // Close the Add Customer Form and refresh the Manage Customers datagridview
-                this.sourceForm.DataGridViewRefresh();
+                bool conflict = Globals.ConflictCheck(AppointmentID, UserID, CustomerID, start, end);
 
-                Close();
+                //If the proposed appointment conflicts with a consultant's or customer's existing appointment, throw an exception
+                if (conflict == true)
+                {
+                    throw new InvalidAppointmentTimeException("The proposed appointment conflicts with the consultant's or customer's schedule.");
+                }
+
+                // If none of the above conditions fail, update the appointment record
+                if (invalidStart == false && invalidEnd == false && conflict == false)
+                {
+                    // Update the record in the Appointment table
+                    Globals.UpdateAppointmentRecord(AppointmentID, CustomerID, UserID, title, description, location, contact, type, url, start, end);
+
+                    // Clear the current datagridview selection
+                    Globals.CurrentDataGridSelection = null;
+
+                    // Close the Modify Appointment form and refresh the Manage Appointments datagridview
+                    this.sourceForm.DataGridViewRefresh();
+
+                    Close();
+                }
             }
-            
-            else
+
+            catch (InvalidAppointmentTimeException ex)
             {
-                MessageBox.Show("Please select an end date/time that is after the start date/time.");
+                MessageBox.Show(ex.Message);
             }
         }
 

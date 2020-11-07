@@ -164,7 +164,7 @@ namespace C969PA_CodyBurkholz_001248460
             // Clear the current datagridview selection
             Globals.CurrentDataGridSelection = null;
 
-            // Close the Add Customer Form and refresh the Manage Customers datagridview
+            // Close the Modify Customer form and refresh the Manage Customers datagridview
             this.sourceForm.DataGridViewRefresh();
 
             Close();

@@ -92,13 +92,13 @@ namespace C969PA_CodyBurkholz_001248460
                 active = 0;
             }
 
-            // Create a record in the User table
+            // Update the record in the User table
             Globals.UpdateUserRecord(userID, userName, password, active);
 
             // Clear the current data grid selection
             Globals.CurrentDataGridSelection = null;
 
-            // Close the Add User form and refresh the Manage Users datagridview
+            // Close the Modify User form and refresh the Manage Users datagridview
             this.sourceForm.DataGridViewRefresh();
 
             Close();

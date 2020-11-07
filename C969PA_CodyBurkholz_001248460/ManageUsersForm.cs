@@ -35,6 +35,8 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManageUsersForm_Load(object sender, EventArgs e)
         {
             this.userTableAdapter.Fill(this.u06vbiDataSet.user);
+
+            Globals.CurrentDataGridSelection = null;
         }
 
         private void ManageUsersDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -57,8 +59,16 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageUsersModifyButton_Click(object sender, EventArgs e)
         {
-            ModifyUserForm f = new ModifyUserForm(this);
-            f.Show();
+            if (Globals.CurrentDataGridSelection != null)
+            {
+                ModifyUserForm f = new ModifyUserForm(this);
+                f.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a user to modify.");
+            }
         }
 
         private void ManageUsersDeleteButton_Click(object sender, EventArgs e)

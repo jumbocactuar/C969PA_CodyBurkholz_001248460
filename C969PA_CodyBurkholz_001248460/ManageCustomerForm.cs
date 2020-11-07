@@ -40,6 +40,8 @@ namespace C969PA_CodyBurkholz_001248460
             this.customerTableAdapter.Fill(this.u06vbiDataSet.customer);
 
             ManageCustomerDataGridView.ClearSelection();
+
+            Globals.CurrentDataGridSelection = null;
         }
 
         private void ManageCustomerDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

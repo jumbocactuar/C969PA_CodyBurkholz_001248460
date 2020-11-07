@@ -16,11 +16,16 @@ using MySql.Data.Types;
 namespace C969PA_CodyBurkholz_001248460
 {
     /* FIXME NOTES
-     * A. Create a log-in form that can determine the user’s location and translate log-in and error control messages 
-     * (e.g., “The username and password did not match.”) into the user’s language and in one additional language. FIXME: Is the way I've tested sufficient?
      * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
-     * E. Provide the ability to automatically adjust appointment times based on user time zones and daylight saving time.
-     * Exception preventing appointment outside business hours is based on the local time where the app was started (the local time of the user who logged in).
+     * G. Write two or more lambda expressions to make your program more efficient, justifying the use of each lambda expression with an in-line comment.
+     * H. Write code to provide reminders and alerts 15 minutes in advance of an appointment, based on the user’s log-in.
+     * I. Provide the ability to generate each  of the following reports using the collection classes: - chapter 21.2
+     * -number of appointment types by month
+     * -the schedule for each  consultant
+     * -one additional report of your choice (schedule for each customer?)
+     * J. Provide the ability to track user activity by recording timestamps for user log-ins in a .txt file, using the collection classes. 
+     *    Each new record should be appended to the log file, if the file already exists.
+     * K. Demonstrate professional communication in the content and presentation of your submission. (add comments)
      */
 
     static class Program
@@ -43,17 +48,147 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static string[] BusinessHours = { "09", "10", "11", "12", "13", "14", "15", "16" };
 
-        public static string CurrentUser { get; set; }
-
         public static string CurrentDataGridSelection { get; set; }
 
-        private static string GetMySqlNow()
-        {
-            DateTime utcTime = new DateTime();
-            utcTime = DateTime.UtcNow;
-            string mySqlNow = utcTime.ToString("yyyy-MM-dd HH:mm:ss");
+        public static string CurrentUser { get; set; }
 
-            return mySqlNow;
+        public static bool CheckAppointmentTime(string apptHour)
+        {
+            bool invalidHour = true;
+            int i = 0;
+
+            // Check whether the appointment time submitted is within business hours
+            do
+            {
+                foreach (string hour in Globals.BusinessHours)
+                {
+                    if (hour == apptHour)
+                    {
+                        invalidHour = false;
+
+                        return invalidHour;
+                    }
+
+                    else
+                    {
+                        ++i;
+                    }
+                }
+            } while (i < 8);
+
+            return invalidHour;
+        }
+
+        public static bool ConflictCheck(int userID, int customerID, string start, string end)
+        {
+            bool conflict = false;
+            List<Object[]> appointmentRows = Globals.GenerateTableList("appointment");
+            DateTime proposedStart = DateTime.Parse(start);
+            DateTime proposedEnd = DateTime.Parse(end);
+
+            foreach (Object[] appointment in appointmentRows)
+            {
+                int existingUser = Convert.ToInt32(appointment[2]);
+                int existingCustomer = Convert.ToInt32(appointment[1]);
+
+                // Find existing appointments associated with the consultant selected in the proposed appointment
+                if (existingUser == userID)
+                {
+                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    {
+                        return conflict = true;
+                    }
+                }
+
+                // Find existing appointment associated with the customer selected in the proposed appointment
+                if (existingCustomer == customerID)
+                {
+                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    {
+                        return conflict = true;
+                    }
+                }
+            }
+
+            return conflict;
+        }
+
+        // Overloaded ConflictCheck for Modify Appointment
+        public static bool ConflictCheck(int appointmentID, int userID, int customerID, string start, string end)
+        {
+            bool conflict = false;
+            List<Object[]> appointmentRows = Globals.GenerateTableList("appointment");
+            DateTime proposedStart = DateTime.Parse(start);
+            DateTime proposedEnd = DateTime.Parse(end);
+
+            foreach (Object[] appointment in appointmentRows)
+            {
+                int existingUser = Convert.ToInt32(appointment[2]);
+                int existingCustomer = Convert.ToInt32(appointment[1]);
+                int existingAppt = Convert.ToInt32(appointment[0]);
+
+                // Proceed only if the appointment being examined below is not the appointment being modified in Modify Appointment
+                if (existingAppt != appointmentID)
+                {
+                    // Find existing appointments associated with the consultant selected in the proposed appointment
+                    if (existingUser == userID)
+                    {
+                        DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                        DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                        {
+                            return conflict = true;
+                        }
+                    }
+
+                    // Find existing appointment associated with the customer selected in the proposed appointment
+                    if (existingCustomer == customerID)
+                    {
+                        DateTime existingStart = DateTime.Parse(appointment[9].ToString());
+                        DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
+
+                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                        {
+                            return conflict = true;
+                        }
+                    }
+                }
+            }
+
+            return conflict;
+        }
+
+        private static int CreateID(string table)
+        {
+            string existentialQuery = $"SELECT * FROM {table}";
+
+            int id = ExecuteThisQueryReturnInt(existentialQuery);
+
+            if (id == 0)
+            {
+                id = 1;
+            }
+
+            else
+            {
+                id++;
+            }
+
+            return id;
+        }
+
+        public static void DeleteRecord(string table, int id)
+        {
+            string query = $"DELETE FROM {table} WHERE {table}Id = {id}";
+
+            ExecuteThisQueryReturnInt(query);
         }
 
         private static int ExecuteThisQueryReturnInt(string query)
@@ -103,34 +238,7 @@ namespace C969PA_CodyBurkholz_001248460
             return resultString;
         }
 
-        public static void DeleteRecord(string table, int id)
-        {
-            string query = $"DELETE FROM {table} WHERE {table}Id = {id}";
-
-            ExecuteThisQueryReturnInt(query);
-        }
-
-        public static Object[] GetSelectedRowContents(string table, int id)
-        {
-            string query = $"SELECT * FROM {table} WHERE {table}Id = {id}";
-
-            MySqlConnection cxn = new MySqlConnection(cxnString);
-            cxn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, cxn);
-            MySqlDataReader reader;
-            reader = cmd.ExecuteReader();
-            reader.Read();
-
-            Object[] objList = new Object[reader.FieldCount];
-            int fieldCount = reader.GetValues(objList);
-
-            reader.Close();
-            cxn.Close();
-
-            return objList;
-        }
-
-        public static Object[][] GenerateTableArray(string table)
+        public static List<Object[]> GenerateTableList(string table)
         {
             Object[] GetTableRow(int id)
             {
@@ -168,102 +276,15 @@ namespace C969PA_CodyBurkholz_001248460
 
             string query = $"SELECT * FROM {table} ORDER BY {table}Id DESC";
             int rowCount = Convert.ToInt32(ExecuteThisQueryReturnString(query));
-            Object[][] rowList = new Object[rowCount][];
+            List<Object[]> rowList = new List<object[]>(rowCount);
             int i;
 
             for (i = 0; i < rowCount; ++i)
             {
-                rowList[i] = GetTableRow((i + 1));
+                rowList.Add(GetTableRow((i + 1)));
             }
 
             return rowList;
-        }
-
-        public static bool ConflictCheck(int userID, int customerID, string start, string end)
-        {
-            bool conflict = false;
-            Object[][] appointmentRows = Globals.GenerateTableArray("appointment");
-            DateTime proposedStart = DateTime.Parse(start);
-            DateTime proposedEnd = DateTime.Parse(end);
-
-            foreach (Object[] appointment in appointmentRows)
-            {
-                int existingUser = Convert.ToInt32(appointment[2]);
-                int existingCustomer = Convert.ToInt32(appointment[1]);
-
-                // Find existing appointments associated with the consultant selected in the proposed appointment
-                if (existingUser == userID)
-                {
-                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
-                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
-
-                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
-                    {
-                        return conflict = true;
-                    }
-                }
-
-                // Find existing appointment associated with the customer selected in the proposed appointment
-                if (existingCustomer == customerID)
-                {
-                    DateTime existingStart = DateTime.Parse(appointment[9].ToString());
-                    DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
-
-                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
-                    {
-                        return conflict = true;
-                    }
-                }
-            }
-
-            return conflict;
-        }
-
-        public static bool CheckAppointmentTime(string apptHour)
-        {
-            bool invalidHour = true;
-            int i = 0;
-
-            // Check whether the appointment time submitted is within business hours
-            do
-            {
-                foreach (string hour in Globals.BusinessHours)
-                {
-                    if (hour == apptHour)
-                    {
-                        invalidHour = false;
-
-                        return invalidHour;
-                    }
-
-                    else
-                    {
-                        ++i;
-                    }
-                }
-            } while (i < 8);
-
-            return invalidHour;
-        }
-
-
-        private static int CreateID(string table)
-        {
-            string existentialQuery = $"SELECT * FROM {table}";
-
-            int id = ExecuteThisQueryReturnInt(existentialQuery);
-
-            if (id == 0)
-            {
-                id = 1;
-            }
-
-            else
-            {
-                id++;
-            }
-
-            return id;
         }
 
         private static int GetID(string table, string condition)
@@ -283,6 +304,55 @@ namespace C969PA_CodyBurkholz_001248460
             string result = ExecuteThisQueryReturnString(query);
 
             return result;
+        }
+
+        private static string GetMySqlNow()
+        {
+            DateTime utcTime = new DateTime();
+            utcTime = DateTime.UtcNow;
+            string mySqlNow = utcTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+            return mySqlNow;
+        }
+
+        public static Object[] GetSelectedRowContents(string table, int id)
+        {
+            string query = $"SELECT * FROM {table} WHERE {table}Id = {id}";
+
+            MySqlConnection cxn = new MySqlConnection(cxnString);
+            cxn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, cxn);
+            MySqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            reader.Read();
+
+            Object[] objList = new Object[reader.FieldCount];
+            int fieldCount = reader.GetValues(objList);
+
+            reader.Close();
+            cxn.Close();
+
+            return objList;
+        }
+
+        public static bool InvalidDataCheck(string input)
+        {
+            bool invalid = false;
+            List<char> allowed = new List<char> { '(', ')', '-', '+', ' ' };
+
+            // If the string does not contain only numbers or allowed chatacters, mark it as invalid
+            foreach (char c in input)
+            {
+                if (c < '0' || c > '9')
+                {
+                    if (allowed.Contains(c) == false)
+                    {
+                        return invalid = true;
+                    }
+                }
+            }
+
+            return invalid;
         }
 
         public static void InsertCountryRecord(string country)

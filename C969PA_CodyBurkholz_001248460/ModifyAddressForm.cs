@@ -12,10 +12,19 @@ namespace C969PA_CodyBurkholz_001248460
 {
     public partial class ModifyAddressForm : Form
     {
+        private ManageAddressesForm sourceForm = null;
+        
         public static List<bool> FieldStateTracker = new List<bool> { false, false, false, false };
 
         public ModifyAddressForm()
         {
+            InitializeComponent();
+        }
+
+        public ModifyAddressForm(Form callingForm)
+        {
+            sourceForm = callingForm as ManageAddressesForm;
+
             InitializeComponent();
         }
 
@@ -121,11 +130,34 @@ namespace C969PA_CodyBurkholz_001248460
             string postalCode = ModifyAddressPostalCodeTextBox.Text;
             string phone = ModifyAddressPhoneTextBox.Text;
 
-            // Update the record in the Address table
-            Globals.UpdateAddressRecord(addressID, address1, address2, city, postalCode, phone);
+            try
+            {
+                bool invalid = Globals.InvalidDataCheck(phone);
 
-            // Close the Modify Address form
-            Close();
+                if (invalid == true)
+                {
+                    throw new InvalidCustomerDataException("The phone number entered contains invalid characters.");
+                }
+
+                else
+                {
+                    // Update the record in the Address table
+                    Globals.UpdateAddressRecord(addressID, address1, address2, city, postalCode, phone);
+
+                    // Clear the current data grid selection
+                    Globals.CurrentDataGridSelection = null;
+
+                    // Close the Modify Address form and refresh the Manage Addresses datagridview
+                    this.sourceForm.DataGridViewRefresh();
+
+                    Close();
+                }
+            }
+
+            catch (InvalidCustomerDataException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ModifyAddressCancelButton_Click(object sender, EventArgs e)

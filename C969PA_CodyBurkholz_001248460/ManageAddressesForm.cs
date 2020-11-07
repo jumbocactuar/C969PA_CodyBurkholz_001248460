@@ -34,6 +34,8 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManageAddresses_Load(object sender, EventArgs e)
         {
             this.addressTableAdapter.Fill(this.u06vbiDataSet.address);
+
+            Globals.CurrentDataGridSelection = null;
         }
 
         private void ManageAddressesDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -59,7 +61,7 @@ namespace C969PA_CodyBurkholz_001248460
         {
             if (Globals.CurrentDataGridSelection != null)
             {
-                ModifyAddressForm f = new ModifyAddressForm();
+                ModifyAddressForm f = new ModifyAddressForm(this);
                 f.Show();
             }
 

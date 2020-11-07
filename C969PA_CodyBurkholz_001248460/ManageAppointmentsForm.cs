@@ -20,6 +20,8 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManageAppointmentsForm_Load(object sender, EventArgs e)
         {
             this.appointmentTableAdapter.Fill(this.u06vbiDataSet.appointment);
+
+            Globals.CurrentDataGridSelection = null;
         }
 
         private void ManageAppointmentsDataGridView_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -84,6 +86,8 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManageAppointmentsCancelButton_Click(object sender, EventArgs e)
         {
+            Globals.CurrentDataGridSelection = null;
+
             Close();
         }
 

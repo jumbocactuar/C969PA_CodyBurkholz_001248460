@@ -72,6 +72,24 @@
     <Compile Include="AddUserForm.Designer.cs">
       <DependentUpon>AddUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppointmentTypesReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentTypesReportForm.Designer.cs">
+      <DependentUpon>AppointmentTypesReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultantScheduleReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultantScheduleReportForm.Designer.cs">
+      <DependentUpon>ConsultantScheduleReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerScheduleReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerScheduleReportForm.Designer.cs">
+      <DependentUpon>CustomerScheduleReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +174,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddUserForm.resx">
       <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentTypesReportForm.resx">
+      <DependentUpon>AppointmentTypesReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultantScheduleReportForm.resx">
+      <DependentUpon>ConsultantScheduleReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerScheduleReportForm.resx">
+      <DependentUpon>CustomerScheduleReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

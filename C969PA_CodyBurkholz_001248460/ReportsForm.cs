@@ -16,5 +16,33 @@ namespace C969PA_CodyBurkholz_001248460
         {
             InitializeComponent();
         }
+
+        private void ReportsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AppointmentTypesButton_Click(object sender, EventArgs e)
+        {
+            AppointmentTypesReportForm f = new AppointmentTypesReportForm();
+            f.Show();
+        }
+
+        private void ConsultantScheduleButton_Click(object sender, EventArgs e)
+        {
+            ConsultantScheduleReportForm f = new ConsultantScheduleReportForm();
+            f.Show();
+        }
+
+        private void CustomerScheduleButton_Click(object sender, EventArgs e)
+        {
+            CustomerScheduleReportForm f = new CustomerScheduleReportForm();
+            f.Show();
+        }
+
+        private void ActivityLogButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

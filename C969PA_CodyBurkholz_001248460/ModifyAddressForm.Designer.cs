@@ -58,7 +58,7 @@
             this.ModifyAddressCancelButton.Location = new System.Drawing.Point(168, 363);
             this.ModifyAddressCancelButton.Name = "ModifyAddressCancelButton";
             this.ModifyAddressCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.ModifyAddressCancelButton.TabIndex = 50;
+            this.ModifyAddressCancelButton.TabIndex = 6;
             this.ModifyAddressCancelButton.Text = "Cancel";
             this.ModifyAddressCancelButton.UseVisualStyleBackColor = true;
             this.ModifyAddressCancelButton.Click += new System.EventHandler(this.ModifyAddressCancelButton_Click);
@@ -68,7 +68,7 @@
             this.ModifyAddressSaveButton.Location = new System.Drawing.Point(87, 363);
             this.ModifyAddressSaveButton.Name = "ModifyAddressSaveButton";
             this.ModifyAddressSaveButton.Size = new System.Drawing.Size(75, 23);
-            this.ModifyAddressSaveButton.TabIndex = 49;
+            this.ModifyAddressSaveButton.TabIndex = 5;
             this.ModifyAddressSaveButton.Text = "Save";
             this.ModifyAddressSaveButton.UseVisualStyleBackColor = true;
             this.ModifyAddressSaveButton.Click += new System.EventHandler(this.ModifyAddressSaveButton_Click);
@@ -87,7 +87,7 @@
             this.ModifyAddressPhoneTextBox.Location = new System.Drawing.Point(128, 287);
             this.ModifyAddressPhoneTextBox.Name = "ModifyAddressPhoneTextBox";
             this.ModifyAddressPhoneTextBox.Size = new System.Drawing.Size(100, 20);
-            this.ModifyAddressPhoneTextBox.TabIndex = 47;
+            this.ModifyAddressPhoneTextBox.TabIndex = 4;
             this.ModifyAddressPhoneTextBox.TextChanged += new System.EventHandler(this.ModifyAddressPhoneTextBox_TextChanged);
             // 
             // ModifyAddressPostalCodeLabel
@@ -110,7 +110,7 @@
             this.ModifyAddressCityComboBox.Location = new System.Drawing.Point(128, 180);
             this.ModifyAddressCityComboBox.Name = "ModifyAddressCityComboBox";
             this.ModifyAddressCityComboBox.Size = new System.Drawing.Size(121, 21);
-            this.ModifyAddressCityComboBox.TabIndex = 45;
+            this.ModifyAddressCityComboBox.TabIndex = 2;
             this.ModifyAddressCityComboBox.SelectedIndexChanged += new System.EventHandler(this.ModifyAddressCityComboBox_SelectedIndexChanged);
             // 
             // ModifyAddressCityLabel
@@ -145,7 +145,7 @@
             this.ModifyAddressPostalCodeTextBox.Location = new System.Drawing.Point(128, 235);
             this.ModifyAddressPostalCodeTextBox.Name = "ModifyAddressPostalCodeTextBox";
             this.ModifyAddressPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
-            this.ModifyAddressPostalCodeTextBox.TabIndex = 41;
+            this.ModifyAddressPostalCodeTextBox.TabIndex = 3;
             this.ModifyAddressPostalCodeTextBox.TextChanged += new System.EventHandler(this.ModifyAddressPostalCodeTextBox_TextChanged);
             // 
             // ModifyAddressAddress2TextBox
@@ -153,14 +153,14 @@
             this.ModifyAddressAddress2TextBox.Location = new System.Drawing.Point(128, 126);
             this.ModifyAddressAddress2TextBox.Name = "ModifyAddressAddress2TextBox";
             this.ModifyAddressAddress2TextBox.Size = new System.Drawing.Size(100, 20);
-            this.ModifyAddressAddress2TextBox.TabIndex = 40;
+            this.ModifyAddressAddress2TextBox.TabIndex = 1;
             // 
             // ModifyAddressAddress1TextBox
             // 
             this.ModifyAddressAddress1TextBox.Location = new System.Drawing.Point(128, 78);
             this.ModifyAddressAddress1TextBox.Name = "ModifyAddressAddress1TextBox";
             this.ModifyAddressAddress1TextBox.Size = new System.Drawing.Size(100, 20);
-            this.ModifyAddressAddress1TextBox.TabIndex = 39;
+            this.ModifyAddressAddress1TextBox.TabIndex = 0;
             this.ModifyAddressAddress1TextBox.TextChanged += new System.EventHandler(this.ModifyAddressAddress1TextBox_TextChanged);
             // 
             // ModifyAddressForm

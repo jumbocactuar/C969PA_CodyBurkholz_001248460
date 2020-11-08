@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -17,10 +18,8 @@ namespace C969PA_CodyBurkholz_001248460
 {
     /* FIXME NOTES
      * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
-     * G. Write two or more lambda expressions to make your program more efficient, justifying the use of each lambda expression with an in-line comment.
      * H. Write code to provide reminders and alerts 15 minutes in advance of an appointment, based on the user’s log-in.
-     * I. Provide the ability to generate each  of the following reports using the collection classes: - chapter 21.2
-     * -number of appointment types by month
+     * I. Provide the ability to generate each of the following reports using the collection classes: - chapter 21.2
      * -the schedule for each  consultant
      * -one additional report of your choice (schedule for each customer?)
      * J. Provide the ability to track user activity by recording timestamps for user log-ins in a .txt file, using the collection classes. 
@@ -236,6 +235,40 @@ namespace C969PA_CodyBurkholz_001248460
             cxn.Close();
 
             return resultString;
+        }
+
+        public static DataTable GenerateCustomerReport()
+        {
+            // Create a data table in which to store the selected info
+            DataTable dt = new DataTable();
+            dt.Clear();
+            dt.Columns.Add("Customer");
+            dt.Columns.Add("Appointment Start");
+            dt.Columns.Add("Appointment End");
+
+            // Generate a list of all appointments
+            List<Object[]> appointmentList = Globals.GenerateTableList("appointment");
+
+            //List<string> customerList = new List<string>();
+
+            List<string> tempList = new List<string>();
+
+            foreach (Object[] appointment in appointmentList)
+            {
+                int tempID = Convert.ToInt32(appointment[1]);
+
+                string query = $"SELECT customerName from customer WHERE customerId = {tempID}";
+
+                string name = ExecuteThisQueryReturnString(query);
+
+                tempList.Add(name);
+            }
+
+            //IEnumerable<string> customerNameList = tempList.Where(name => name == name.Distinct().ToString());
+
+            
+
+            return dt;
         }
 
         public static List<Object[]> GenerateTableList(string table)

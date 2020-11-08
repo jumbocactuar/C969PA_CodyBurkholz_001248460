@@ -58,7 +58,7 @@
             this.AddAddressCancelButton.Location = new System.Drawing.Point(166, 349);
             this.AddAddressCancelButton.Name = "AddAddressCancelButton";
             this.AddAddressCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.AddAddressCancelButton.TabIndex = 38;
+            this.AddAddressCancelButton.TabIndex = 6;
             this.AddAddressCancelButton.Text = "Cancel";
             this.AddAddressCancelButton.UseVisualStyleBackColor = true;
             this.AddAddressCancelButton.Click += new System.EventHandler(this.AddAddressCancelButton_Click);
@@ -68,7 +68,7 @@
             this.AddAddressSaveButton.Location = new System.Drawing.Point(85, 349);
             this.AddAddressSaveButton.Name = "AddAddressSaveButton";
             this.AddAddressSaveButton.Size = new System.Drawing.Size(75, 23);
-            this.AddAddressSaveButton.TabIndex = 37;
+            this.AddAddressSaveButton.TabIndex = 5;
             this.AddAddressSaveButton.Text = "Save";
             this.AddAddressSaveButton.UseVisualStyleBackColor = true;
             this.AddAddressSaveButton.Click += new System.EventHandler(this.AddAddressSaveButton_Click);
@@ -87,7 +87,7 @@
             this.AddAddressPhoneTextBox.Location = new System.Drawing.Point(126, 273);
             this.AddAddressPhoneTextBox.Name = "AddAddressPhoneTextBox";
             this.AddAddressPhoneTextBox.Size = new System.Drawing.Size(100, 20);
-            this.AddAddressPhoneTextBox.TabIndex = 35;
+            this.AddAddressPhoneTextBox.TabIndex = 4;
             this.AddAddressPhoneTextBox.TextChanged += new System.EventHandler(this.AddAddressPhoneTextBox_TextChanged);
             // 
             // AddAddressPostalCodeLabel
@@ -110,7 +110,7 @@
             this.AddAddressCityComboBox.Location = new System.Drawing.Point(126, 166);
             this.AddAddressCityComboBox.Name = "AddAddressCityComboBox";
             this.AddAddressCityComboBox.Size = new System.Drawing.Size(121, 21);
-            this.AddAddressCityComboBox.TabIndex = 33;
+            this.AddAddressCityComboBox.TabIndex = 2;
             this.AddAddressCityComboBox.SelectedIndexChanged += new System.EventHandler(this.AddAddressCityComboBox_SelectedIndexChanged);
             // 
             // AddAddressCityLabel
@@ -145,7 +145,7 @@
             this.AddAddressPostalCodeTextBox.Location = new System.Drawing.Point(126, 221);
             this.AddAddressPostalCodeTextBox.Name = "AddAddressPostalCodeTextBox";
             this.AddAddressPostalCodeTextBox.Size = new System.Drawing.Size(100, 20);
-            this.AddAddressPostalCodeTextBox.TabIndex = 27;
+            this.AddAddressPostalCodeTextBox.TabIndex = 3;
             this.AddAddressPostalCodeTextBox.TextChanged += new System.EventHandler(this.AddAddressPostalCodeTextBox_TextChanged);
             // 
             // AddAddressAddress2TextBox
@@ -153,14 +153,14 @@
             this.AddAddressAddress2TextBox.Location = new System.Drawing.Point(126, 112);
             this.AddAddressAddress2TextBox.Name = "AddAddressAddress2TextBox";
             this.AddAddressAddress2TextBox.Size = new System.Drawing.Size(100, 20);
-            this.AddAddressAddress2TextBox.TabIndex = 26;
+            this.AddAddressAddress2TextBox.TabIndex = 1;
             // 
             // AddAddressAddress1TextBox
             // 
             this.AddAddressAddress1TextBox.Location = new System.Drawing.Point(126, 64);
             this.AddAddressAddress1TextBox.Name = "AddAddressAddress1TextBox";
             this.AddAddressAddress1TextBox.Size = new System.Drawing.Size(100, 20);
-            this.AddAddressAddress1TextBox.TabIndex = 25;
+            this.AddAddressAddress1TextBox.TabIndex = 0;
             this.AddAddressAddress1TextBox.TextChanged += new System.EventHandler(this.AddAddressAddress1TextBox_TextChanged);
             // 
             // AddAddressForm

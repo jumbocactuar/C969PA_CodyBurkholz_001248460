@@ -46,16 +46,19 @@
             // 
             // CustomerScheduleDataGridView
             // 
+            this.CustomerScheduleDataGridView.AllowUserToAddRows = false;
+            this.CustomerScheduleDataGridView.AllowUserToDeleteRows = false;
             this.CustomerScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerScheduleDataGridView.Location = new System.Drawing.Point(17, 52);
             this.CustomerScheduleDataGridView.Name = "CustomerScheduleDataGridView";
             this.CustomerScheduleDataGridView.ReadOnly = true;
-            this.CustomerScheduleDataGridView.Size = new System.Drawing.Size(521, 335);
+            this.CustomerScheduleDataGridView.RowHeadersVisible = false;
+            this.CustomerScheduleDataGridView.Size = new System.Drawing.Size(303, 335);
             this.CustomerScheduleDataGridView.TabIndex = 1;
             // 
             // CustomerScheduleFormCloseButton
             // 
-            this.CustomerScheduleFormCloseButton.Location = new System.Drawing.Point(346, 408);
+            this.CustomerScheduleFormCloseButton.Location = new System.Drawing.Point(245, 406);
             this.CustomerScheduleFormCloseButton.Name = "CustomerScheduleFormCloseButton";
             this.CustomerScheduleFormCloseButton.Size = new System.Drawing.Size(75, 23);
             this.CustomerScheduleFormCloseButton.TabIndex = 2;
@@ -67,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(344, 450);
             this.Controls.Add(this.CustomerScheduleFormCloseButton);
             this.Controls.Add(this.CustomerScheduleDataGridView);
             this.Controls.Add(this.CustomerScheduleReportFormLabel);

@@ -19,20 +19,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ManagementPortalForm_Load(object sender, EventArgs e)
         {
-            /*// Populate the Country table
-            Globals.InsertCountryRecord("United Kingdom");
-            Globals.InsertCountryRecord("United States");*/
 
-            /*// Populate the City table
-            Globals.InsertCityRecord("London");
-            Globals.InsertCityRecord("New York");
-            Globals.InsertCityRecord("Phoenix");*/
-
-            /*// Populate the Address table
-            Globals.InsertAddressRecord("123 5th Ave", "Apt. 4", "New York", "10001", "222-222-2222");*/
-
-            /*// Populate the Customer table
-            Globals.InsertCustomerRecord("Jones, Alan", 1, 1);*/
         }
 
         private void ManagementPortalCustomersButton_Click(object sender, EventArgs e)
@@ -44,6 +31,12 @@ namespace C969PA_CodyBurkholz_001248460
         private void ManagementPortalAppointmentsButton_Click(object sender, EventArgs e)
         {
             ManageAppointmentsForm f = new ManageAppointmentsForm();
+            f.Show();
+        }
+
+        private void ManagementPortalAppointmentCalendarButton_Click(object sender, EventArgs e)
+        {
+            AppointmentCalendarForm f = new AppointmentCalendarForm();
             f.Show();
         }
 

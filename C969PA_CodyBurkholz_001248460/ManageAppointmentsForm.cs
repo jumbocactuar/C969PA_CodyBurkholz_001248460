@@ -84,6 +84,12 @@ namespace C969PA_CodyBurkholz_001248460
             }
         }
 
+        private void ManageAppointmentsViewCalendarButton_Click(object sender, EventArgs e)
+        {
+            AppointmentCalendarForm f = new AppointmentCalendarForm();
+            f.Show();
+        }
+
         private void ManageAppointmentsCancelButton_Click(object sender, EventArgs e)
         {
             Globals.CurrentDataGridSelection = null;

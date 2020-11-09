@@ -47,6 +47,7 @@
             this.ManageAppointmentsModifyButton = new System.Windows.Forms.Button();
             this.ManageAppointmentsAddButton = new System.Windows.Forms.Button();
             this.ManageAppointmentsCancelButton = new System.Windows.Forms.Button();
+            this.ManageAppointmentsViewCalendarButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ManageAppointmentsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.u06vbiDataSet)).BeginInit();
@@ -207,11 +208,22 @@
             this.ManageAppointmentsCancelButton.UseVisualStyleBackColor = true;
             this.ManageAppointmentsCancelButton.Click += new System.EventHandler(this.ManageAppointmentsCancelButton_Click);
             // 
+            // ManageAppointmentsViewCalendarButton
+            // 
+            this.ManageAppointmentsViewCalendarButton.Location = new System.Drawing.Point(684, 415);
+            this.ManageAppointmentsViewCalendarButton.Name = "ManageAppointmentsViewCalendarButton";
+            this.ManageAppointmentsViewCalendarButton.Size = new System.Drawing.Size(156, 23);
+            this.ManageAppointmentsViewCalendarButton.TabIndex = 6;
+            this.ManageAppointmentsViewCalendarButton.Text = "View Calendar";
+            this.ManageAppointmentsViewCalendarButton.UseVisualStyleBackColor = true;
+            this.ManageAppointmentsViewCalendarButton.Click += new System.EventHandler(this.ManageAppointmentsViewCalendarButton_Click);
+            // 
             // ManageAppointmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 450);
+            this.Controls.Add(this.ManageAppointmentsViewCalendarButton);
             this.Controls.Add(this.ManageAppointmentsCancelButton);
             this.Controls.Add(this.ManageAppointmentsAddButton);
             this.Controls.Add(this.ManageAppointmentsModifyButton);
@@ -249,5 +261,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button ManageAppointmentsViewCalendarButton;
     }
 }

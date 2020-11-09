@@ -19,9 +19,6 @@ namespace C969PA_CodyBurkholz_001248460
     /* FIXME NOTES
      * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
      * H. Write code to provide reminders and alerts 15 minutes in advance of an appointment, based on the user’s log-in.
-     * I. Provide the ability to generate each of the following reports using the collection classes: - chapter 21.2
-     * -the schedule for each  consultant
-     * -one additional report of your choice (schedule for each customer?)
      * J. Provide the ability to track user activity by recording timestamps for user log-ins in a .txt file, using the collection classes. 
      *    Each new record should be appended to the log file, if the file already exists.
      * K. Demonstrate professional communication in the content and presentation of your submission. (add comments)
@@ -56,7 +53,7 @@ namespace C969PA_CodyBurkholz_001248460
             bool invalidHour = true;
             int i = 0;
 
-            // Check whether the appointment time submitted is within business hours
+            // Check whether the appointment time submitted is within business hours (local time)
             do
             {
                 foreach (string hour in Globals.BusinessHours)
@@ -235,40 +232,6 @@ namespace C969PA_CodyBurkholz_001248460
             cxn.Close();
 
             return resultString;
-        }
-
-        public static DataTable GenerateCustomerReport()
-        {
-            // Create a data table in which to store the selected info
-            DataTable dt = new DataTable();
-            dt.Clear();
-            dt.Columns.Add("Customer");
-            dt.Columns.Add("Appointment Start");
-            dt.Columns.Add("Appointment End");
-
-            // Generate a list of all appointments
-            List<Object[]> appointmentList = Globals.GenerateTableList("appointment");
-
-            //List<string> customerList = new List<string>();
-
-            List<string> tempList = new List<string>();
-
-            foreach (Object[] appointment in appointmentList)
-            {
-                int tempID = Convert.ToInt32(appointment[1]);
-
-                string query = $"SELECT customerName from customer WHERE customerId = {tempID}";
-
-                string name = ExecuteThisQueryReturnString(query);
-
-                tempList.Add(name);
-            }
-
-            //IEnumerable<string> customerNameList = tempList.Where(name => name == name.Distinct().ToString());
-
-            
-
-            return dt;
         }
 
         public static List<Object[]> GenerateTableList(string table)

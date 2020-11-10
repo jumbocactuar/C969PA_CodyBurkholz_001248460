@@ -26,25 +26,17 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void AppointmentCalendarMonthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            if (AppointmentCalendarMonthRadioButton.Checked == true)
-            {
-
-            }
-
-            else
-            {
-
-            }
+            DateTime selectedDay = AppointmentCalendarMonthCalendar.SelectionRange.Start;
         }
 
         private void AppointmentCalendarMonthRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            AppointmentCalendarDataGridView.DataSource = GenerateSpecificTable(SpecifyRange());
         }
 
         private void AppointmentCalendarWeekRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            AppointmentCalendarDataGridView.DataSource = GenerateSpecificTable(SpecifyRange());
         }
 
         private void AppointmentCalendarCloseButton_Click(object sender, EventArgs e)
@@ -112,7 +104,7 @@ namespace C969PA_CodyBurkholz_001248460
                 {
                     string tempID = customer[0].ToString();
 
-                    if (tempID == appt[0])
+                    if (tempID == appt[1])
                     {
                         appt[1] = customer[1].ToString();
                     }
@@ -125,12 +117,19 @@ namespace C969PA_CodyBurkholz_001248460
 
             }
 
+            // Sort the presentable list by start date
+            // Lambda used to define comparison terms for sorting
+            presentableList.Sort((x, y) => string.Compare(x[2], y[2]));
+
             return presentableList;
         }
 
-        private static DataTable GenerateSpecificTable(DateTime startDate, DateTime endDate)
+        private static DataTable GenerateSpecificTable(List<DateTime> dates)
         {
             List<List<string>> originalList = appointmentList;
+
+            DateTime startDate = dates[0];
+            DateTime endDate = dates[1];
 
             // Create a data table in which to store the selected info
             DataTable dt = new DataTable();
@@ -162,30 +161,115 @@ namespace C969PA_CodyBurkholz_001248460
                 {
                     continue;
                 }
-
-                /*var filtered =
-                    from value in appt
-                    where value > "2020-11-02 12:00:00 AM" && value < "2020-11-06 11:59:59 PM"
-                    select value;*/
             }
 
             return dt;
         }
 
-        private void SpecifyMonth()
+        private List<DateTime> SpecifyRange()
         {
-            AppointmentCalendarMonthCalendar.RemoveAllBoldedDates();
+            // Create a list into which the selected date range can be placed
+            List<DateTime> selectedRange = new List<DateTime>();
 
+            DateTime selectedDate = AppointmentCalendarMonthCalendar.SelectionRange.Start;
 
+            // Break down the selected date
+            int selectedYear = Convert.ToInt32(selectedDate.Year);
+            int selectedMonth = Convert.ToInt32(selectedDate.Month);
+            int selectedDay = Convert.ToInt32(selectedDate.Day);
+            string selectedDayOfWeek = selectedDate.DayOfWeek.ToString();
+            int numDays = DateTime.DaysInMonth(selectedYear, selectedMonth);
+
+            // Depending on whether Month or Week is selected, define the start and end dates of the requested range
+            if (AppointmentCalendarMonthRadioButton.Checked == true)
+            {
+                string rangeStart = $"{selectedMonth}/1/{selectedYear} 12:00:00 AM";
+                string rangeEnd = $"{selectedMonth}/{numDays}/{selectedYear} 11:59:59 PM";
+
+                selectedRange.Add(Convert.ToDateTime(rangeStart));
+                selectedRange.Add(Convert.ToDateTime(rangeEnd));
+            }
+
+            if (AppointmentCalendarWeekRadioButton.Checked == true)
+            {
+                string tempDayOfWeek = selectedDayOfWeek.ToString();
+                int dowOffset = 0;
+
+                // Determine the number of days between the selected day and the beginning of the week
+                switch (tempDayOfWeek)
+                {
+                    case "Monday":
+                        dowOffset = 1;
+                        break;
+                    case "Tuesday":
+                        dowOffset = 2;
+                        break;
+                    case "Wednesday":
+                        dowOffset = 3;
+                        break;
+                    case "Thursday":
+                        dowOffset = 4;
+                        break;
+                    case "Friday":
+                        dowOffset = 5;
+                        break;
+                    case "Saturday":
+                        dowOffset = 6;
+                        break;
+                    default:
+                        break;
+                }
+
+                int rangeStartDay = Convert.ToInt32(selectedDay);
+                rangeStartDay -= dowOffset;
+                int rangeEndDay = rangeStartDay + 7;
+                int rangeStartMonth = selectedMonth;
+                int rangeEndMonth = selectedMonth;
+                int rangeStartYear = selectedYear;
+                int rangeEndYear = selectedYear;
+
+                // If the selected week straddles two months, adjust the selected start/end day/month/year
+                if (rangeStartDay < 1)
+                {
+                    int tempNum = 0;
+
+                    rangeStartMonth--;
+
+                    if (rangeStartMonth == 0)
+                    {
+                        rangeStartMonth = 12;
+                        rangeStartYear--;
+                        tempNum = DateTime.DaysInMonth(rangeStartYear, rangeStartMonth);
+                        rangeStartDay += tempNum; 
+                    }
+
+                    else
+                    {
+                        tempNum = DateTime.DaysInMonth(rangeStartYear, rangeStartMonth);
+                        rangeStartDay += tempNum;
+                    }
+                }
+                
+                if (rangeEndDay > numDays)
+                {
+                    rangeEndDay -= numDays;
+                    rangeEndMonth++;
+
+                    if (rangeEndMonth == 13)
+                    {
+                        rangeEndMonth = 1;
+                        rangeEndYear++;
+                    }
+                }
+
+                string rangeStart = $"{rangeStartMonth}/{rangeStartDay}/{rangeStartYear} 12:00:00 AM";
+                string rangeEnd = $"{rangeEndMonth}/{rangeEndDay}/{rangeEndYear} 11:59:59 PM";
+
+                selectedRange.Add(Convert.ToDateTime(rangeStart));
+                selectedRange.Add(Convert.ToDateTime(rangeEnd));
+            }
+
+            return selectedRange;
         }
-
-        private void SpecifyWeek()
-        {
-            AppointmentCalendarMonthCalendar.RemoveAllBoldedDates();
-
-
-        }
-
-        // FIXME: SELECT * FROM appointment WHERE start BETWEEN '2020-11-02 00:00:00' AND '2020-11-06 23:59:59' ORDER BY start ASC
     }
 }

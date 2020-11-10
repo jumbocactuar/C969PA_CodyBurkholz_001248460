@@ -34,6 +34,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ModifyCustomerForm_Load(object sender, EventArgs e)
         {
+            // Fill the form fields with the info from the selected record
             Object[] selectedCustomer = Globals.GetSelectedRowContents("customer", int.Parse(Globals.CurrentDataGridSelection));
 
             CustomerID = Convert.ToInt32(selectedCustomer[0]);
@@ -177,6 +178,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         public void FillAddressInfo()
         {
+            // Fill the address, city, postal code, and phone fields with info from the selected record
             if (Globals.CurrentDataGridSelection != null)
             {
                 Object[] selectionContents = Globals.GetSelectedRowContents("address", int.Parse(Globals.CurrentDataGridSelection));

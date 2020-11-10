@@ -39,10 +39,5 @@ namespace C969PA_CodyBurkholz_001248460
             CustomerScheduleReportForm f = new CustomerScheduleReportForm();
             f.Show();
         }
-
-        private void ActivityLogButton_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

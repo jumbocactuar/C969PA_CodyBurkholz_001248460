@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,14 +17,6 @@ using MySql.Data.Types;
 
 namespace C969PA_CodyBurkholz_001248460
 {
-    /* FIXME NOTES
-     * D. Provide the ability to view the calendar by month and by week. - Jan 24 webinar
-     * H. Write code to provide reminders and alerts 15 minutes in advance of an appointment, based on the user’s log-in.
-     * J. Provide the ability to track user activity by recording timestamps for user log-ins in a .txt file, using the collection classes. 
-     *    Each new record should be appended to the log file, if the file already exists.
-     * K. Demonstrate professional communication in the content and presentation of your submission. (add comments)
-     */
-
     static class Program
     {
         /// <summary>
@@ -236,6 +229,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         public static List<Object[]> GenerateTableList(string table)
         {
+            // Generate a list of arrays of objects containing the data of the specified table
             Object[] GetTableRow(int id)
             {
                 string subQuery = $"SELECT * FROM {table} WHERE {table}Id = {id}";
@@ -302,8 +296,9 @@ namespace C969PA_CodyBurkholz_001248460
             return result;
         }
 
-        private static string GetMySqlNow()
+        public static string GetMySqlNow()
         {
+            // Get the current time in a format acceptable by MySQL
             DateTime utcTime = new DateTime();
             utcTime = DateTime.UtcNow;
             string mySqlNow = utcTime.ToString("yyyy-MM-dd HH:mm:ss");
@@ -331,7 +326,7 @@ namespace C969PA_CodyBurkholz_001248460
             return objList;
         }
 
-        public static bool InvalidDataCheck(string input)
+        public static bool InvalidPhoneCheck(string input)
         {
             bool invalid = false;
             List<char> allowed = new List<char> { '(', ')', '-', '+', ' ' };
@@ -342,6 +337,25 @@ namespace C969PA_CodyBurkholz_001248460
                 if (c < '0' || c > '9')
                 {
                     if (allowed.Contains(c) == false)
+                    {
+                        return invalid = true;
+                    }
+                }
+            }
+
+            return invalid;
+        }
+
+        public static bool InvalidPostalCodeCheck(string postalCode, string city)
+        {
+            bool invalid = false;
+
+            // If the string does not contain only numbers (for New York and Phoenix), mark it as invalid
+            if (city == "New York" || city == "Phoenix")
+            {
+                foreach (char c in postalCode)
+                {
+                    if (c < '0' || c > '9')
                     {
                         return invalid = true;
                     }
@@ -429,18 +443,29 @@ namespace C969PA_CodyBurkholz_001248460
             return id;
         }
 
-        public static int UpdateCountryRecord() // FIXME: Make this functional
+        public static void UpdateCountryRecord(int countryID, string country)
         {
-            int id = 0;
+            string query = $"UPDATE country SET " +
+                $"country = '{country}', " +
+                $"lastUpdate = '{GetMySqlNow()}', " +
+                $"lastUpdateBy = '{CurrentUser}' " +
+                $"WHERE addressId = '{countryID}'";
 
-            return id;
+            ExecuteThisQueryReturnInt(query);
         }
 
-        public static int UpdateCityRecord() // FIXME: Make this functional
+        public static void UpdateCityRecord(int cityID, string city, string country)
         {
-            int id = 0;
+            int countryID = GetID("country", country);
 
-            return id;
+            string query = $"UPDATE city SET " +
+                $"city = '{city}', " +
+                $"countryId = '{countryID}', " +
+                $"lastUpdate = '{GetMySqlNow()}', " +
+                $"lastUpdateBy = '{CurrentUser}' " +
+                $"WHERE addressId = '{cityID}'";
+
+            ExecuteThisQueryReturnInt(query);
         }
 
         public static void UpdateAddressRecord(int addressID, string address, string address2, string city, string postalCode, string phone)
@@ -567,6 +592,18 @@ namespace C969PA_CodyBurkholz_001248460
             : base(messageValue, inner)
         {
 
+        }
+    }
+
+    class Logger
+    {
+        public static void LoginLog(string userName)
+        {
+            string path = "loginlog.txt";
+
+            string log = $"\r\n{userName} - {Globals.GetMySqlNow()} UTC";
+
+            File.AppendAllText(path, log);
         }
     }
 }

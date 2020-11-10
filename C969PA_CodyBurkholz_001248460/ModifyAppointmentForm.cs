@@ -42,6 +42,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         private void ModifyAppointmentForm_Load(object sender, EventArgs e)
         {
+            // Fill the form fields with info from the selected record
             ModifyAppointmentSaveButton.Enabled = false;
 
             Object[] selectedAppointment = Globals.GetSelectedRowContents("appointment", int.Parse(Globals.CurrentDataGridSelection));
@@ -291,6 +292,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         public void FillConsultantName()
         {
+            // Fill the Consultant field with the name of the selected consultant(user)
             if (Globals.CurrentDataGridSelection != null)
             {
                 UserID = int.Parse(Globals.CurrentDataGridSelection);
@@ -305,6 +307,7 @@ namespace C969PA_CodyBurkholz_001248460
 
         public void FillCustomerName()
         {
+            // Fill the Customer field with the name of the selected customer
             if (Globals.CurrentDataGridSelection != null)
             {
                 CustomerID = int.Parse(Globals.CurrentDataGridSelection);

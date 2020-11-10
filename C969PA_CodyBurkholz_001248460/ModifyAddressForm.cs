@@ -132,9 +132,15 @@ namespace C969PA_CodyBurkholz_001248460
 
             try
             {
-                bool invalid = Globals.InvalidDataCheck(phone);
+                bool invalidPostal = Globals.InvalidPostalCodeCheck(postalCode, city);
+                bool invalidPhone = Globals.InvalidPhoneCheck(phone);
 
-                if (invalid == true)
+                if (invalidPostal == true)
+                {
+                    throw new InvalidCustomerDataException("The postal code entered contains invalid characters.");
+                }
+
+                if (invalidPhone == true)
                 {
                     throw new InvalidCustomerDataException("The phone number entered contains invalid characters.");
                 }

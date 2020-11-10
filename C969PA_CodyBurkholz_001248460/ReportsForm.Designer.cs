@@ -31,7 +31,6 @@
             this.AppointmentTypesButton = new System.Windows.Forms.Button();
             this.ConsultantScheduleButton = new System.Windows.Forms.Button();
             this.CustomerScheduleButton = new System.Windows.Forms.Button();
-            this.ActivityLogButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -68,17 +67,6 @@
             this.CustomerScheduleButton.UseVisualStyleBackColor = true;
             this.CustomerScheduleButton.Click += new System.EventHandler(this.CustomerScheduleButton_Click);
             // 
-            // ActivityLogButton
-            // 
-            this.ActivityLogButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivityLogButton.Location = new System.Drawing.Point(48, 341);
-            this.ActivityLogButton.Name = "ActivityLogButton";
-            this.ActivityLogButton.Size = new System.Drawing.Size(195, 70);
-            this.ActivityLogButton.TabIndex = 3;
-            this.ActivityLogButton.Text = "Download User Activity Log";
-            this.ActivityLogButton.UseVisualStyleBackColor = true;
-            this.ActivityLogButton.Click += new System.EventHandler(this.ActivityLogButton_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -93,9 +81,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 450);
+            this.ClientSize = new System.Drawing.Size(291, 370);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ActivityLogButton);
             this.Controls.Add(this.CustomerScheduleButton);
             this.Controls.Add(this.ConsultantScheduleButton);
             this.Controls.Add(this.AppointmentTypesButton);
@@ -112,7 +99,6 @@
         private System.Windows.Forms.Button AppointmentTypesButton;
         private System.Windows.Forms.Button ConsultantScheduleButton;
         private System.Windows.Forms.Button CustomerScheduleButton;
-        private System.Windows.Forms.Button ActivityLogButton;
         private System.Windows.Forms.Label label1;
     }
 }

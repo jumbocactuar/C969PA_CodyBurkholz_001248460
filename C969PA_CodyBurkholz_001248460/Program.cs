@@ -86,7 +86,17 @@ namespace C969PA_CodyBurkholz_001248460
                     DateTime existingStart = DateTime.Parse(appointment[9].ToString());
                     DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
 
-                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd)) // between existing times
+                    {
+                        return conflict = true;
+                    }
+
+                    if ((existingStart <= proposedStart) && (existingEnd >= proposedEnd)) // between existing times
+                    {
+                        return conflict = true;
+                    }
+
+                    if (((existingStart > proposedStart) && (existingStart < proposedEnd)) || ((existingEnd > proposedStart) && (existingEnd < proposedEnd))) // overlapping beginning or end
                     {
                         return conflict = true;
                     }
@@ -98,7 +108,17 @@ namespace C969PA_CodyBurkholz_001248460
                     DateTime existingStart = DateTime.Parse(appointment[9].ToString());
                     DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
 
-                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                    if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd)) // between existing times
+                    {
+                        return conflict = true;
+                    }
+
+                    if ((existingStart <= proposedStart) && (existingEnd >= proposedEnd)) // between existing times
+                    {
+                        return conflict = true;
+                    }
+
+                    if (((existingStart > proposedStart) && (existingStart < proposedEnd)) || ((existingEnd > proposedStart) && (existingEnd < proposedEnd))) // overlapping beginning or end
                     {
                         return conflict = true;
                     }
@@ -131,7 +151,17 @@ namespace C969PA_CodyBurkholz_001248460
                         DateTime existingStart = DateTime.Parse(appointment[9].ToString());
                         DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
 
-                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd)) // between existing times
+                        {
+                            return conflict = true;
+                        }
+
+                        if ((existingStart <= proposedStart) && (existingEnd >= proposedEnd)) // between existing times
+                        {
+                            return conflict = true;
+                        }
+
+                        if (((existingStart > proposedStart) && (existingStart < proposedEnd)) || ((existingEnd > proposedStart) && (existingEnd < proposedEnd))) // overlapping beginning or end
                         {
                             return conflict = true;
                         }
@@ -143,7 +173,17 @@ namespace C969PA_CodyBurkholz_001248460
                         DateTime existingStart = DateTime.Parse(appointment[9].ToString());
                         DateTime existingEnd = DateTime.Parse(appointment[10].ToString());
 
-                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd))
+                        if ((existingStart >= proposedStart) && (existingEnd <= proposedEnd)) // between existing times
+                        {
+                            return conflict = true;
+                        }
+
+                        if ((existingStart <= proposedStart) && (existingEnd >= proposedEnd)) // between existing times
+                        {
+                            return conflict = true;
+                        }
+
+                        if (((existingStart > proposedStart) && (existingStart < proposedEnd)) || ((existingEnd > proposedStart) && (existingEnd < proposedEnd))) // overlapping beginning or end
                         {
                             return conflict = true;
                         }

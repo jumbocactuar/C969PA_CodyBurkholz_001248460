@@ -15,19 +15,13 @@ namespace C969PA_CodyBurkholz_001248460
     {
         private static List<List<string>> appointmentList = GenerateAppointmentList();
 
+        string errorMessage = "The user name or password is invalid.";
+
         public LoginForm()
         {
             InitializeComponent();
 
-            //CultureInfo.CurrentUICulture = new CultureInfo("es-MX", false);
-
-            if (CultureInfo.CurrentUICulture.Name == "es-MX")
-            {
-                LoginFormLabel.Text = "Iniciar Sesión";
-                LoginUserNameLabel.Text = "Nombre de usuario";
-                LoginPasswordLabel.Text = "Contraseña";
-                LoginLogInButton.Text = "Iniciar Sesión";
-            }
+            LanguageCheck(CultureInfo.CurrentUICulture.Name);   
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -63,17 +57,9 @@ namespace C969PA_CodyBurkholz_001248460
                 }
             }
 
-            catch (InvalidCredentialsException ex)
+            catch (InvalidCredentialsException)
             {
-                if (CultureInfo.CurrentUICulture.Name == "es-MX")
-                {
-                    MessageBox.Show("El nombre de usuario o la contraseña es inválido/a.");
-                }
-
-                else
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                MessageBox.Show(errorMessage);
             }
         }
 
@@ -151,6 +137,18 @@ namespace C969PA_CodyBurkholz_001248460
             }
 
             return presentableList;
+        }
+
+        private void LanguageCheck(string culture)
+        {
+            if (culture == "es-MX")
+            {
+                LoginFormLabel.Text = "Iniciar Sesión";
+                LoginUserNameLabel.Text = "Nombre de usuario";
+                LoginPasswordLabel.Text = "Contraseña";
+                LoginLogInButton.Text = "Iniciar Sesión";
+                errorMessage = "El nombre de usuario o la contraseña es inválido/a.";
+            }
         }
 
         public static void UpcomingAppointmentCheck()
